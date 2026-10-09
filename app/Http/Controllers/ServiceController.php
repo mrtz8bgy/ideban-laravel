@@ -24,6 +24,8 @@ class ServiceController extends Controller
         $service = Service::where('slug', $slug)->where('is_active', true)
             ->with(['category', 'plans' => function ($query) {
                 $query->where('is_active', true)->orderBy('sort_order');
+            }, 'addons' => function ($query) {
+                $query->where('is_active', true)->orderBy('sort_order');
             }])
             ->firstOrFail();
 

@@ -1,5 +1,5 @@
 -- Ideban Almas: full schema and sample data for MySQL 5.7+ / MariaDB 10.2+.
--- Generated from the Laravel migrations (2014 .. 2026_10_09_000007) and seeders.
+-- Generated from the Laravel migrations (2014 .. 2026_10_09_000008) and seeders.
 -- Import ONLY into an EMPTY database:
 --   mysql -u USER -p DATABASE < database/ideban_mysql.sql
 -- The migrations ledger is included, so do NOT run `php artisan migrate` afterwards.
@@ -342,7 +342,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
@@ -359,7 +359,8 @@ INSERT INTO `migrations` VALUES
 (8,'2026_10_09_000004_add_username_to_users_table',1),
 (9,'2026_10_09_000005_create_commerce_and_support_tables',1),
 (10,'2026_10_09_000006_create_academy_tables',1),
-(11,'2026_10_09_000007_create_slides_table',1);
+(11,'2026_10_09_000007_create_slides_table',1),
+(12,'2026_10_09_000008_add_media_paths_to_content_tables',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -876,3 +877,12 @@ SET AUTOCOMMIT=@OLD_AUTOCOMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `service_categories` ADD `media_path` varchar(500) NULL;
+ALTER TABLE `services` ADD `media_path` varchar(500) NULL;
+ALTER TABLE `pricing_plans` ADD `media_path` varchar(500) NULL;
+ALTER TABLE `service_addons` ADD `media_path` varchar(500) NULL;
+ALTER TABLE `portfolios` ADD `media_path` varchar(500) NULL;
+ALTER TABLE `articles` ADD `cover_path` varchar(500) NULL;
+ALTER TABLE `videos` ADD `thumbnail_path` varchar(500) NULL, ADD `video_path` varchar(500) NULL;
+ALTER TABLE `courses` ADD `cover_path` varchar(500) NULL;
+ALTER TABLE `lessons` ADD `thumbnail_path` varchar(500) NULL;

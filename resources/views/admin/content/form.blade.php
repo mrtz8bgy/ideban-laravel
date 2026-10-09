@@ -5,7 +5,7 @@
 @php($action = $item ? route('admin.content.update', [$type, $item->id]) : route('admin.content.store', $type))
 @php($v = fn ($field, $default = '') => old($field, $item ? $item->$field : $default))
 <div class="admin-heading"><div><span class="eyebrow">{{ __('site.manage') }}</span><h1>{{ $isArticle ? __('content.admin_articles') : __('content.admin_videos') }}</h1></div><a class="button button-small button-ghost" href="{{ route('admin.content.index', $type) }}">{{ __('site.back') }}</a></div>
-<form class="form-card admin-form" method="post" action="{{ $action }}">
+<form class="form-card admin-form" method="post" enctype="multipart/form-data" action="{{ $action }}">
     @csrf
     @if ($item) @method('PUT') @endif
     <div class="form-row">
@@ -26,17 +26,27 @@
         <div class="form-field"><label for="body_fa">متن فارسی (Markdown ساده؛ عنوان بخش با ## )</label><textarea id="body_fa" name="body_fa" rows="12">{{ $v('body_fa') }}</textarea></div>
         <div class="form-field"><label for="body_en">Body (English, simple Markdown; section titles with ##)</label><textarea id="body_en" name="body_en" dir="ltr" rows="12">{{ $v('body_en') }}</textarea></div>
         <div class="form-row">
-            <div class="form-field"><label for="cover_url">آدرس تصویر شاخص (https)</label><input id="cover_url" name="cover_url" dir="ltr" type="url" value="{{ $v('cover_url') }}" maxlength="2048"></div>
+            <div class="form-field"><label for="cover_url">آدرس تصویر شاخص (اختیاری، https)</label><input id="cover_url" name="cover_url" dir="ltr" type="url" value="{{ $v('cover_url') }}" maxlength="2048"></div>
             <div class="form-field"><label for="author_name">نویسنده / Author</label><input id="author_name" name="author_name" value="{{ $v('author_name') }}" maxlength="120"></div>
         </div>
+        @if ($item && $item->cover_image_url)<div class="form-field"><label>تصویر فعلی</label><img src="{{ $item->cover_image_url }}" alt="" style="display:block;max-width:240px;max-height:160px;object-fit:cover;border-radius:12px"></div>@endif
+        <div class="form-field"><label for="media_file">بارگذاری تصویر شاخص (JPG، PNG یا WebP؛ حداکثر ۵ مگابایت)</label><input id="media_file" type="file" name="media_file" accept="image/jpeg,image/png,image/webp">@error('media_file')<small class="field-error">{{ $message }}</small>@enderror</div>
+        @if ($item && ($item->cover_path || $item->cover_url))<label class="check-field"><input type="checkbox" name="remove_media" value="1" {{ old('remove_media') ? 'checked' : '' }}> حذف تصویر فعلی</label>@endif
         <div class="form-field"><label for="meta_title">SEO title</label><input id="meta_title" name="meta_title" dir="ltr" value="{{ $v('meta_title') }}" maxlength="190"></div>
         <div class="form-field"><label for="meta_description">Meta description</label><textarea id="meta_description" name="meta_description" dir="ltr" rows="2" maxlength="320">{{ $v('meta_description') }}</textarea></div>
     @else
-        <div class="form-field"><label for="video_url">آدرس ویدیو (YouTube، Vimeo یا Aparat با https)</label><input id="video_url" name="video_url" dir="ltr" type="url" value="{{ $v('video_url') }}" required maxlength="2048"></div>
+        <div class="form-field"><label for="video_url">آدرس ویدیو (YouTube، Vimeo یا Aparat با https؛ در صورت آپلود فایل خالی بماند)</label><input id="video_url" name="video_url" dir="ltr" type="url" value="{{ $v('video_url') }}" maxlength="2048"></div>
         <div class="form-row">
             <div class="form-field"><label for="thumbnail_url">آدرس بندانگشتی (https)</label><input id="thumbnail_url" name="thumbnail_url" dir="ltr" type="url" value="{{ $v('thumbnail_url') }}" maxlength="2048"></div>
             <div class="form-field"><label for="duration_seconds">مدت ویدیو (ثانیه)</label><input id="duration_seconds" name="duration_seconds" type="number" min="1" max="86400" value="{{ $v('duration_seconds') }}"></div>
         </div>
+        @if ($item && $item->thumbnail_image_url)<div class="form-field"><label>تصویر فعلی بندانگشتی</label><img src="{{ $item->thumbnail_image_url }}" alt="" style="display:block;max-width:240px;max-height:160px;object-fit:cover;border-radius:12px"></div>@endif
+        <div class="form-row">
+            <div class="form-field"><label for="media_file">تصویر بندانگشتی (JPG، PNG یا WebP؛ حداکثر ۵ مگابایت)</label><input id="media_file" type="file" name="media_file" accept="image/jpeg,image/png,image/webp">@error('media_file')<small class="field-error">{{ $message }}</small>@enderror</div>
+            <div class="form-field"><label for="video_file">فایل ویدیو (MP4 یا WebM؛ حداکثر {{ config('content.public_video_max_mb') }} مگابایت)</label><input id="video_file" type="file" name="video_file" accept="video/mp4,video/webm">@if ($item && $item->isUploadedVideo())<small>فایل ویدیویی روی سرور ذخیره شده است.</small>@endif @error('video_file')<small class="field-error">{{ $message }}</small>@enderror</div>
+        </div>
+        @if ($item && $item->thumbnail_path)<label class="check-field"><input type="checkbox" name="remove_media" value="1" {{ old('remove_media') ? 'checked' : '' }}> حذف تصویر بندانگشتی</label>@endif
+        @if ($item && $item->video_path)<label class="check-field"><input type="checkbox" name="remove_video" value="1" {{ old('remove_video') ? 'checked' : '' }}> حذف فایل ویدیویی</label>@endif
         <div class="form-field"><label for="description_fa">توضیحات فارسی</label><textarea id="description_fa" name="description_fa" rows="3" maxlength="5000">{{ $v('description_fa') }}</textarea></div>
         <div class="form-field"><label for="description_en">Description (English)</label><textarea id="description_en" name="description_en" dir="ltr" rows="3" maxlength="5000">{{ $v('description_en') }}</textarea></div>
     @endif

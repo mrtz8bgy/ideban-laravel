@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Support\PublicMedia;
 
 class Service extends Model
 {
     protected $fillable = [
         'category_id', 'slug', 'title_fa', 'title_en', 'summary_fa', 'summary_en',
         'description_fa', 'description_en', 'included_fa', 'included_en',
-        'excluded_fa', 'excluded_en', 'delivery_days', 'is_featured', 'is_active',
+        'excluded_fa', 'excluded_en', 'delivery_days', 'is_featured', 'is_active', 'media_path',
     ];
 
     protected $casts = [
@@ -39,5 +40,10 @@ class Service extends Model
     public function prices()
     {
         return $this->hasMany(ServicePrice::class);
+    }
+
+    public function getMediaUrlAttribute()
+    {
+        return PublicMedia::url($this->media_path);
     }
 }

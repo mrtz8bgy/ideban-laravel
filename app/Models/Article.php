@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Support\PublicMedia;
 
 class Article extends Model
 {
     protected $fillable = [
         'slug', 'title_fa', 'title_en', 'excerpt_fa', 'excerpt_en', 'body_fa', 'body_en',
         'category', 'tags', 'cover_url', 'author_name', 'service_id', 'meta_title',
-        'meta_description', 'is_published', 'published_at',
+        'meta_description', 'is_published', 'published_at', 'cover_path',
     ];
 
     protected $casts = [
@@ -23,6 +24,11 @@ class Article extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function getCoverImageUrlAttribute()
+    {
+        return PublicMedia::url($this->cover_path) ?: $this->cover_url;
     }
 
     public function scopePublic(Builder $query)

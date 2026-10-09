@@ -51,6 +51,41 @@ class AdminCourseTest extends TestCase
         Storage::disk('local')->assertExists($lesson->file_path);
     }
 
+    public function test_admin_can_upload_course_cover_and_lesson_thumbnail()
+    {
+        Storage::fake('public');
+        $admin = $this->staff('admin', 'boss');
+        $image = function ($name) {
+            return UploadedFile::fake()->createWithContent(
+                $name.'.png',
+                base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/gYkAAAAASUVORK5CYII=')
+            );
+        };
+
+        $this->actingAs($admin)->post(route('admin.courses.store'), [
+            'slug' => 'media-course',
+            'title_fa' => 'دوره رسانه',
+            'title_en' => 'Media course',
+            'level' => 'beginner',
+            'price' => 0,
+            'is_free' => 1,
+            'cover_file' => $image('course-cover'),
+        ])->assertRedirect();
+
+        $course = Course::where('slug', 'media-course')->firstOrFail();
+        Storage::disk('public')->assertExists($course->cover_path);
+
+        $this->actingAs($admin)->post(route('admin.courses.lessons.store', $course), [
+            'title_fa' => 'درس تصویری',
+            'title_en' => 'Image lesson',
+            'source' => 'none',
+            'thumbnail_file' => $image('lesson-thumbnail'),
+        ])->assertRedirect();
+
+        $lesson = Lesson::where('course_id', $course->id)->firstOrFail();
+        Storage::disk('public')->assertExists($lesson->thumbnail_path);
+    }
+
     public function test_external_link_must_be_youtube_or_vimeo()
     {
         $course = $this->course();
@@ -69,6 +104,15 @@ class AdminCourseTest extends TestCase
         $this->actingAs($this->staff('sales', 'seller'))
             ->post(route('admin.courses.store'), ['slug' => 'x', 'title_fa' => 'x', 'title_en' => 'x', 'level' => 'beginner', 'price' => 0])
             ->assertForbidden();
+    }
+
+    public function test_course_form_renders_cover_upload_controls()
+    {
+        $this->actingAs($this->staff('admin', 'boss'))
+            ->get(route('admin.courses.create'))
+            ->assertOk()
+            ->assertSee('enctype="multipart/form-data"', false)
+            ->assertSee('name="cover_file"', false);
     }
 
     public function test_discount_code_is_stored_in_uppercase()

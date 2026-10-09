@@ -7,6 +7,7 @@
     <div class="card-grid">
         @forelse ($plans as $plan)
             <article class="plan-card {{ $plan->is_featured ? 'plan-highlight' : '' }}">
+                @if ($plan->media_url)<img class="detail-image" src="{{ $plan->media_url }}" alt="{{ $plan->{'name_'.app()->getLocale()} }}" loading="lazy">@endif
                 <p class="card-kicker">{{ optional($plan->service)->{'title_'.app()->getLocale()} ?: __('site.services') }}</p>
                 <h2>{{ $plan->{'name_'.app()->getLocale()} }}</h2><p>{{ $plan->{'description_'.app()->getLocale()} }}</p>
                 <div class="plan-costs">

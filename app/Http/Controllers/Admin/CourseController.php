@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\DiscountCode;
 use App\Models\Lesson;
+use App\Support\PublicMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
+use RuntimeException;
 
 class CourseController extends Controller
 {
@@ -26,7 +28,9 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        $course = Course::create($this->validatedCourse($request));
+        $data = $this->validatedCourse($request);
+        $this->applyCourseCover($request, $data);
+        $course = Course::create($data);
 
         return redirect()->route('admin.courses.lessons', $course)->with('success', tr('دوره ذخیره شد. اکنون درس‌ها را اضافه کنید.', 'Course saved. Now add lessons.'));
     }
@@ -38,14 +42,29 @@ class CourseController extends Controller
 
     public function update(Request $request, Course $course)
     {
-        $course->update($this->validatedCourse($request, $course));
+        $oldCover = $course->cover_path;
+        $data = $this->validatedCourse($request, $course);
+        $this->applyCourseCover($request, $data, $course);
+        $course->update($data);
+        if ($oldCover && $oldCover !== $course->cover_path) {
+            PublicMedia::delete($oldCover);
+        }
 
         return back()->with('success', tr('دوره ذخیره شد.', 'Course saved.'));
     }
 
     public function destroy(Course $course)
     {
+        $coverPath = $course->cover_path;
+        $lessons = $course->lessons()->get(['file_path', 'thumbnail_path']);
         $course->delete();
+        PublicMedia::delete($coverPath);
+        foreach ($lessons as $lesson) {
+            PublicMedia::delete($lesson->thumbnail_path);
+            if ($lesson->file_path) {
+                Storage::disk(config('academy.video_disk'))->delete($lesson->file_path);
+            }
+        }
 
         return redirect()->route('admin.courses.index')->with('success', tr('دوره حذف شد.', 'Course deleted.'));
     }
@@ -67,6 +86,7 @@ class CourseController extends Controller
         $data = $this->validatedLesson($request);
         $lesson = new Lesson($data + ['course_id' => $course->id]);
         $this->applyVideo($request, $lesson, $data);
+        $this->applyLessonThumbnail($request, $lesson);
         $lesson->save();
 
         return redirect()->route('admin.courses.lessons', $course)->with('success', tr('درس ذخیره شد.', 'Lesson saved.'));
@@ -76,9 +96,17 @@ class CourseController extends Controller
     {
         abort_unless($lesson->course_id === $course->id, 404);
         $data = $this->validatedLesson($request);
+        $oldThumbnail = $lesson->thumbnail_path;
         $lesson->fill($data);
-        $this->applyVideo($request, $lesson, $data);
+        $oldVideo = $this->applyVideo($request, $lesson, $data);
+        $this->applyLessonThumbnail($request, $lesson);
         $lesson->save();
+        if ($oldThumbnail && $oldThumbnail !== $lesson->thumbnail_path) {
+            PublicMedia::delete($oldThumbnail);
+        }
+        if ($oldVideo && $oldVideo !== $lesson->file_path) {
+            Storage::disk(config('academy.video_disk'))->delete($oldVideo);
+        }
 
         return redirect()->route('admin.courses.lessons', $course)->with('success', tr('درس ذخیره شد.', 'Lesson saved.'));
     }
@@ -86,10 +114,13 @@ class CourseController extends Controller
     public function destroyLesson(Course $course, Lesson $lesson)
     {
         abort_unless($lesson->course_id === $course->id, 404);
-        if ($lesson->file_path) {
-            Storage::disk(config('academy.video_disk'))->delete($lesson->file_path);
-        }
+        $videoPath = $lesson->file_path;
+        $thumbnailPath = $lesson->thumbnail_path;
         $lesson->delete();
+        if ($videoPath) {
+            Storage::disk(config('academy.video_disk'))->delete($videoPath);
+        }
+        PublicMedia::delete($thumbnailPath);
 
         return redirect()->route('admin.courses.lessons', $course)->with('success', tr('درس حذف شد.', 'Lesson deleted.'));
     }
@@ -139,7 +170,7 @@ class CourseController extends Controller
     private function validatedCourse(Request $request, ?Course $course = null): array
     {
         $data = $request->validate([
-            'slug' => ['required', 'string', 'max:190', 'alpha_dash', Rule::unique('courses', 'slug')->ignore($course?->id)],
+            'slug' => ['required', 'string', 'max:190', 'alpha_dash', Rule::unique('courses', 'slug')->ignore($course ? $course->id : null)],
             'title_fa' => ['required', 'string', 'max:190'],
             'title_en' => ['required', 'string', 'max:190'],
             'instructor_fa' => ['nullable', 'string', 'max:190'],
@@ -157,6 +188,8 @@ class CourseController extends Controller
             'is_free' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
             'cover_url' => ['nullable', 'url', 'max:500'],
+            'cover_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'remove_cover' => ['nullable', 'boolean'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ]);
         $data['is_free'] = $request->boolean('is_free');
@@ -179,7 +212,10 @@ class CourseController extends Controller
             'is_free_preview' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
             'video' => ['nullable', 'file', 'mimetypes:video/mp4,video/webm', 'max:'.$maxKb],
+            'thumbnail_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'remove_thumbnail' => ['nullable', 'boolean'],
         ]);
+        unset($data['video'], $data['thumbnail_file'], $data['remove_thumbnail']);
         $data['is_free_preview'] = $request->boolean('is_free_preview');
         $data['is_published'] = $request->boolean('is_published');
         if ($data['source'] === 'external' && empty($data['external_url'])) {
@@ -192,17 +228,16 @@ class CourseController extends Controller
         return $data;
     }
 
-    private function applyVideo(Request $request, Lesson $lesson, array $data): void
+    private function applyVideo(Request $request, Lesson $lesson, array $data): ?string
     {
+        $old = $lesson->exists ? $lesson->file_path : null;
         if ($data['source'] === 'upload' && $request->hasFile('video')) {
-            $disk = Storage::disk(config('academy.video_disk'));
-            $old = $lesson->exists ? $lesson->file_path : null;
             $ext = $request->file('video')->extension() ?: 'mp4';
             $path = $request->file('video')->storeAs(config('academy.video_dir'), Str::uuid().'.'.$ext, config('academy.video_disk'));
-            $lesson->file_path = $path;
-            if ($old && $old !== $path) {
-                $disk->delete($old);
+            if (!$path) {
+                throw new RuntimeException('Unable to store uploaded academy video.');
             }
+            $lesson->file_path = $path;
         }
         if ($data['source'] !== 'upload') {
             $lesson->file_path = null;
@@ -212,6 +247,31 @@ class CourseController extends Controller
         }
         if ($data['source'] === 'upload' && ! $lesson->file_path) {
             throw ValidationException::withMessages(['video' => [tr('برای درس ویدیویی، فایل ویدیو را انتخاب کنید.', 'Choose a video file for an upload lesson.')]]);
+        }
+
+        return $old;
+    }
+
+    private function applyCourseCover(Request $request, array &$data, ?Course $course = null): void
+    {
+        if ($request->hasFile('cover_file')) {
+            $data['cover_path'] = PublicMedia::store($request->file('cover_file'), 'courses');
+            $data['cover_url'] = null;
+        } elseif ($request->boolean('remove_cover')) {
+            $data['cover_path'] = null;
+            $data['cover_url'] = null;
+        } elseif ($course) {
+            $data['cover_path'] = $course->cover_path;
+        }
+        unset($data['cover_file'], $data['remove_cover']);
+    }
+
+    private function applyLessonThumbnail(Request $request, Lesson $lesson): void
+    {
+        if ($request->hasFile('thumbnail_file')) {
+            $lesson->thumbnail_path = PublicMedia::store($request->file('thumbnail_file'), 'lesson-thumbnails');
+        } elseif ($request->boolean('remove_thumbnail')) {
+            $lesson->thumbnail_path = null;
         }
     }
 }

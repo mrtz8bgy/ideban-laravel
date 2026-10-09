@@ -11,13 +11,15 @@
 </div></section>
 <section class="section"><div class="container detail-layout">
     <div>
-        @if ($embed)
+        @if ($video->isUploadedVideo())
+            <video class="video-embed" controls preload="metadata" playsinline style="width:100%;max-height:70vh;background:#000" @if ($video->thumbnail_image_url) poster="{{ $video->thumbnail_image_url }}" @endif src="{{ $video->uploaded_video_url }}"></video>
+        @elseif ($embed)
             <div class="video-embed"><iframe src="{{ $embed }}" title="{{ $video->{'title_'.$locale} }}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         @else
             <div class="empty-state">{{ __('content.video_unavailable') }}</div>
         @endif
         <div class="prose"><p>{{ $video->{'description_'.$locale} }}</p>
-            <p><a class="text-link" href="{{ $video->video_url }}" target="_blank" rel="noopener noreferrer nofollow">{{ __('content.open_on_host') }} ↗</a></p>
+            @if ($embed)<p><a class="text-link" href="{{ $video->video_url }}" target="_blank" rel="noopener noreferrer nofollow">{{ __('content.open_on_host') }} ↗</a></p>@endif
         </div>
     </div>
     <aside class="detail-aside">

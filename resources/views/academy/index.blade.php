@@ -12,6 +12,7 @@
     <div class="card-grid">
     @forelse ($courses as $course)
         <article class="content-card">
+            @if ($course->cover_image_url)<img class="detail-image" src="{{ $course->cover_image_url }}" alt="{{ $course->{'title_'.app()->getLocale()} }}" loading="lazy">@endif
             <span class="sample-tag">{{ tr('نمونه', 'Sample') }}</span>
             <span class="meta">{{ $course->category }} · {{ $course->lessons_count }} {{ tr('درس', 'lessons') }}</span>
             <h2><a href="{{ route('academy.show', $course) }}">{{ $course->{'title_'.app()->getLocale()} }}</a></h2>

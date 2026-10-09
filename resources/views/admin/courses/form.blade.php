@@ -3,7 +3,7 @@
 @section('admin-content')
 @php($isEdit = $course->exists)
 <div class="admin-heading"><h1>{{ $isEdit ? tr('ویرایش دوره', 'Edit course') : tr('دوره جدید', 'New course') }}</h1><a class="text-link" href="{{ route('admin.courses.index') }}">← {{ tr('بازگشت', 'Back') }}</a></div>
-<form class="form-card admin-form" method="post" action="{{ $isEdit ? route('admin.courses.update', $course) : route('admin.courses.store') }}">
+<form class="form-card admin-form" method="post" enctype="multipart/form-data" action="{{ $isEdit ? route('admin.courses.update', $course) : route('admin.courses.store') }}">
     @csrf @if ($isEdit) @method('PUT') @endif
     <div class="form-row">
         <div class="form-field"><label>{{ tr('عنوان فارسی', 'Persian title') }}</label><input name="title_fa" required value="{{ old('title_fa', $course->title_fa) }}"></div>
@@ -32,6 +32,9 @@
         <div class="form-field"><label>{{ tr('ترتیب نمایش', 'Display order') }}</label><input type="number" min="0" name="sort_order" value="{{ old('sort_order', $course->sort_order) }}"></div>
     </div>
     <div class="form-field"><label>{{ tr('آدرس تصویر کاور (اختیاری)', 'Cover image URL (optional)') }}</label><input name="cover_url" dir="ltr" value="{{ old('cover_url', $course->cover_url) }}"></div>
+    @if ($course->cover_image_url)<div class="form-field"><label>{{ tr('تصویر فعلی', 'Current image') }}</label><img src="{{ $course->cover_image_url }}" alt="" style="display:block;max-width:240px;max-height:160px;object-fit:cover;border-radius:12px"></div>@endif
+    <div class="form-field"><label for="cover_file">{{ tr('بارگذاری کاور (JPG، PNG یا WebP؛ حداکثر ۵ مگابایت)', 'Upload cover (JPG, PNG or WebP; max 5 MB)') }}</label><input id="cover_file" type="file" name="cover_file" accept="image/jpeg,image/png,image/webp">@error('cover_file')<small class="field-error">{{ $message }}</small>@enderror</div>
+    @if ($course->cover_path || $course->cover_url)<label class="check-field"><input type="checkbox" name="remove_cover" value="1" {{ old('remove_cover') ? 'checked' : '' }}> {{ tr('حذف کاور فعلی', 'Remove current cover') }}</label>@endif
     <label class="check-field"><input type="checkbox" name="is_free" value="1" {{ old('is_free', $course->is_free) ? 'checked' : '' }}> {{ tr('رایگان', 'Free') }}</label>
     <label class="check-field"><input type="checkbox" name="is_published" value="1" {{ old('is_published', $course->is_published) ? 'checked' : '' }}> {{ tr('منتشر شود', 'Publish') }}</label>
     <button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button>

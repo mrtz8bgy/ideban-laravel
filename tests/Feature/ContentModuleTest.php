@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ContentModuleTest extends TestCase
@@ -76,11 +78,55 @@ class ContentModuleTest extends TestCase
         $this->assertDatabaseMissing('videos', ['slug' => 'bad-video']);
     }
 
+    public function test_uploaded_public_video_is_saved_and_rendered_with_a_native_player()
+    {
+        Storage::fake('public');
+        $editor = $this->staff('content');
+
+        $this->actingAs($editor)->post(route('admin.content.store', 'videos'), [
+            'slug' => 'uploaded-video',
+            'title_fa' => 'ویدیوی آپلودی',
+            'title_en' => 'Uploaded video',
+            'video_file' => UploadedFile::fake()->create('video.mp4', 100, 'video/mp4'),
+            'media_file' => UploadedFile::fake()->createWithContent(
+                'thumbnail.png',
+                base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/gYkAAAAASUVORK5CYII=')
+            ),
+            'is_published' => '1',
+        ])->assertRedirect(route('admin.content.index', 'videos'));
+
+        $video = Video::where('slug', 'uploaded-video')->firstOrFail();
+        Storage::disk('public')->assertExists($video->video_path);
+        Storage::disk('public')->assertExists($video->thumbnail_path);
+        $this->withSession(['locale' => 'en'])->get('/videos/uploaded-video')
+            ->assertOk()
+            ->assertSee('<video', false)
+            ->assertSee(Storage::disk('public')->url($video->video_path), false)
+            ->assertSee(Storage::disk('public')->url($video->thumbnail_path), false);
+    }
+
     public function test_sales_role_cannot_manage_content()
     {
         $sales = $this->staff('sales');
 
         $this->actingAs($sales)->get(route('admin.content.index', 'articles'))->assertForbidden();
+    }
+
+    public function test_content_upload_forms_render_multipart_media_fields()
+    {
+        $editor = $this->staff('content');
+
+        $this->actingAs($editor)->get(route('admin.catalog.create', 'services'))
+            ->assertOk()
+            ->assertSee('enctype="multipart/form-data"', false)
+            ->assertSee('name="media_file"', false);
+        $this->actingAs($editor)->get(route('admin.content.create', 'articles'))
+            ->assertOk()
+            ->assertSee('enctype="multipart/form-data"', false)
+            ->assertSee('name="media_file"', false);
+        $this->actingAs($editor)->get(route('admin.content.create', 'videos'))
+            ->assertOk()
+            ->assertSee('name="video_file"', false);
     }
 
     public function test_robots_txt_is_served_dynamically_with_sitemap()

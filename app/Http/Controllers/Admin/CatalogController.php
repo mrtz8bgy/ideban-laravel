@@ -9,6 +9,7 @@ use App\Models\PricingPlan;
 use App\Models\ServicePrice;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Support\PublicMedia;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -53,6 +54,7 @@ class CatalogController extends Controller
     {
         $class = $this->modelClass($type);
         $data = $this->validatedData($request, $type);
+        $this->storeMedia($request, $type, $data);
         $class::create($data);
 
         return redirect()->route('admin.catalog.index', $type)->with('success', __('site.saved'));
@@ -69,7 +71,13 @@ class CatalogController extends Controller
     {
         $class = $this->modelClass($type);
         $item = $class::findOrFail($id);
-        $item->update($this->validatedData($request, $type, $item->id));
+        $data = $this->validatedData($request, $type, $item->id);
+        $oldMedia = $item->media_path;
+        $this->storeMedia($request, $type, $data);
+        $item->update($data);
+        if ($oldMedia && $oldMedia !== $item->media_path) {
+            PublicMedia::delete($oldMedia);
+        }
 
         return redirect()->route('admin.catalog.index', $type)->with('success', __('site.saved'));
     }
@@ -77,7 +85,10 @@ class CatalogController extends Controller
     public function destroy($type, $id)
     {
         $class = $this->modelClass($type);
-        $class::findOrFail($id)->delete();
+        $item = $class::findOrFail($id);
+        $mediaPath = $item->media_path;
+        $item->delete();
+        PublicMedia::delete($mediaPath);
 
         return redirect()->route('admin.catalog.index', $type)->with('success', __('site.deleted'));
     }
@@ -107,6 +118,8 @@ class CatalogController extends Controller
                 'description_en' => ['nullable', 'string'],
                 'sort_order' => ['nullable', 'integer', 'min:0'],
                 'is_active' => ['nullable', 'boolean'],
+                'media_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+                'remove_media' => ['nullable', 'boolean'],
             ],
             'services' => $common + [
                 'category_id' => ['nullable', 'exists:service_categories,id'],
@@ -123,6 +136,8 @@ class CatalogController extends Controller
                 'delivery_days' => ['nullable', 'integer', 'min:1'],
                 'is_featured' => ['nullable', 'boolean'],
                 'is_active' => ['nullable', 'boolean'],
+                'media_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+                'remove_media' => ['nullable', 'boolean'],
             ],
             'plans' => $common + [
                 'service_id' => ['nullable', 'exists:services,id'],
@@ -141,6 +156,8 @@ class CatalogController extends Controller
                 'is_featured' => ['nullable', 'boolean'],
                 'is_active' => ['nullable', 'boolean'],
                 'sort_order' => ['nullable', 'integer', 'min:0'],
+                'media_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+                'remove_media' => ['nullable', 'boolean'],
             ],
             'portfolio' => $common + [
                 'title_fa' => ['required', 'string', 'max:190'],
@@ -157,6 +174,8 @@ class CatalogController extends Controller
                 'project_url' => ['nullable', 'url', 'max:2048'],
                 'completed_at' => ['nullable', 'date'],
                 'is_published' => ['nullable', 'boolean'],
+                'media_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+                'remove_media' => ['nullable', 'boolean'],
             ],
             'addons' => [
                 'service_id' => ['nullable', 'exists:services,id'],
@@ -168,6 +187,8 @@ class CatalogController extends Controller
                 'price_type' => ['required', 'in:company,negotiated,quote'],
                 'sort_order' => ['nullable', 'integer', 'min:0'],
                 'is_active' => ['nullable', 'boolean'],
+                'media_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+                'remove_media' => ['nullable', 'boolean'],
             ],
             'prices' => [
                 'service_id' => ['nullable', 'exists:services,id'],
@@ -195,6 +216,7 @@ class CatalogController extends Controller
             $rules[$type]['maximum_amount'][] = 'gte:minimum_amount';
         }
         $data = $request->validate($rules[$type]);
+        unset($data['media_file'], $data['remove_media']);
 
         foreach (['is_active', 'is_featured', 'is_published', 'is_verified', 'show_amount'] as $checkbox) {
             if (array_key_exists($checkbox, $rules[$type])) {
@@ -208,6 +230,42 @@ class CatalogController extends Controller
         }
 
         return $data;
+    }
+
+    private function storeMedia(Request $request, string $type, array &$data): void
+    {
+        if (!$request->hasFile('media_file')) {
+            if ($request->boolean('remove_media')) {
+                $data['media_path'] = null;
+                if ($type === 'portfolio') {
+                    $data['image_url'] = null;
+                }
+            }
+
+            unset($data['remove_media']);
+
+            return;
+        }
+
+        $directory = [
+            'categories' => 'categories',
+            'services' => 'services',
+            'plans' => 'plans',
+            'addons' => 'addons',
+            'portfolio' => 'portfolio',
+        ][$type] ?? null;
+
+        if ($directory === null) {
+            unset($data['remove_media']);
+
+            return;
+        }
+
+        $data['media_path'] = PublicMedia::store($request->file('media_file'), $directory);
+        if ($type === 'portfolio') {
+            $data['image_url'] = null;
+        }
+        unset($data['remove_media']);
     }
 
     private function tableFor($type)

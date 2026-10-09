@@ -20,5 +20,8 @@
         <label class="check-field"><input type="checkbox" name="is_free_preview" value="1" {{ $lesson->is_free_preview ? 'checked' : '' }}> {{ tr('پیش‌نمایش رایگان', 'Free preview') }}</label>
         <label class="check-field"><input type="checkbox" name="is_published" value="1" {{ $lesson->is_published ? 'checked' : '' }}> {{ tr('منتشر شود', 'Publish') }}</label>
     </div>
+    @if ($lesson->thumbnail_image_url)<div class="form-field"><label>{{ tr('تصویر فعلی درس', 'Current lesson image') }}</label><img src="{{ $lesson->thumbnail_image_url }}" alt="" style="display:block;max-width:240px;max-height:160px;object-fit:cover;border-radius:12px"></div>@endif
+    <div class="form-field"><label>{{ tr('تصویر درس (JPG، PNG یا WebP؛ حداکثر ۵ مگابایت)', 'Lesson image (JPG, PNG or WebP; max 5 MB)') }}</label><input type="file" name="thumbnail_file" accept="image/jpeg,image/png,image/webp">@error('thumbnail_file')<small class="field-error">{{ $message }}</small>@enderror</div>
+    @if ($lesson->thumbnail_path)<label class="check-field"><input type="checkbox" name="remove_thumbnail" value="1" {{ old('remove_thumbnail') ? 'checked' : '' }}> {{ tr('حذف تصویر فعلی', 'Remove current image') }}</label>@endif
     <button class="button button-small" type="submit">{{ tr('ذخیره درس', 'Save lesson') }}</button>
 </form>

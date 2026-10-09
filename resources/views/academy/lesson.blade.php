@@ -6,6 +6,7 @@
     <article>
         <p><a href="{{ route('academy.show', $course) }}">← {{ $course->{'title_'.$loc} }}</a></p>
         <h1 class="gold-text">{{ $lesson->{'title_'.$loc} }}</h1>
+        @if ($lesson->thumbnail_image_url)<img class="detail-image" src="{{ $lesson->thumbnail_image_url }}" alt="{{ $lesson->{'title_'.$loc} }}" loading="lazy">@endif
         @if ($lesson->source === 'upload')
             <video class="video-embed" controls controlsList="nodownload" preload="metadata" playsinline style="width:100%;max-height:70vh;background:#000" src="{{ route('academy.stream', $lesson) }}"></video>
         @elseif ($embed)

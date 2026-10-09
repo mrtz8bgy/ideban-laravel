@@ -21,7 +21,7 @@
         <div class="card-grid">
             @foreach ($articles as $article)
                 <a class="content-card" href="{{ route('blog.show', $article->slug) }}">
-                    <div class="thumb">@if ($article->cover_url)<img src="{{ $article->cover_url }}" alt="" loading="lazy">@else<span>IDE</span>@endif</div>
+                    <div class="thumb">@if ($article->cover_image_url)<img src="{{ $article->cover_image_url }}" alt="" loading="lazy">@else<span>IDE</span>@endif</div>
                     <div class="body">
                         <span class="meta">{{ $article->category ?: __('content.nav_blog') }} · {{ optional($article->published_at)->format('Y-m-d') }}</span>
                         <h3>{{ $article->{'title_'.app()->getLocale()} }}</h3>

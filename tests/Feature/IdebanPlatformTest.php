@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Service;
+use App\Models\ServiceAddon;
 use App\Models\ServicePrice;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -99,5 +100,26 @@ class IdebanPlatformTest extends TestCase
             'is_active' => 1,
             'is_featured' => 1,
         ]);
+    }
+
+    public function test_service_page_displays_active_addons()
+    {
+        $service = Service::create([
+            'slug' => 'service-with-addon',
+            'title_fa' => 'خدمت دارای افزودنی',
+            'title_en' => 'Service with add-on',
+            'is_active' => true,
+        ]);
+        ServiceAddon::create([
+            'service_id' => $service->id,
+            'name_fa' => 'افزودنی نمایشی',
+            'name_en' => 'Visible add-on',
+            'price_type' => 'quote',
+            'is_active' => true,
+        ]);
+
+        $this->withSession(['locale' => 'en'])->get('/services/service-with-addon')
+            ->assertOk()
+            ->assertSee('Visible add-on');
     }
 }

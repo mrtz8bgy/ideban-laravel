@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use App\Support\PublicMedia;
 
 class Course extends Model
 {
@@ -16,7 +17,7 @@ class Course extends Model
     protected $fillable = [
         'slug', 'title_fa', 'title_en', 'instructor_fa', 'instructor_en', 'summary_fa', 'summary_en',
         'description_fa', 'description_en', 'category', 'level', 'duration_minutes', 'prerequisite_fa',
-        'prerequisite_en', 'price', 'is_free', 'is_published', 'cover_url', 'sort_order',
+        'prerequisite_en', 'price', 'is_free', 'is_published', 'cover_url', 'cover_path', 'sort_order',
     ];
 
     protected $casts = ['is_free' => 'boolean', 'is_published' => 'boolean'];
@@ -50,5 +51,10 @@ class Course extends Model
     public function effectivePrice(): int
     {
         return $this->is_free ? 0 : (int) $this->price;
+    }
+
+    public function getCoverImageUrlAttribute()
+    {
+        return PublicMedia::url($this->cover_path) ?: $this->cover_url;
     }
 }

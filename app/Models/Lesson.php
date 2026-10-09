@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Support\PublicMedia;
 
 class Lesson extends Model
 {
@@ -11,7 +12,7 @@ class Lesson extends Model
 
     protected $fillable = [
         'course_id', 'title_fa', 'title_en', 'sort_order', 'source', 'file_path', 'external_url',
-        'duration_seconds', 'is_free_preview', 'is_published',
+        'duration_seconds', 'is_free_preview', 'is_published', 'thumbnail_path',
     ];
 
     protected $casts = ['is_free_preview' => 'boolean', 'is_published' => 'boolean'];
@@ -19,6 +20,11 @@ class Lesson extends Model
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function getThumbnailImageUrlAttribute()
+    {
+        return PublicMedia::url($this->thumbnail_path);
     }
 
     public function progress()

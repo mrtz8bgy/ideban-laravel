@@ -5,7 +5,7 @@
     $isEdit = (bool) $item;
 @endphp
 <div class="admin-heading"><div><span class="eyebrow">{{ __('site.manage') }}</span><h1>{{ $isEdit ? __('site.edit') : __('site.add_new') }} — {{ __('site.'.$type) }}</h1></div><a class="text-link" href="{{ route('admin.catalog.index', $type) }}">← {{ __('site.back') }}</a></div>
-<form class="form-card admin-form" method="post" action="{{ $isEdit ? route('admin.catalog.update', [$type, $item->id]) : route('admin.catalog.store', $type) }}">
+<form class="form-card admin-form" method="post" enctype="multipart/form-data" action="{{ $isEdit ? route('admin.catalog.update', [$type, $item->id]) : route('admin.catalog.store', $type) }}">
     @csrf
     @if ($isEdit) @method('PUT') @endif
     @foreach ($labels as $field => $label)
@@ -42,6 +42,16 @@
             </div>
         @endif
     @endforeach
+    @if (in_array($type, ['categories', 'services', 'plans', 'addons', 'portfolio']))
+        @php($mediaUrl = $item && $item->media_url ? $item->media_url : null)
+        @if ($mediaUrl)<div class="form-field"><label>{{ app()->getLocale() === 'fa' ? 'رسانه فعلی' : 'Current media' }}</label><img src="{{ $mediaUrl }}" alt="" style="display:block;max-width:240px;max-height:160px;object-fit:cover;border-radius:12px"></div>@endif
+        <div class="form-field">
+            <label for="media_file">{{ app()->getLocale() === 'fa' ? 'تصویر (JPG، PNG یا WebP؛ حداکثر ۵ مگابایت)' : 'Image (JPG, PNG or WebP; max 5 MB)' }}</label>
+            <input id="media_file" type="file" name="media_file" accept="image/jpeg,image/png,image/webp">
+            @error('media_file')<small class="field-error">{{ $message }}</small>@enderror
+        </div>
+        @if ($mediaUrl)<label class="check-field"><input type="checkbox" name="remove_media" value="1" {{ old('remove_media') ? 'checked' : '' }}> {{ app()->getLocale() === 'fa' ? 'حذف تصویر فعلی' : 'Remove current image' }}</label>@endif
+    @endif
     @if ($type === 'prices')<p class="form-hint">{{ __('site.official_unverified') }}</p>@endif
     <button class="button" type="submit">{{ __('site.save') }}</button>
 </form>

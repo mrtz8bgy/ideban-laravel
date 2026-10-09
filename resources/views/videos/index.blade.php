@@ -21,7 +21,7 @@
         <div class="card-grid">
             @foreach ($videos as $video)
                 <a class="content-card" href="{{ route('videos.show', $video->slug) }}">
-                    <div class="thumb">@if ($video->thumbnail_url)<img src="{{ $video->thumbnail_url }}" alt="" loading="lazy">@else<span>IDE • TV</span>@endif<div class="play-badge"><span aria-hidden="true">▶</span></div></div>
+                    <div class="thumb">@if ($video->thumbnail_image_url)<img src="{{ $video->thumbnail_image_url }}" alt="" loading="lazy">@else<span>IDE • TV</span>@endif<div class="play-badge"><span aria-hidden="true">▶</span></div></div>
                     <div class="body">
                         <span class="meta">{{ $video->category ?: __('content.nav_videos') }}@if ($video->duration_seconds) · {{ ceil($video->duration_seconds / 60) }} {{ __('content.minutes') }}@endif</span>
                         <h3>{{ $video->{'title_'.app()->getLocale()} }}</h3>

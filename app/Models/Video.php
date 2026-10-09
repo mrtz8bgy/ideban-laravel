@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use App\Support\PublicMedia;
 
 class Video extends Model
 {
     protected $fillable = [
         'slug', 'title_fa', 'title_en', 'description_fa', 'description_en', 'video_url',
         'thumbnail_url', 'duration_seconds', 'category', 'tags', 'service_id',
-        'is_published', 'published_at',
+        'is_published', 'published_at', 'thumbnail_path', 'video_path',
     ];
 
     protected $casts = [
@@ -22,6 +23,21 @@ class Video extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function getThumbnailImageUrlAttribute()
+    {
+        return PublicMedia::url($this->thumbnail_path) ?: $this->thumbnail_url;
+    }
+
+    public function getUploadedVideoUrlAttribute()
+    {
+        return PublicMedia::url($this->video_path);
+    }
+
+    public function isUploadedVideo(): bool
+    {
+        return !empty($this->video_path);
     }
 
     public function scopePublic(Builder $query)

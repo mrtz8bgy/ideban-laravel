@@ -10,6 +10,7 @@
 </div></section>
 <section class="section"><div class="container detail-layout">
     <article class="prose">
+        @if ($course->cover_image_url)<img class="detail-image" src="{{ $course->cover_image_url }}" alt="{{ $course->{'title_'.$loc} }}" loading="lazy">@endif
         <h2>{{ tr('توضیحات دوره', 'About this course') }}</h2>
         <p>{{ $course->{'description_'.$loc} }}</p>
         @if ($course->{'prerequisite_'.$loc})<p><strong>{{ tr('پیش‌نیاز', 'Prerequisite') }}:</strong> {{ $course->{'prerequisite_'.$loc} }}</p>@endif

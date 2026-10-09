@@ -13,7 +13,7 @@
 </div></section>
 <section class="section"><div class="container detail-layout">
     <div>
-        @if ($article->cover_url)<img class="detail-image" src="{{ $article->cover_url }}" alt="" loading="lazy">@endif
+        @if ($article->cover_image_url)<img class="detail-image" src="{{ $article->cover_image_url }}" alt="" loading="lazy">@endif
         @if (count($rendered['toc']) > 2)
             <nav class="form-card" style="margin-bottom:30px;padding:22px" aria-label="{{ __('content.toc') }}">
                 <strong style="color:var(--gold-light)">{{ __('content.toc') }}</strong>
