@@ -21,6 +21,15 @@ class IdebanPlatformTest extends TestCase
             ->assertSee('شبکه پردازان ایده‌بان الماس');
     }
 
+    public function test_locale_change_redirect_preserves_subdirectory_referer_without_duplicating_it()
+    {
+        $this->withHeader('referer', 'http://localhost/renamed-project/public/admin?tab=orders')
+            ->get('/lang/en')
+            ->assertRedirect('http://localhost/renamed-project/public/admin?tab=orders');
+
+        $this->assertSame('en', session('locale'));
+    }
+
     public function test_consultation_request_is_persisted_as_a_new_lead()
     {
         $this->post('/contact', [

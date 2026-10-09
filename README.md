@@ -31,6 +31,8 @@ Bilingual (Persian RTL / English LTR) IT services storefront and lead-management
    php artisan key:generate
    ```
 
+   Point the web server's document root to the project's `public` directory. Set `APP_URL` to the public base URL (for example `https://example.com`; include the actual subdirectory only if the app is intentionally served below the domain root). Application links and assets are generated from the current request, so they do not depend on the project folder's name.
+
 3. Choose exactly one database setup option:
 
    - **Migrations (recommended):** `php artisan migrate --seed`

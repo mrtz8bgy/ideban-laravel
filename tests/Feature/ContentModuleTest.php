@@ -5,9 +5,11 @@ namespace Tests\Feature;
 use App\Models\Article;
 use App\Models\User;
 use App\Models\Video;
+use App\Support\PublicMedia;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class ContentModuleTest extends TestCase
@@ -46,6 +48,22 @@ class ContentModuleTest extends TestCase
         $this->assertNull(Video::embedUrl('http://www.youtube.com/watch?v=dQw4w9WgXcQ'));
         $this->assertNull(Video::embedUrl('https://evil.example.com/watch?v=dQw4w9WgXcQ'));
         $this->assertNull(Video::embedUrl('javascript:alert(1)'));
+    }
+
+    public function test_public_media_url_uses_current_application_path()
+    {
+        URL::forceRootUrl('https://site.example/renamed-project/public');
+        URL::forceScheme('https');
+
+        try {
+            $this->assertSame(
+                'https://site.example/renamed-project/public/storage/media/sample.png',
+                PublicMedia::url('media/sample.png')
+            );
+        } finally {
+            URL::forceRootUrl(null);
+            URL::forceScheme(null);
+        }
     }
 
     public function test_content_manager_can_publish_a_video_and_it_appears_on_the_public_site()

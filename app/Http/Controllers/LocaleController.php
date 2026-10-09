@@ -17,6 +17,10 @@ class LocaleController extends Controller
             ? $refererPath.($refererQuery ? '?'.$refererQuery : '')
             : route('home');
 
+        if (strpos($target, 'http://') !== 0 && strpos($target, 'https://') !== 0) {
+            $target = $request->getSchemeAndHttpHost().$target;
+        }
+
         return redirect()->to($target);
     }
 }

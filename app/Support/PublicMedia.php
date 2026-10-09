@@ -32,7 +32,7 @@ class PublicMedia
             return asset($path);
         }
 
-        return Storage::disk('public')->url($path);
+        return asset('storage/'.$path);
     }
 
     public static function delete(?string $path): void

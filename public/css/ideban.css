@@ -85,7 +85,7 @@ p { margin-top: 0; }
 /* Hero, modelled on the reference: title block left, gold ring art right */
 .hero {
     position: relative; overflow: hidden; isolation: isolate;
-    background: linear-gradient(90deg, rgba(5,5,5,.96) 0%, rgba(5,5,5,.7) 42%, rgba(5,5,5,.2) 100%), url("/images/hero-gold.jpg") center / cover no-repeat, #050505;
+    background: linear-gradient(90deg, rgba(5,5,5,.96) 0%, rgba(5,5,5,.7) 42%, rgba(5,5,5,.2) 100%), url("../images/hero-gold.jpg") center / cover no-repeat, #050505;
     border-bottom: 1px solid var(--line);
 }
 .hero:before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--hex); opacity: .8; }
@@ -175,7 +175,7 @@ p { margin-top: 0; }
 .step p { margin: 10px 0 0; color: #d9d0bc; }
 
 /* Page hero (inner pages) */
-.page-hero { padding: 84px 0 64px; background: linear-gradient(120deg, rgba(5,5,5,.95), rgba(5,5,5,.7)), url("/images/hero-gold.jpg") center / cover no-repeat, #050505; border-bottom: 1px solid var(--line); }
+.page-hero { padding: 84px 0 64px; background: linear-gradient(120deg, rgba(5,5,5,.95), rgba(5,5,5,.7)), url("../images/hero-gold.jpg") center / cover no-repeat, #050505; border-bottom: 1px solid var(--line); }
 .page-hero h1 { margin: 8px 0 10px; font-size: clamp(36px, 5vw, 60px); }
 .page-hero p { max-width: 700px; margin-bottom: 0; color: var(--muted); }
 .category-heading { margin-top: 56px; }
