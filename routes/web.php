@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\InvoiceController as AdminInvoiceController;
 use App\Http\Controllers\Admin\LeadController as AdminLeadController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Admin\SlideController as AdminSlideController;
 use App\Http\Controllers\Admin\TicketController as AdminTicketController;
 use App\Http\Controllers\AcademyController;
 use App\Http\Controllers\ArticleController;
@@ -130,6 +131,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
         Route::get('/content/{type}/{id}/edit', [ContentController::class, 'edit'])->name('content.edit');
         Route::put('/content/{type}/{id}', [ContentController::class, 'update'])->name('content.update');
         Route::delete('/content/{type}/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
+
+        Route::resource('/slides', AdminSlideController::class)->except(['show'])->names('slides');
 
         Route::get('/courses', [AdminCourseController::class, 'index'])->name('courses.index');
         Route::get('/courses/create', [AdminCourseController::class, 'create'])->name('courses.create');

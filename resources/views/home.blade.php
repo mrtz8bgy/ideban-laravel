@@ -2,6 +2,7 @@
 
 @section('title', __('site.home'))
 @section('content')
+@include('partials.slider', ['slides' => $slides])
 <section class="hero">
     <div class="container hero-grid">
         <div class="hero-copy">
