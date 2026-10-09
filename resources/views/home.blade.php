@@ -31,7 +31,7 @@
             <div class="card-grid">
                 @foreach ($services as $service)
                     <article class="service-card">
-                        @if ($service->media_url)<img class="detail-image" src="{{ $service->media_url }}" alt="{{ $service->{'title_'.app()->getLocale()} }}" loading="lazy">@endif
+                        @if ($service->media_url)<img class="card-media" src="{{ $service->media_url }}" alt="{{ $service->{'title_'.app()->getLocale()} }}" loading="lazy">@endif
                         <span class="card-number">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                         <p class="card-kicker">{{ optional($service->category)->{'name_'.app()->getLocale()} }}</p>
                         <h3>{{ $service->{'title_'.app()->getLocale()} }}</h3>

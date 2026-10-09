@@ -53,6 +53,7 @@
         @if ($mediaUrl)<label class="check-field"><input type="checkbox" name="remove_media" value="1" {{ old('remove_media') ? 'checked' : '' }}> {{ app()->getLocale() === 'fa' ? 'حذف تصویر فعلی' : 'Remove current image' }}</label>@endif
     @endif
     @if ($type === 'prices')<p class="form-hint">{{ __('site.official_unverified') }}</p>@endif
+    @if ($type === 'services')<p class="form-hint">{{ app()->getLocale() === 'fa' ? 'خدماتی که «ویژه صفحه اصلی» باشند با این تصویر در بخش «خدمات منتخب» صفحه اصلی نمایش داده می‌شوند (توصیه: ۱۶:۹، حداقل ۸۰۰ پیکسل عرض).' : 'Services marked "Featured on homepage" show this image in the homepage "Featured services" section (recommended: 16:9, at least 800 px wide).' }}</p>@endif
     <button class="button" type="submit">{{ __('site.save') }}</button>
 </form>
 @endsection

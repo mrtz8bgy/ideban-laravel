@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', __('content.admin_content').' — '.$type)
+@section('title', __('content.admin_content').' — '.__('content.admin_'.$type))
 @section('admin-content')
 <div class="admin-heading"><div><span class="eyebrow">{{ __('site.manage') }}</span><h1>{{ $type === 'articles' ? __('content.admin_articles') : __('content.admin_videos') }}</h1></div><a class="button button-small" href="{{ route('admin.content.create', $type) }}">＋ {{ __('site.add_new') }}</a></div>
 <div class="table-wrap"><table><thead><tr>

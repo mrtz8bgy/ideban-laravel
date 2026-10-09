@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Portfolio;
 use App\Models\PricingPlan;
+use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,15 @@ class MediaSampleSeeder extends Seeder
         ];
         foreach ($categories as $slug => $path) {
             ServiceCategory::where('slug', $slug)->update(['media_path' => $path]);
+        }
+
+        $services = [
+            'business-website' => 'images/samples/service-business-website.jpg',
+            'custom-laravel' => 'images/samples/service-custom-laravel.jpg',
+            'deployment-devops' => 'images/samples/service-deployment-devops.jpg',
+        ];
+        foreach ($services as $slug => $path) {
+            Service::where('slug', $slug)->update(['media_path' => $path]);
         }
 
         $plans = [

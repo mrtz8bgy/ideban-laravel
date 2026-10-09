@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', __('site.manage').' — '.$type)
+@section('title', __('site.manage').' — '.__('content.admin_'.$type))
 @section('admin-content')
 @php($isArticle = $type === 'articles')
 @php($action = $item ? route('admin.content.update', [$type, $item->id]) : route('admin.content.store', $type))

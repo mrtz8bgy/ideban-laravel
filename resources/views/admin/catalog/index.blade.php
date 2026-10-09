@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', __('site.manage').' — '.$type)
+@section('title', __('site.manage').' — '.__('site.'.$type))
 @section('admin-content')
 @php
     $columns = [
