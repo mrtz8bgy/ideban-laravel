@@ -14,8 +14,8 @@
             <label>{{ __('site.follow_up') }}<input type="datetime-local" name="follow_up_at" value="{{ old('follow_up_at', optional($lead->follow_up_at)->format('Y-m-d\TH:i')) }}"></label>
             <label>{{ __('site.expected_value') }}<input type="number" min="0" name="expected_value" value="{{ old('expected_value', $lead->expected_value) }}"></label>
             <label class="note-field">{{ __('site.sales_note') }}<textarea name="sales_note" rows="2">{{ old('sales_note', $lead->sales_note) }}</textarea></label>
-            <button class="button button-small" type="submit">{{ __('site.save') }}</button>
-        </form>
+            <div class="form-actions"><button class="button button-small" type="submit">{{ __('site.save') }}</button></div>
+            </form>
     </article>
 @empty<div class="empty-state">{{ __('site.no_items') }}</div>@endforelse
 </div>

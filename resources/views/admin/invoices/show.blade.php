@@ -15,8 +15,8 @@
 @unless ($invoice->isPaid())
 <form class="form-card admin-form" method="post" action="{{ route('admin.invoices.update', $invoice) }}">@csrf @method('PATCH')
     <div class="form-field"><label for="status">{{ tr('وضعیت', 'Status') }}</label><select id="status" name="status"><option value="issued" {{ $invoice->status === 'issued' ? 'selected' : '' }}>{{ tr('صادر شده', 'Issued') }}</option><option value="cancelled" {{ $invoice->status === 'cancelled' ? 'selected' : '' }}>{{ tr('لغو', 'Cancelled') }}</option></select></div>
-    <button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button>
-</form>
+    <div class="form-actions"><button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button></div>
+    </form>
 @endunless
 <h2>{{ tr('پرداخت‌ها', 'Payments') }}</h2>
 <div class="table-wrap"><table><tbody>

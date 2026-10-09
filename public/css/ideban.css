@@ -277,7 +277,15 @@ td a { color: var(--gold); }
 .stat-card strong { font-size: 28px; }
 .admin-form { max-width: 820px; }
 .admin-form .check-field { margin-block: 0 15px; }
-.admin-form .button { margin-top: 14px; }
+/* Admin action rows: every submit/cancel/delete group sits in a flex row */
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 12px; margin-top: 20px; }
+.form-actions .button, .form-actions .button-ghost, .form-actions .button-danger { margin: 0; }
+.form-card .form-actions, .admin-form .form-actions { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.table-actions .form-actions { margin: 0; }
+.button-secondary { color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid var(--line); box-shadow: none; }
+.button-secondary:hover { color: var(--gold-light); border-color: var(--line-strong); background: rgba(212,175,97,.08); box-shadow: none; }
+.button-danger { color: #ffb4a8; background: transparent; border: 1px solid rgba(255,120,100,.5); box-shadow: none; }
+.button-danger:hover { background: rgba(255,120,100,.1); box-shadow: none; }
 .table-actions { display: flex; align-items: center; gap: 12px; }
 .table-actions a, .link-danger { color: var(--gold); font-size: 12px; }
 .table-actions form { margin: 0; }
@@ -404,3 +412,10 @@ td a { color: var(--gold); }
 /* Admin file inputs: match the gold theme instead of the browser default */
 .admin-form input[type="file"] { padding: 12px; width: 100%; border: 1px dashed var(--line-strong); border-radius: 14px; background: #0a0a0a; color: var(--muted); font-size: 13px; cursor: pointer; }
 .admin-form input[type="file"]::file-selector-button { margin-inline-end: 14px; padding: 9px 18px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #f5e6b8, #d4af61, #9c7a2e); color: #111; font: 800 12px var(--font-heading); letter-spacing: .08em; cursor: pointer; }
+.danger-zone { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 28px; padding-top: 22px; border-top: 1px dashed rgba(255,120,100,.35); }
+
+/* Filter bars: controls keep their natural width and the button stays on the same row */
+.filter-bar select, .filter-bar input { width: auto; min-width: 220px; }
+.filter-bar .button { flex: 0 0 auto; margin: 0; }
+/* Language switch: Persian label needs a Persian-capable font */
+.locale-link { font-family: Vazirmatn, Tahoma, sans-serif; font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: .08em; }

@@ -27,7 +27,8 @@
             @endif
         </td>
     @endforeach
-    <td class="table-actions"><a href="{{ route('admin.catalog.edit', [$type, $item->id]) }}">{{ __('site.edit') }}</a><form method="post" action="{{ route('admin.catalog.destroy', [$type, $item->id]) }}" onsubmit="return confirm('{{ __('site.delete') }}؟')">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ __('site.delete') }}</button></form></td></tr>
+    <td class="table-actions"><a href="{{ route('admin.catalog.edit', [$type, $item->id]) }}">{{ __('site.edit') }}</a><form method="post" action="{{ route('admin.catalog.destroy', [$type, $item->id]) }}" onsubmit="return confirm('{{ __('site.delete') }}؟')">@csrf @method('DELETE')<div class="form-actions"><button class="link-danger" type="submit">{{ __('site.delete') }}</button></div>
+</form></td></tr>
 @empty<tr><td colspan="{{ count($columns) + 1 }}">{{ __('site.no_items') }}</td></tr>@endforelse
 </tbody></table></div>
 {{ $items->links() }}

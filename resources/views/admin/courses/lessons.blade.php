@@ -15,7 +15,8 @@
     <td>{{ $lesson->is_published ? tr('بله', 'Yes') : tr('خیر', 'No') }}</td>
     <td class="table-actions lesson-actions">
         <a class="button button-small button-outline" href="{{ route('admin.courses.lessons.edit', [$course, $lesson]) }}">{{ tr('ویرایش', 'Edit') }}</a>
-        <form method="post" action="{{ route('admin.courses.lessons.destroy', [$course, $lesson]) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ tr('حذف', 'Delete') }}</button></form>
+        <form method="post" action="{{ route('admin.courses.lessons.destroy', [$course, $lesson]) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')">@csrf @method('DELETE')<div class="form-actions"><button class="link-danger" type="submit">{{ tr('حذف', 'Delete') }}</button></div>
+</form>
     </td>
 </tr>
 @empty<tr><td colspan="6">{{ tr('هنوز درسی اضافه نشده است.', 'No lessons yet.') }}</td></tr>@endforelse

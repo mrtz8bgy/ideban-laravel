@@ -24,6 +24,6 @@
         <div class="form-field"><label>{{ tr('ترتیب نمایش', 'Display order') }}</label><input type="number" min="0" name="sort_order" value="{{ old('sort_order', $slide->sort_order) }}"></div>
     </div>
     <label class="check-field"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $slide->is_active) ? 'checked' : '' }}> {{ tr('فعال', 'Active') }}</label>
-    <button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button>
-</form>
+    <div class="form-actions"><a class="button button-secondary button-small" href="{{ route('admin.slides.index') }}">{{ tr('انصراف','Cancel') }}</a><button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button></div>
+    </form>
 @endsection

@@ -14,8 +14,8 @@
     @csrf
     <div class="form-field"><label for="body">{{ tr('پاسخ', 'Reply') }}</label><textarea id="body" name="body" rows="4" required></textarea></div>
     <div class="form-field"><label for="attachment">{{ tr('پیوست', 'Attachment') }}</label><input id="attachment" type="file" name="attachment"></div>
-    <button class="button button-small" type="submit">{{ tr('ارسال پاسخ', 'Send reply') }}</button>
-</form>
+    <div class="form-actions"><button class="button button-small" type="submit">{{ tr('ارسال پاسخ', 'Send reply') }}</button></div>
+    </form>
 <form class="form-card admin-form" method="post" action="{{ route('admin.tickets.update', $ticket) }}">
     @csrf @method('PATCH')
     <div class="form-row">
@@ -23,6 +23,6 @@
         <div class="form-field"><label>{{ tr('اولویت', 'Priority') }}</label><select name="priority">@foreach ($priorities as $p)<option value="{{ $p }}" {{ $ticket->priority === $p ? 'selected' : '' }}>{{ $p }}</option>@endforeach</select></div>
         <div class="form-field"><label>{{ tr('ارجاع به', 'Assign to') }}</label><select name="assigned_to"><option value="">—</option>@foreach ($staff as $u)<option value="{{ $u->id }}" {{ (int) $ticket->assigned_to === $u->id ? 'selected' : '' }}>{{ $u->name }}</option>@endforeach</select></div>
     </div>
-    <button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button>
-</form>
+    <div class="form-actions"><button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button></div>
+    </form>
 @endsection

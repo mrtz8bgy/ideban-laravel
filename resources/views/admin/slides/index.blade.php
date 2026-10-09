@@ -11,7 +11,8 @@
     <td>{{ $slide->sort_order }}</td>
     <td>{{ $slide->is_active ? tr('فعال', 'Active') : tr('غیرفعال', 'Inactive') }}</td>
     <td class="table-actions"><a href="{{ route('admin.slides.edit', $slide) }}">{{ tr('ویرایش', 'Edit') }}</a>
-        <form method="post" action="{{ route('admin.slides.destroy', $slide) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ tr('حذف', 'Delete') }}</button></form></td>
+        <form method="post" action="{{ route('admin.slides.destroy', $slide) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')">@csrf @method('DELETE')<div class="form-actions"><button class="link-danger" type="submit">{{ tr('حذف', 'Delete') }}</button></div>
+</form></td>
 </tr>
 @empty<tr><td colspan="5">{{ tr('اسلایدی ثبت نشده است.', 'No slides yet.') }}</td></tr>@endforelse
 </tbody></table></div>

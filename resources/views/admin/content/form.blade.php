@@ -54,6 +54,6 @@
         <div class="form-field"><label for="published_at">تاریخ انتشار (خالی = همین حالا)</label><input id="published_at" name="published_at" type="datetime-local" value="{{ old('published_at', optional($item ? $item->published_at : null)->format('Y-m-d\TH:i')) }}"></div>
         <label class="check-field" style="align-self:end"><input type="checkbox" name="is_published" value="1" {{ $v('is_published', false) ? 'checked' : '' }}> {{ app()->getLocale() === 'fa' ? 'منتشر شود' : 'Publish' }}</label>
     </div>
-    <button class="button" type="submit">{{ __('site.save') }}</button>
-</form>
+    <div class="form-actions"><a class="button button-secondary" href="{{ route('admin.content.index', $type) }}">{{ tr('انصراف','Cancel') }}</a><button class="button" type="submit">{{ __('site.save') }}</button></div>
+    </form>
 @endsection

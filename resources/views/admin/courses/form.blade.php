@@ -37,9 +37,10 @@
     @if ($course->cover_path || $course->cover_url)<label class="check-field"><input type="checkbox" name="remove_cover" value="1" {{ old('remove_cover') ? 'checked' : '' }}> {{ tr('حذف کاور فعلی', 'Remove current cover') }}</label>@endif
     <label class="check-field"><input type="checkbox" name="is_free" value="1" {{ old('is_free', $course->is_free) ? 'checked' : '' }}> {{ tr('رایگان', 'Free') }}</label>
     <label class="check-field"><input type="checkbox" name="is_published" value="1" {{ old('is_published', $course->is_published) ? 'checked' : '' }}> {{ tr('منتشر شود', 'Publish') }}</label>
-    <button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button>
-</form>
+    <div class="form-actions"><a class="button button-secondary button-small" href="{{ route('admin.courses.index') }}">{{ tr('انصراف','Cancel') }}</a><button class="button button-small" type="submit">{{ tr('ذخیره', 'Save') }}</button></div>
+    </form>
 @if ($isEdit)
-<form method="post" action="{{ route('admin.courses.destroy', $course) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')" style="margin-top:1rem">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ tr('حذف دوره', 'Delete course') }}</button></form>
+<form method="post" action="{{ route('admin.courses.destroy', $course) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')" class="danger-zone">@csrf @method('DELETE')<div class="form-actions"><button class="button button-danger button-small" type="submit">{{ tr('حذف دوره', 'Delete course') }}</button></div>
+</form>
 @endif
 @endsection

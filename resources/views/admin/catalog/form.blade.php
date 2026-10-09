@@ -54,6 +54,6 @@
     @endif
     @if ($type === 'prices')<p class="form-hint">{{ __('site.official_unverified') }}</p>@endif
     @if ($type === 'services')<p class="form-hint">{{ app()->getLocale() === 'fa' ? 'خدماتی که «ویژه صفحه اصلی» باشند با این تصویر در بخش «خدمات منتخب» صفحه اصلی نمایش داده می‌شوند (توصیه: ۱۶:۹، حداقل ۸۰۰ پیکسل عرض).' : 'Services marked "Featured on homepage" show this image in the homepage "Featured services" section (recommended: 16:9, at least 800 px wide).' }}</p>@endif
-    <button class="button" type="submit">{{ __('site.save') }}</button>
-</form>
+    <div class="form-actions"><a class="button button-secondary" href="{{ route('admin.catalog.index', $type) }}">{{ tr('انصراف','Cancel') }}</a><button class="button" type="submit">{{ __('site.save') }}</button></div>
+    </form>
 @endsection

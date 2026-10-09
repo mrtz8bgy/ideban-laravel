@@ -17,7 +17,8 @@
         <td>{{ optional($item->published_at)->format('Y-m-d H:i') ?: '—' }}</td>
         <td class="table-actions">
             <a href="{{ route('admin.content.edit', [$type, $item->id]) }}">{{ __('site.edit') }}</a>
-            <form method="post" action="{{ route('admin.content.destroy', [$type, $item->id]) }}" onsubmit="return confirm('{{ __('site.delete') }}؟')">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ __('site.delete') }}</button></form>
+            <form method="post" action="{{ route('admin.content.destroy', [$type, $item->id]) }}" onsubmit="return confirm('{{ __('site.delete') }}؟')">@csrf @method('DELETE')<div class="form-actions"><button class="link-danger" type="submit">{{ __('site.delete') }}</button></div>
+</form>
         </td>
     </tr>
 @empty
