@@ -14,8 +14,15 @@ class TicketController extends Controller
 
     public function index(Request $request)
     {
+        $customerId = $request->user()->id;
+
         return view('account.tickets.index', [
-            'tickets' => Ticket::where('user_id', $request->user()->id)->latest('last_reply_at')->paginate(10),
+            'tickets' => Ticket::where('user_id', $customerId)
+                ->withCount(['messages as unread_count' => function ($query) {
+                    $query->where('is_staff', true)->whereNull('read_at');
+                }])
+                ->latest('last_reply_at')
+                ->paginate(10),
         ]);
     }
 
@@ -51,14 +58,19 @@ class TicketController extends Controller
 
     public function show(Request $request, Ticket $ticket)
     {
-        abort_unless($ticket->user_id === $request->user()->id, 403);
+        abort_unless((int) $ticket->user_id === (int) $request->user()->id, 403);
+
+        $ticket->messages()
+            ->where('is_staff', true)
+            ->whereNull('read_at')
+            ->update(['read_at' => now()]);
 
         return view('account.tickets.show', ['ticket' => $ticket->load('messages.user')]);
     }
 
     public function reply(Request $request, Ticket $ticket)
     {
-        abort_unless($ticket->user_id === $request->user()->id, 403);
+        abort_unless((int) $ticket->user_id === (int) $request->user()->id, 403);
         abort_if($ticket->status === 'closed', 422);
 
         $data = $request->validate(['body' => ['required', 'string', 'max:5000'], 'attachment' => self::ATTACHMENT_RULE]);
@@ -72,7 +84,7 @@ class TicketController extends Controller
     public function attachment(Request $request, TicketMessage $message)
     {
         $ticket = $message->ticket;
-        abort_unless($ticket && $ticket->user_id === $request->user()->id, 403);
+        abort_unless($ticket && (int) $ticket->user_id === (int) $request->user()->id, 403);
         abort_unless($message->attachment_path && Storage::exists($message->attachment_path), 404);
 
         return Storage::download($message->attachment_path, $message->attachment_name);

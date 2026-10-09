@@ -14,7 +14,11 @@ class TicketController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Ticket::with(['user', 'assignee'])->latest('last_reply_at');
+        $query = Ticket::with(['user', 'assignee'])
+            ->withCount(['messages as unread_count' => function ($query) {
+                $query->where('is_staff', false)->whereNull('read_at');
+            }])
+            ->latest('last_reply_at');
         if ($request->filled('status') && in_array($request->query('status'), Ticket::STATUSES, true)) {
             $query->where('status', $request->query('status'));
         }
@@ -24,6 +28,11 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket)
     {
+        $ticket->messages()
+            ->where('is_staff', false)
+            ->whereNull('read_at')
+            ->update(['read_at' => now()]);
+
         return view('admin.tickets.show', [
             'ticket' => $ticket->load(['user', 'assignee', 'messages.user']),
             'staff' => User::whereIn('role', ['admin', 'content', 'sales'])->orderBy('name')->get(),
@@ -79,7 +88,9 @@ class TicketController extends Controller
             'priority' => ['required', Rule::in(Ticket::PRIORITIES)],
             'assigned_to' => ['nullable', Rule::exists('users', 'id')],
         ]);
-        $data['closed_at'] = $data['status'] === 'closed' ? now() : null;
+        $data['closed_at'] = $data['status'] === 'closed'
+            ? ($ticket->closed_at ?? now())
+            : null;
         $ticket->update($data);
 
         return back()->with('success', tr('تیکت به‌روزرسانی شد.', 'Ticket updated.'));

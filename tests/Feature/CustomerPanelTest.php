@@ -75,6 +75,55 @@ class CustomerPanelTest extends TestCase
         $this->assertSame(1, TicketMessage::where('ticket_id', $ticket->id)->count());
     }
 
+    public function test_customer_and_staff_can_exchange_ticket_messages_and_track_unread_replies()
+    {
+        $customer = $this->user('customer', 'ticketbuyer');
+        $admin = $this->user('admin', 'ticketadmin');
+
+        $this->actingAs($customer)->post(route('account.tickets.store'), [
+            'subject' => 'Cannot access my order',
+            'category' => 'general',
+            'priority' => 'normal',
+            'body' => 'Please check order status.',
+        ])->assertRedirect();
+
+        $ticket = Ticket::where('user_id', $customer->id)->firstOrFail();
+        $customerMessage = TicketMessage::where('ticket_id', $ticket->id)->firstOrFail();
+        $this->assertNull($customerMessage->read_at);
+
+        $this->actingAs($admin)
+            ->get(route('admin.tickets.index'))
+            ->assertOk()
+            ->assertSee('ticket-unread', false);
+        $this->get(route('admin.tickets.show', $ticket))->assertOk();
+        $this->assertNotNull($customerMessage->fresh()->read_at);
+
+        $this->post(route('admin.tickets.reply', $ticket), [
+            'body' => 'Your order is being processed.',
+        ])->assertRedirect();
+        $this->assertSame('answered', $ticket->fresh()->status);
+
+        $staffMessage = TicketMessage::where('ticket_id', $ticket->id)->where('is_staff', true)->firstOrFail();
+        $this->assertNull($staffMessage->read_at);
+        $this->actingAs($customer)
+            ->get(route('account.tickets.index'))
+            ->assertOk()
+            ->assertSee('ticket-unread', false);
+        $this->get(route('account.tickets.show', $ticket))->assertOk();
+        $this->assertNotNull($staffMessage->fresh()->read_at);
+
+        $this->post(route('account.tickets.reply', $ticket), [
+            'body' => 'Thank you for the update.',
+        ])->assertRedirect();
+        $this->assertSame('open', $ticket->fresh()->status);
+        $this->assertDatabaseHas('ticket_messages', [
+            'ticket_id' => $ticket->id,
+            'user_id' => $customer->id,
+            'body' => 'Thank you for the update.',
+            'is_staff' => false,
+        ]);
+    }
+
     public function test_ticket_attachment_is_downloadable_only_by_owner_and_staff()
     {
         Storage::fake('local');

@@ -88,9 +88,9 @@ Route::prefix('account')->name('account.')->middleware(['auth', 'role:customer']
     Route::get('/courses', [AccountController::class, 'courses'])->name('courses');
     Route::get('/tickets', [AccountTicketController::class, 'index'])->name('tickets.index');
     Route::get('/tickets/create', [AccountTicketController::class, 'create'])->name('tickets.create');
-    Route::post('/tickets', [AccountTicketController::class, 'store'])->name('tickets.store');
+    Route::post('/tickets', [AccountTicketController::class, 'store'])->middleware('throttle:10,1')->name('tickets.store');
     Route::get('/tickets/{ticket}', [AccountTicketController::class, 'show'])->name('tickets.show');
-    Route::post('/tickets/{ticket}/reply', [AccountTicketController::class, 'reply'])->name('tickets.reply');
+    Route::post('/tickets/{ticket}/reply', [AccountTicketController::class, 'reply'])->middleware('throttle:20,1')->name('tickets.reply');
     Route::get('/tickets/messages/{message}/attachment', [AccountTicketController::class, 'attachment'])->name('tickets.attachment');
 });
 
@@ -114,7 +114,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
         Route::get('/payments/{payment}/receipt', [AdminPaymentController::class, 'receipt'])->name('payments.receipt');
         Route::get('/tickets', [AdminTicketController::class, 'index'])->name('tickets.index');
         Route::get('/tickets/{ticket}', [AdminTicketController::class, 'show'])->name('tickets.show');
-        Route::post('/tickets/{ticket}/reply', [AdminTicketController::class, 'reply'])->name('tickets.reply');
+        Route::post('/tickets/{ticket}/reply', [AdminTicketController::class, 'reply'])->middleware('throttle:30,1')->name('tickets.reply');
         Route::get('/tickets/messages/{message}/attachment', [AdminTicketController::class, 'attachment'])->name('tickets.attachment');
         Route::patch('/tickets/{ticket}', [AdminTicketController::class, 'update'])->name('tickets.update');
         Route::get('/customers', [AdminCustomerController::class, 'index'])->name('customers.index');

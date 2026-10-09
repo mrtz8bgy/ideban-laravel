@@ -2,7 +2,7 @@
 @section('title', $ticket->reference)
 @section('account')
 <h1 class="gold-text">{{ $ticket->subject }}</h1>
-<p class="form-hint">{{ $ticket->reference }} · {{ $ticket->status }}</p>
+<p class="form-hint">{{ $ticket->reference }} · {{ $ticket->status }} · {{ tr('دسته', 'Category') }}: {{ $ticket->category }} · {{ tr('اولویت', 'Priority') }}: {{ $ticket->priority }}</p>
 <div class="lead-list">
 @foreach ($ticket->messages as $m)
     <article class="lead-card {{ $m->is_staff ? 'staff-msg' : '' }}">
@@ -19,5 +19,7 @@
     <div class="form-field"><label for="attachment">{{ tr('پیوست', 'Attachment') }}</label><input id="attachment" type="file" name="attachment"></div>
     <button class="button button-small" type="submit">{{ tr('ارسال', 'Send') }}</button>
 </form>
+@else
+<p class="notice">{{ tr('این تیکت بسته شده است. برای ادامه گفتگو، تیکت جدیدی ثبت کنید.', 'This ticket is closed. Create a new ticket to continue the conversation.') }}</p>
 @endif
 @endsection

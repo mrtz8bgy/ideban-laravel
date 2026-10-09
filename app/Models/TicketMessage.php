@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TicketMessage extends Model
 {
-    protected $fillable = ['ticket_id', 'user_id', 'body', 'attachment_path', 'attachment_name', 'is_staff'];
+    protected $fillable = ['ticket_id', 'user_id', 'body', 'attachment_path', 'attachment_name', 'is_staff', 'read_at'];
 
-    protected $casts = ['is_staff' => 'boolean'];
+    protected $casts = ['is_staff' => 'boolean', 'read_at' => 'datetime'];
 
     public function ticket()
     {
