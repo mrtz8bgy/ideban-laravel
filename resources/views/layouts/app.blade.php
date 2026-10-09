@@ -51,5 +51,6 @@
     </div>
     <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('register') }}">{{ tr('ثبت‌نام مشتری', 'Customer sign-up') }}</a></div>
 </footer>
+<script src="{{ asset('js/gold-frames.js') }}" defer></script>
 </body>
 </html>

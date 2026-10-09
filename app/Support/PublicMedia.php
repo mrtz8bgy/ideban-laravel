@@ -23,7 +23,16 @@ class PublicMedia
 
     public static function url(?string $path): ?string
     {
-        return $path ? Storage::disk('public')->url($path) : null;
+        if (!$path) {
+            return null;
+        }
+
+        // Bundled sample images and direct uploads live under public/ and need no storage symlink.
+        if (strpos($path, 'images/') === 0 || strpos($path, 'uploads/') === 0) {
+            return asset($path);
+        }
+
+        return Storage::disk('public')->url($path);
     }
 
     public static function delete(?string $path): void

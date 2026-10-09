@@ -376,3 +376,22 @@ td a { color: var(--gold); }
 .slider-dots button { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #d4af37; background: transparent; cursor: pointer; padding: 0; }
 .slider-dots button.is-active { background: linear-gradient(135deg, #f5d77a, #b8860b); }
 @media (max-width: 640px) { .home-slider .slider-track, .home-slider .slide img, .home-slider .slide { min-height: 340px; } }
+
+/* Rotating gold borders for cards */
+@property --gold-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.service-card, .plan-card, .work-card, .content-card, .stat-card, .lead-card, .card { position: relative; isolation: isolate; }
+.gold-frame::before {
+    content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; z-index: -1; pointer-events: none;
+    background: conic-gradient(from var(--gold-angle, 0deg), #6b4f12, #d4af37, #fff3c4, #f5d77a, #b8860b, #6b4f12);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: gold-spin 7s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, .55));
+}
+.gold-frame:hover::before { filter: drop-shadow(0 0 14px rgba(245, 215, 122, .9)); }
+@keyframes gold-spin { to { --gold-angle: 360deg; } }
+.gold-frame { box-shadow: 0 0 22px rgba(212, 175, 55, .12); animation: gold-glow 4s ease-in-out infinite; }
+@keyframes gold-glow { 50% { box-shadow: 0 0 34px rgba(245, 215, 122, .28); } }
+@media (prefers-reduced-motion: reduce) {
+    .gold-frame::before, .gold-frame { animation: none; }
+}

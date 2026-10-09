@@ -28,4 +28,5 @@
         @yield('admin-content')
     </section>
 </div></main>
+<script src="{{ asset('js/gold-frames.js') }}" defer></script>
 </body></html>
