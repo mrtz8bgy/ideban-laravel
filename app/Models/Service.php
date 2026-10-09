@@ -26,6 +26,11 @@ class Service extends Model
         return $this->belongsTo(ServiceCategory::class, 'category_id');
     }
 
+    public function addons()
+    {
+        return $this->hasMany(ServiceAddon::class);
+    }
+
     public function plans()
     {
         return $this->hasMany(PricingPlan::class);

@@ -20,23 +20,26 @@ class AuthController extends Controller
         ]);
 
         $field = filter_var($data['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $credentials = [$field => $data['login'], 'password' => $data['password']];
 
-        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (!Auth::attempt([$field => $data['login'], 'password' => $data['password']], $request->boolean('remember'))) {
             return back()->withErrors(['login' => __('auth.failed')])->withInput($request->only('login'));
         }
 
         $request->session()->regenerate();
+        $user = $request->user();
 
-        if (!in_array($request->user()->role, ['admin', 'content', 'sales'], true)) {
-            Auth::logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-
-            return back()->withErrors(['login' => __('auth.failed')])->withInput($request->only('login'));
+        if ($user->isStaff()) {
+            return redirect()->intended(route('admin.dashboard'));
+        }
+        if ($user->isCustomer()) {
+            return redirect()->intended(route('account.dashboard'));
         }
 
-        return redirect()->intended(route('admin.dashboard'));
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return back()->withErrors(['login' => __('auth.failed')])->withInput($request->only('login'));
     }
 
     public function logout(Request $request)

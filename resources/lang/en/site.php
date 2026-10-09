@@ -91,4 +91,5 @@ return [
     'official_unverified' => 'Official tariffs cannot be published until their source is verified.',
     'not_found' => 'The requested page was not found.',
     'rights' => 'All rights reserved.',
+    'addons' => 'Add-ons',
 ];

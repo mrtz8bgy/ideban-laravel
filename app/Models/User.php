@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
+        'phone',
+        'company',
         'password',
     ];
 
@@ -42,4 +44,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isCustomer(): bool
+    {
+        return $this->role === 'customer';
+    }
+
+    public function isStaff(): bool
+    {
+        return in_array($this->role, ['admin', 'content', 'sales'], true);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
 }

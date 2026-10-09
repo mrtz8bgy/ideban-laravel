@@ -8,6 +8,7 @@
         'plans' => ['name_fa', 'service_id', 'price_type', 'setup_fee', 'recurring_fee', 'is_active'],
         'portfolio' => ['title_fa', 'slug', 'is_published'],
         'prices' => ['title_fa', 'service_id', 'price_type', 'amount', 'show_amount', 'is_active'],
+        'addons' => ['name_fa', 'service_id', 'price_type', 'amount', 'is_active'],
     ][$type];
 @endphp
 <div class="admin-heading"><div><span class="eyebrow">{{ __('site.manage') }}</span><h1>{{ __('site.'.$type) }}</h1></div><a class="button button-small" href="{{ route('admin.catalog.create', $type) }}">＋ {{ __('site.add_new') }}</a></div>

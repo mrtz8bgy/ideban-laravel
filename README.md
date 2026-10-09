@@ -48,11 +48,11 @@ Bilingual (Persian RTL / English LTR) IT services storefront and lead-management
    php artisan serve
    ```
 
-   Open `/` for the public site and `/admin/login` for staff access.
+   Open `/` for the public site, `/login` for staff and customers, and `/register` to create a customer account.
 
 ## Default administrator (SQL import)
 
-The SQL dump creates the account **username `admin`** with password `IdebanAlmas#Gold2026`. Sign in at `/admin/login` and change the password immediately. The account can also sign in with its email `admin@ideban.local`.
+The SQL dump creates the account **username `admin`** with password `IdebanAlmas#Gold2026`. Sign in at `/login` and change the password immediately. The account can also sign in with its email `admin@ideban.local`.
 
 To create the account through the seeder instead, set a password in the environment and run the seeders:
 
@@ -64,12 +64,12 @@ Sample portfolio entries and two leads are labelled as demo data. Delete or repl
 
 ## Roles
 
-- `admin`: full admin panel access.
-- `content`: service catalog, pricing, portfolio, journal and video management.
-- `sales`: dashboard and lead tracking.
-- `customer`: reserved for future customer-facing modules; cannot enter the staff panel.
+- `admin`: full admin panel access, including orders, invoices, payments, tickets, customers, courses and discount codes.
+- `content`: service catalog, pricing, add-ons, portfolio, journal, video, courses, lessons and discount codes.
+- `sales`: leads, orders, invoices, payment review, support tickets and customer records.
+- `customer`: self-registered at `/register`; uses the customer panel at `/account` and cannot enter the staff panel.
 
-Public registration is intentionally not enabled in this phase. Create staff accounts using the standard Laravel user tooling, assign the intended role securely, and never commit production credentials or `.env` files.
+Create staff accounts with `php artisan ideban:make-admin` or standard Laravel user tooling, assign the intended role securely, and never commit production credentials or `.env` files.
 
 ## Database and pricing notes
 
@@ -85,7 +85,7 @@ The PHPUnit configuration uses an in-memory SQLite database for test runs. Run:
 vendor/bin/phpunit
 ```
 
-The feature tests cover the public RTL landing page, lead persistence, suppression of unverified official prices, role-protected administration, service creation, unpublished/future journal entries, escaping of article HTML, the video host whitelist and content-manager publishing.
+The feature tests cover the public RTL landing page, lead persistence, suppression of unverified official prices, role-protected administration, service creation, unpublished/future journal entries, escaping of article HTML, the video host whitelist and content-manager publishing. Phase three adds tests for server-side calculator pricing, the honeypot, the order-to-payment flow (quote, invoice, receipt, approval), enrollment after bank confirmation, protected video streaming, the customer panel's access rules, ticket creation, admin course uploads, and English-locale rendering.
 
 ## Phase two (delivered): journal and video center
 
@@ -97,6 +97,25 @@ The feature tests cover the public RTL landing page, lead persistence, suppressi
 - Login accepts a username or an email address.
 - Demo content: three labelled sample portfolio entries, two sample articles with cover images, and two sample leads.
 
-## Still to build (later phases)
+## Phase three: calculator, customer panel, payments, academy
 
-Not implemented yet, and intentionally not implied anywhere in the UI: the online cost calculator, customer accounts and customer panel, orders and proforma invoices, invoices and payments with a payment gateway, support tickets, contracts, paid academy courses with server-side access control, user and role management screens, sales reports, and company/SEO settings screens. No payment gateway is configured.
+- **Cost calculator (`/calculator`)**: choose a service, plan and add-ons. The server recalculates every amount from the database, ignoring any amounts sent by the browser. Only company-suggested or negotiated amounts are priced; everything else is listed as **استعلام قیمت** (price inquiry). Guests can request a quote, which creates a lead (source `calculator`). Logged-in customers also get an order with status `requested`.
+- **Customer panel (`/account`)**: dashboard, profile, orders with progress, invoices, purchased courses, and support tickets with attachments. Customers can see only their own records.
+- **Orders and invoices (admin, `sales` and `admin`)**: update order status (requested, quoted, accepted, in progress, completed, cancelled) and progress. Issue invoices from staff-entered line items, with extra costs and validity days. Invoice numbers are generated automatically.
+- **Payments**: `PAYMENT_GATEWAY=bank` (default) takes card-to-card transfers. The customer uploads a receipt (JPG, PNG or PDF, up to 5 MB); staff approve or reject it under **Payments & receipts**. Approval marks the invoice paid once the paid amount covers the total. `zarinpal` verifies every return on the server before anything is recorded as paid. The invoice is never marked paid from the browser.
+- **Support tickets**: customers open tickets, staff reply, change status, priority and assignee. Attachments are stored privately.
+- **Academy (`/academy`)**: course catalogue with category and price filters, course pages, and lesson pages. Free courses are added immediately. Paid courses create an invoice (discount codes supported), and access is granted only after the payment is confirmed.
+- **Protected video**: uploaded lesson videos are stored in private storage (`storage/app/academy/videos`) and streamed only to enrolled users (or to anyone for lessons marked as free preview). Video files are never served from `public/`. YouTube and Vimeo links are embedded through the privacy-enhanced player.
+- **Admin course tools**: create and edit courses, add lessons, upload videos (MP4 or WebM, up to `ACADEMY_MAX_VIDEO_MB`), set free previews, and manage discount codes under **Admin → Courses & video** and **Discount codes**.
+
+### Upload limits for academy videos
+
+`ACADEMY_MAX_VIDEO_MB` (default 1024) is enforced by Laravel, but PHP must also accept files that large. In `php.ini`, set `upload_max_filesize` and `post_max_size` to at least the same value (for example `1024M` and `1100M`), and raise `max_execution_time` if uploads time out. Web servers have their own limits too (for example `client_max_body_size` in nginx).
+
+### Sample data
+
+The seeders add two sample courses, three sample add-ons and the sample discount code `SAMPLE10`. Every item is labelled "نمونه" / "Sample". No video files are attached, and add-ons are quote-only (no amounts). The lessons are placeholders until you upload real videos.
+
+### Still to build
+
+Contracts, user and role management screens, sales reports, company and SEO settings screens. The ZarinPal amount unit (`ZARINPAL_AMOUNT_MULTIPLIER`) must be verified against your merchant account before live payments are enabled.

@@ -4,7 +4,23 @@
 <body class="admin-body">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="{{ route('admin.dashboard') }}"><span class="brand-mark">I</span><span>{{ __('site.admin_panel') }}</span></a><nav class="main-nav"><a href="{{ route('home') }}">{{ __('site.home') }}</a><a href="{{ route('admin.dashboard') }}">{{ __('site.dashboard') }}</a></nav><div class="nav-actions"><a class="locale-link" href="{{ route('locale.update', app()->getLocale() === 'fa' ? 'en' : 'fa') }}">{{ app()->getLocale() === 'fa' ? 'EN' : 'فا' }}</a><form method="post" action="{{ route('logout') }}">@csrf<button class="button button-small button-ghost" type="submit">{{ __('site.logout') }}</button></form></div></div></header>
 <main class="admin-main"><div class="container admin-layout">
-    <aside class="admin-sidebar"><span class="eyebrow">{{ __('site.manage') }}</span><a href="{{ route('admin.dashboard') }}">{{ __('site.dashboard') }}</a>@foreach (['categories' => __('site.categories'), 'services' => __('site.services'), 'plans' => __('site.plans'), 'prices' => app()->getLocale() === 'fa' ? 'تعرفه‌ها و منابع' : 'Rates and sources', 'portfolio' => __('site.portfolio')] as $type => $label)<a href="{{ route('admin.catalog.index', $type) }}">{{ $label }}</a>@endforeach<a href="{{ route('admin.content.index', 'articles') }}">{{ __('content.admin_articles') }}</a><a href="{{ route('admin.content.index', 'videos') }}">{{ __('content.admin_videos') }}</a><a href="{{ route('admin.leads.index') }}">{{ __('site.leads') }}</a></aside>
+    <aside class="admin-sidebar">@php($role = auth()->user()->role)<span class="eyebrow">{{ __('site.manage') }}</span><a href="{{ route('admin.dashboard') }}">{{ __('site.dashboard') }}</a>
+    @if (in_array($role, ['admin', 'content'], true))
+        @foreach (['categories' => __('site.categories'), 'services' => __('site.services'), 'plans' => __('site.plans'), 'addons' => tr('افزودنی‌ها', 'Add-ons'), 'prices' => tr('تعرفه‌ها و منابع', 'Rates and sources'), 'portfolio' => __('site.portfolio')] as $type => $label)<a href="{{ route('admin.catalog.index', $type) }}">{{ $label }}</a>@endforeach
+        <a href="{{ route('admin.content.index', 'articles') }}">{{ __('content.admin_articles') }}</a>
+        <a href="{{ route('admin.content.index', 'videos') }}">{{ __('content.admin_videos') }}</a>
+        <a href="{{ route('admin.courses.index') }}">{{ tr('دوره‌ها و ویدیو', 'Courses & video') }}</a>
+        <a href="{{ route('admin.discounts.index') }}">{{ tr('کدهای تخفیف', 'Discount codes') }}</a>
+    @endif
+    @if (in_array($role, ['admin', 'sales'], true))
+        <a href="{{ route('admin.leads.index') }}">{{ __('site.leads') }}</a>
+        <a href="{{ route('admin.orders.index') }}">{{ tr('سفارش‌ها', 'Orders') }}</a>
+        <a href="{{ route('admin.invoices.index') }}">{{ tr('فاکتورها', 'Invoices') }}</a>
+        <a href="{{ route('admin.payments.index') }}">{{ tr('پرداخت‌ها و رسیدها', 'Payments & receipts') }}</a>
+        <a href="{{ route('admin.tickets.index') }}">{{ tr('تیکت‌ها', 'Tickets') }}</a>
+        <a href="{{ route('admin.customers.index') }}">{{ tr('مشتریان', 'Customers') }}</a>
+    @endif
+</aside>
     <section class="admin-content">
         @if (session('success'))<div class="notice notice-success">{{ session('success') }}</div>@endif
         @if ($errors->any())<div class="notice notice-error">{{ $errors->first() }}</div>@endif

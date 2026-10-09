@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\ServiceAddon;
 use App\Models\PricingPlan;
 use App\Models\ServicePrice;
 use App\Models\Service;
@@ -19,6 +20,7 @@ class CatalogController extends Controller
         'plans' => [PricingPlan::class, 'plan'],
         'portfolio' => [Portfolio::class, 'portfolio'],
         'prices' => [ServicePrice::class, 'price'],
+        'addons' => [ServiceAddon::class, 'addon'],
     ];
 
     private function modelClass($type)
@@ -156,6 +158,17 @@ class CatalogController extends Controller
                 'completed_at' => ['nullable', 'date'],
                 'is_published' => ['nullable', 'boolean'],
             ],
+            'addons' => [
+                'service_id' => ['nullable', 'exists:services,id'],
+                'name_fa' => ['required', 'string', 'max:190'],
+                'name_en' => ['required', 'string', 'max:190'],
+                'description_fa' => ['nullable', 'string'],
+                'description_en' => ['nullable', 'string'],
+                'amount' => ['nullable', 'integer', 'min:0'],
+                'price_type' => ['required', 'in:company,negotiated,quote'],
+                'sort_order' => ['nullable', 'integer', 'min:0'],
+                'is_active' => ['nullable', 'boolean'],
+            ],
             'prices' => [
                 'service_id' => ['nullable', 'exists:services,id'],
                 'title_fa' => ['required', 'string', 'max:190'],
@@ -205,6 +218,7 @@ class CatalogController extends Controller
             'plans' => 'pricing_plans',
             'portfolio' => 'portfolios',
             'prices' => 'service_prices',
+            'addons' => 'service_addons',
         ][$type];
     }
 
@@ -241,6 +255,11 @@ class CatalogController extends Controller
                 'result_en' => 'Result in English', 'technologies' => 'فناوری‌ها (هر خط یک مورد)',
                 'image_url' => 'آدرس تصویر', 'project_url' => 'آدرس پروژه', 'completed_at' => 'تاریخ اجرا',
                 'is_published' => 'منتشر شود',
+            ],
+            'addons' => [
+                'service_id' => 'خدمت مرتبط', 'name_fa' => 'نام فارسی', 'name_en' => 'نام انگلیسی',
+                'description_fa' => 'توضیحات فارسی', 'description_en' => 'توضیحات انگلیسی',
+                'amount' => 'مبلغ (تومان)', 'price_type' => 'نوع قیمت', 'sort_order' => 'ترتیب نمایش', 'is_active' => 'فعال',
             ],
             'prices' => [
                 'service_id' => 'خدمت مرتبط', 'title_fa' => 'عنوان فارسی', 'title_en' => 'عنوان انگلیسی',

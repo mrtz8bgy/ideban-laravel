@@ -25,7 +25,7 @@ class AdminLoginTest extends TestCase
     {
         $this->admin();
 
-        $this->post('/admin/login', ['login' => 'admin', 'password' => 'LongSecret#2026'])
+        $this->post('/login', ['login' => 'admin', 'password' => 'LongSecret#2026'])
             ->assertRedirect(route('admin.dashboard'));
     }
 
@@ -33,7 +33,7 @@ class AdminLoginTest extends TestCase
     {
         $this->admin();
 
-        $this->post('/admin/login', ['login' => 'admin@ideban.local', 'password' => 'LongSecret#2026'])
+        $this->post('/login', ['login' => 'admin@ideban.local', 'password' => 'LongSecret#2026'])
             ->assertRedirect(route('admin.dashboard'));
     }
 
@@ -41,7 +41,7 @@ class AdminLoginTest extends TestCase
     {
         $this->admin();
 
-        $this->post('/admin/login', ['login' => 'admin', 'password' => 'wrong'])
+        $this->post('/login', ['login' => 'admin', 'password' => 'wrong'])
             ->assertSessionHasErrors('login');
         $this->assertGuest();
     }

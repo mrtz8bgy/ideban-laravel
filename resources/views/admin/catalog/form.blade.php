@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 @section('title', $item ? __('site.edit') : __('site.add_new'))
 @section('admin-content')
-@php($isEdit = (bool) $item)
+@php
+    $isEdit = (bool) $item;
+@endphp
 <div class="admin-heading"><div><span class="eyebrow">{{ __('site.manage') }}</span><h1>{{ $isEdit ? __('site.edit') : __('site.add_new') }} — {{ __('site.'.$type) }}</h1></div><a class="text-link" href="{{ route('admin.catalog.index', $type) }}">← {{ __('site.back') }}</a></div>
 <form class="form-card admin-form" method="post" action="{{ $isEdit ? route('admin.catalog.update', [$type, $item->id]) : route('admin.catalog.store', $type) }}">
     @csrf
@@ -20,11 +22,15 @@
             <div class="form-field">
                 <label for="{{ $field }}">{{ __('fields.'.$field) }}</label>
                 @if (in_array($field, ['category_id', 'service_id']))
-                    @php($options = $field === 'category_id' ? $categories : $services)
+                    @php
+                        $options = $field === 'category_id' ? $categories : $services;
+                    @endphp
                     <select id="{{ $field }}" name="{{ $field }}"><option value="">—</option>@foreach ($options as $option)<option value="{{ $option->id }}" {{ (string) $value === (string) $option->id ? 'selected' : '' }}>{{ $field === 'category_id' ? $option->{'name_'.app()->getLocale()} : $option->{'title_'.app()->getLocale()} }}</option>@endforeach</select>
                 @elseif ($field === 'price_type')
                     <select id="{{ $field }}" name="{{ $field }}">
-                        @php($priceTypes = $type === 'prices' ? ['official' => app()->getLocale() === 'fa' ? 'تعرفه رسمی' : 'Official tariff', 'company' => __('site.price_company'), 'negotiated' => __('site.price_negotiated'), 'quote' => __('site.quote_only')] : ['company' => __('site.price_company'), 'negotiated' => __('site.price_negotiated'), 'quote' => __('site.quote_only')])
+                        @php
+                            $priceTypes = $type === 'prices' ? ['official' => app()->getLocale() === 'fa' ? 'تعرفه رسمی' : 'Official tariff', 'company' => __('site.price_company'), 'negotiated' => __('site.price_negotiated'), 'quote' => __('site.quote_only')] : ['company' => __('site.price_company'), 'negotiated' => __('site.price_negotiated'), 'quote' => __('site.quote_only')];
+                        @endphp
                         @foreach ($priceTypes as $key => $option)<option value="{{ $key }}" {{ old($field, $item ? $item->$field : 'quote') === $key ? 'selected' : '' }}>{{ $option }}</option>@endforeach
                     </select>
                 @elseif ($isTextArea)

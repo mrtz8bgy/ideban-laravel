@@ -20,12 +20,19 @@
             <a href="{{ route('home') }}">{{ __('site.home') }}</a>
             <a href="{{ route('services.index') }}">{{ __('site.services') }}</a>
             <a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a>
+            <a href="{{ route('calculator.index') }}">{{ tr('ماشین‌حساب', 'Calculator') }}</a>
             <a href="{{ route('portfolio.index') }}">{{ __('site.portfolio') }}</a>
             <a href="{{ route('videos.index') }}">{{ __('content.nav_videos') }}</a>
             <a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a>
+            <a href="{{ route('academy.index') }}">{{ tr('آکادمی', 'Academy') }}</a>
         </nav>
         <div class="nav-actions">
             <a class="locale-link" href="{{ route('locale.update', app()->getLocale() === 'fa' ? 'en' : 'fa') }}">{{ app()->getLocale() === 'fa' ? 'EN' : 'فا' }}</a>
+            @auth
+                <a class="locale-link" href="{{ auth()->user()->isCustomer() ? route('account.dashboard') : route('admin.dashboard') }}">{{ tr('حساب من', 'My account') }}</a>
+            @else
+                <a class="locale-link" href="{{ route('login') }}">{{ tr('ورود', 'Log in') }}</a>
+            @endauth
             <a class="button button-small" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
         </div>
     </div>
@@ -42,7 +49,7 @@
         <div><strong>{{ __('site.services') }}</strong><a href="{{ route('services.index') }}">{{ __('site.all_services') }}</a><a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a><a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a></div>
         <div><strong>{{ __('site.contact') }}</strong><a href="tel:09104927131" dir="ltr">09104927131</a><a href="{{ route('contact') }}">{{ __('site.request_quote') }}</a></div>
     </div>
-    <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('login') }}">{{ __('site.login') }}</a></div>
+    <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('register') }}">{{ tr('ثبت‌نام مشتری', 'Customer sign-up') }}</a></div>
 </footer>
 </body>
 </html>
