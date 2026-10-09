@@ -61,7 +61,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->middleware('throttle:5,1')->name('register.store');
 });
-Route::get('/admin/login', fn () => redirect()->route('login'))->name('admin.login');
+// Older builds posted the login form to /admin/login. Keep that URL working with the same login logic.
+Route::middleware('guest')->group(function () {
+    Route::get('/admin/login', fn () => redirect()->route('login'))->name('admin.login');
+    Route::post('/admin/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('admin.login.store');
+});
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 // Learner actions

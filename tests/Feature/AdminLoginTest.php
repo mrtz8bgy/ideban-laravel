@@ -45,4 +45,13 @@ class AdminLoginTest extends TestCase
             ->assertSessionHasErrors('login');
         $this->assertGuest();
     }
+
+    public function test_legacy_admin_login_url_accepts_posts_and_redirects_get()
+    {
+        $this->admin();
+
+        $this->get('/admin/login')->assertRedirect(route('login'));
+        $this->post('/admin/login', ['login' => 'admin', 'password' => 'LongSecret#2026'])
+            ->assertRedirect(route('admin.dashboard'));
+    }
 }
