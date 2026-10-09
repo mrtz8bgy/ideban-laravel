@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Portfolio;
+use App\Models\Video;
 use App\Models\Service;
 
 class SitemapController extends Controller
@@ -15,6 +17,8 @@ class SitemapController extends Controller
             route('pricing.index'),
             route('portfolio.index'),
             route('contact'),
+            route('blog.index'),
+            route('videos.index'),
         ])->merge(
             Service::where('is_active', true)->get()->map(function ($service) {
                 return route('services.show', $service->slug);
@@ -22,6 +26,14 @@ class SitemapController extends Controller
         )->merge(
             Portfolio::where('is_published', true)->get()->map(function ($portfolio) {
                 return route('portfolio.show', $portfolio->slug);
+            })
+        )->merge(
+            Article::public()->get()->map(function ($article) {
+                return route('blog.show', $article->slug);
+            })
+        )->merge(
+            Video::public()->get()->map(function ($video) {
+                return route('videos.show', $video->slug);
             })
         );
 

@@ -65,7 +65,7 @@ class IdebanPlatformTest extends TestCase
             'show_amount' => true,
         ]);
 
-        $this->get('/pricing')
+        $this->withSession(['locale' => 'en'])->get('/pricing')
             ->assertOk()
             ->assertSee('Verified test tariff')
             ->assertDontSee('Unverified test tariff');

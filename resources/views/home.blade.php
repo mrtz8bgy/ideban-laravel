@@ -52,7 +52,7 @@
                         <p class="card-kicker">{{ optional($plan->service)->{'title_'.app()->getLocale()} }}</p>
                         <h3>{{ $plan->{'name_'.app()->getLocale()} }}</h3>
                         <p>{{ $plan->{'description_'.app()->getLocale()} }}</p>
-                        <strong class="price">{{ $plan->setup_fee !== null || $plan->recurring_fee !== null ? number_format($plan->setup_fee !== null ? $plan->setup_fee : $plan->recurring_fee).' '.__('site.currency') : __('site.quote_only') }}</strong>
+                        <strong class="price">{{ $plan->price_type !== 'quote' && $plan->setup_fee !== null ? number_format($plan->setup_fee).' '.__('site.currency') : __('site.quote_only') }}</strong>
                         <a class="button button-outline" href="{{ route('contact', ['plan' => $plan->slug]) }}">{{ __('site.request') }}</a>
                     </article>
                 @endforeach
@@ -79,6 +79,21 @@
         @endif
     </div>
 </section>
+@if ($videos->isNotEmpty() || $articles->isNotEmpty())
+<section class="section section-tint">
+    <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">{{ __('content.nav_videos') }} · {{ __('content.nav_blog') }}</span><h2>{{ app()->getLocale() === 'fa' ? 'آموزش و تحلیل، برای تصمیم‌های بهتر' : 'Learn and decide with confidence' }}</h2></div><a class="text-link" href="{{ route('videos.index') }}">{{ __('content.nav_videos') }} ←</a></div>
+        <div class="card-grid">
+            @foreach ($videos as $video)
+                <a class="content-card" href="{{ route('videos.show', $video->slug) }}"><div class="thumb">@if ($video->thumbnail_url)<img src="{{ $video->thumbnail_url }}" alt="" loading="lazy">@else<span>IDE • TV</span>@endif<div class="play-badge"><span aria-hidden="true">▶</span></div></div><div class="body"><h3>{{ $video->{'title_'.app()->getLocale()} }}</h3><p>{{ $video->{'description_'.app()->getLocale()} }}</p></div></a>
+            @endforeach
+            @foreach ($articles as $article)
+                <a class="content-card" href="{{ route('blog.show', $article->slug) }}"><div class="thumb">@if ($article->cover_url)<img src="{{ $article->cover_url }}" alt="" loading="lazy">@else<span>IDE</span>@endif</div><div class="body"><span class="meta">{{ $article->category }}</span><h3>{{ $article->{'title_'.app()->getLocale()} }}</h3><p>{{ $article->{'excerpt_'.app()->getLocale()} }}</p></div></a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 <section class="section process-section">
     <div class="container">
         <span class="eyebrow">{{ app()->getLocale() === 'fa' ? 'مسیر همکاری' : 'How we work' }}</span>

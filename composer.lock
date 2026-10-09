@@ -11,15 +11,9 @@
             "version": "v2.4.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/asm89/stack-cors/v2.4.0/asm89-stack-cors-v2.4.0.zip",
+                "url": "https://api.github.com/repos/asm89/stack-cors/zipball/33dcc9955bd5c683e1246f0162f48df73fe799f6",
                 "reference": "33dcc9955bd5c683e1246f0162f48df73fe799f6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.3|^8.0",
@@ -67,15 +61,9 @@
             "version": "0.9.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/brick/math/0.9.3/brick-math-0.9.3.zip",
+                "url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
                 "reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -127,15 +115,9 @@
             "version": "2.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/carbonphp/carbon-doctrine-types/2.1.1/carbonphp-carbon-doctrine-types-2.1.1.zip",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/bf72f821b9952722ea9f9c3912f85946e1af9e3d",
                 "reference": "bf72f821b9952722ea9f9c3912f85946e1af9e3d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0"
@@ -196,15 +178,9 @@
             "version": "v3.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/dflydev/dot-access-data/v3.0.3/dflydev-dot-access-data-v3.0.3.zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
@@ -271,15 +247,9 @@
             "version": "2.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/doctrine/inflector/2.1.0/doctrine-inflector-2.1.0.zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
@@ -361,15 +331,9 @@
             "version": "1.2.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/doctrine/lexer/1.2.3/doctrine-lexer-1.2.3.zip",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/c268e882d4dbdd85e36e4ad69e02dc284f89d229",
                 "reference": "c268e882d4dbdd85e36e4ad69e02dc284f89d229",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
@@ -437,15 +401,9 @@
             "version": "v3.5.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/dragonmantank/cron-expression/v3.5.0/dragonmantank-cron-expression-v3.5.0.zip",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/1b2de7f4a468165dca07b142240733a1973e766d",
                 "reference": "1b2de7f4a468165dca07b142240733a1973e766d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0"
@@ -501,15 +459,9 @@
             "version": "2.1.25",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/egulias/email-validator/2.1.25/egulias-email-validator-2.1.25.zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0dbf5d78455d4d6a41d186da50adc1122ec066f4",
                 "reference": "0dbf5d78455d4d6a41d186da50adc1122ec066f4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
@@ -569,15 +521,9 @@
             "version": "v2.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/fruitcake/laravel-cors/v2.2.0/fruitcake-laravel-cors-v2.2.0.zip",
+                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/783a74f5e3431d7b9805be8afb60fd0a8f743534",
                 "reference": "783a74f5e3431d7b9805be8afb60fd0a8f743534",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "asm89/stack-cors": "^2.0.1",
@@ -649,15 +595,9 @@
             "version": "v1.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/graham-campbell/result-type/v1.2.0/graham-campbell-result-type-v1.2.0.zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/adccca3324eece92ca35463648c12b9e6293c05b",
                 "reference": "adccca3324eece92ca35463648c12b9e6293c05b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
@@ -711,15 +651,9 @@
             "version": "7.15.5",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/guzzlehttp/guzzle/7.15.5/guzzlehttp-guzzle-7.15.5.zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
                 "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -839,15 +773,9 @@
             "version": "2.5.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/guzzlehttp/promises/2.5.3/guzzlehttp-promises-2.5.3.zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
                 "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
@@ -923,15 +851,9 @@
             "version": "2.13.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/guzzlehttp/psr7/2.13.1/guzzlehttp-psr7-2.13.1.zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/95e7828100de18b4e269fb1703be530082d5166d",
                 "reference": "95e7828100de18b4e269fb1703be530082d5166d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
@@ -1042,15 +964,9 @@
             "version": "v8.83.29",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/laravel/framework/v8.83.29/laravel-framework-v8.83.29.zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d841a226a50c715431952a10260ba4fac9e91cc4",
                 "reference": "d841a226a50c715431952a10260ba4fac9e91cc4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.4|^2.0",
@@ -1215,15 +1131,9 @@
             "version": "v2.15.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/laravel/sanctum/v2.15.1/laravel-sanctum-v2.15.1.zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
                 "reference": "31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -1280,15 +1190,9 @@
             "version": "v1.3.7",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/laravel/serializable-closure/v1.3.7/laravel-serializable-closure-v1.3.7.zip",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/4f48ade902b94323ca3be7646db16209ec76be3d",
                 "reference": "4f48ade902b94323ca3be7646db16209ec76be3d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.3|^8.0"
@@ -1341,15 +1245,9 @@
             "version": "v2.11.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/laravel/tinker/v2.11.1/laravel-tinker-v2.11.1.zip",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/c9f80cc835649b5c1842898fb043f8cc098dd741",
                 "reference": "c9f80cc835649b5c1842898fb043f8cc098dd741",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
@@ -1407,15 +1305,9 @@
             "version": "2.10.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/league/commonmark/2.10.3/league-commonmark-2.10.3.zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6efbd9c472b91db0a3350fcd601c8332c2382e1f",
                 "reference": "6efbd9c472b91db0a3350fcd601c8332c2382e1f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
@@ -1514,15 +1406,9 @@
             "version": "v1.2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/league/config/v1.2.0/league-config-v1.2.0.zip",
+                "url": "https://api.github.com/repos/thephpleague/config/zipball/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
                 "reference": "754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "dflydev/dot-access-data": "^3.0.1",
@@ -1596,15 +1482,9 @@
             "version": "1.1.10",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/league/flysystem/1.1.10/league-flysystem-1.1.10.zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3239285c825c152bcc315fe0e87d6b55f5972ed1",
                 "reference": "3239285c825c152bcc315fe0e87d6b55f5972ed1",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1690,15 +1570,9 @@
             "version": "1.17.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/league/mime-type-detection/1.17.0/league-mime-type-detection-1.17.0.zip",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/f5f47eff7c48ed1003069a2ca67f316fb4021c76",
                 "reference": "f5f47eff7c48ed1003069a2ca67f316fb4021c76",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1746,15 +1620,9 @@
             "version": "2.11.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/monolog/monolog/2.11.1/monolog-monolog-2.11.1.zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bf2403f591c5a431b6e0e1170cbadd3d64499564",
                 "reference": "bf2403f591c5a431b6e0e1170cbadd3d64499564",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
@@ -1848,15 +1716,9 @@
             "version": "2.73.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/nesbot/carbon/2.73.0/nesbot-carbon-2.73.0.zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/9228ce90e1035ff2f0db84b40ec2e023ed802075",
                 "reference": "9228ce90e1035ff2f0db84b40ec2e023ed802075",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "carbonphp/carbon-doctrine-types": "*",
@@ -1955,15 +1817,9 @@
             "version": "v1.2.5",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/nette/schema/v1.2.5/nette-schema-v1.2.5.zip",
+                "url": "https://api.github.com/repos/nette/schema/zipball/0462f0166e823aad657c9224d0f849ecac1ba10a",
                 "reference": "0462f0166e823aad657c9224d0f849ecac1ba10a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "nette/utils": "^2.5.7 || ^3.1.5 ||  ^4.0",
@@ -2017,15 +1873,9 @@
             "version": "v3.2.10",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/nette/utils/v3.2.10/nette-utils-v3.2.10.zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/a4175c62652f2300c8017fb7e640f9ccb11648d2",
                 "reference": "a4175c62652f2300c8017fb7e640f9ccb11648d2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2 <8.4"
@@ -2103,15 +1953,9 @@
             "version": "v5.9.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/nikic/php-parser/v5.9.0/nikic-php-parser-v5.9.0.zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9e33da9553fe7786f0962b35f4e4ecf01be89def",
                 "reference": "9e33da9553fe7786f0962b35f4e4ecf01be89def",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -2160,15 +2004,9 @@
             "version": "3.7.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/opis/closure/3.7.0/opis-closure-3.7.0.zip",
+                "url": "https://api.github.com/repos/opis/closure/zipball/b1a22a6be71c1263f3ca6e68f00b3fd4d394abc4",
                 "reference": "b1a22a6be71c1263f3ca6e68f00b3fd4d394abc4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^5.4 || ^7.0 || ^8.0"
@@ -2225,15 +2063,9 @@
             "version": "1.10.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpoption/phpoption/1.10.0/phpoption-phpoption-1.10.0.zip",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/67b192b6a42ec03944b972d6e633ddec78ad2c6d",
                 "reference": "67b192b6a42ec03944b972d6e633ddec78ad2c6d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0"
@@ -2300,15 +2132,9 @@
             "version": "1.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/clock/1.0.0/psr-clock-1.0.0.zip",
+                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.0 || ^8.0"
@@ -2348,15 +2174,9 @@
             "version": "1.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/container/1.1.2/psr-container-1.1.2.zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/513e0666f7216c7459170d56df27dfcefe1689ea",
                 "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.4.0"
@@ -2396,15 +2216,9 @@
             "version": "1.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/event-dispatcher/1.0.0/psr-event-dispatcher-1.0.0.zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0"
@@ -2446,15 +2260,9 @@
             "version": "1.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/http-client/1.0.3/psr-http-client-1.0.3.zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.0 || ^8.0",
@@ -2498,15 +2306,9 @@
             "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/http-factory/1.1.0/psr-http-factory-1.1.0.zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -2553,15 +2355,9 @@
             "version": "2.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/http-message/2.0/psr-http-message-2.0.zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
@@ -2606,15 +2402,9 @@
             "version": "1.1.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/log/1.1.4/psr-log-1.1.4.zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
                 "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2656,15 +2446,9 @@
             "version": "1.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psr/simple-cache/1.0.1/psr-simple-cache-1.0.1.zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
                 "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2707,15 +2491,9 @@
             "version": "v0.12.24",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/psy/psysh/v0.12.24/psy-psysh-v0.12.24.zip",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
                 "reference": "ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -2786,15 +2564,9 @@
             "version": "3.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/ralouphie/getallheaders/3.0.3/ralouphie-getallheaders-3.0.3.zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
                 "reference": "120b605dfeb996808c31b6477290a714d356e822",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
@@ -2830,15 +2602,9 @@
             "version": "1.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/ramsey/collection/1.3.0/ramsey-collection-1.3.0.zip",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/ad7475d1c9e70b190ecffc58f2d989416af339b4",
                 "reference": "ad7475d1c9e70b190ecffc58f2d989416af339b4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
@@ -2920,15 +2686,9 @@
             "version": "4.2.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/ramsey/uuid/4.2.3/ramsey-uuid-4.2.3.zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df",
                 "reference": "fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "brick/math": "^0.8 || ^0.9",
@@ -3018,15 +2778,9 @@
             "version": "v6.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/swiftmailer/swiftmailer/v6.3.0/swiftmailer-swiftmailer-v6.3.0.zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8a5d5072dca8f48460fce2f4131fcc495eec654c",
                 "reference": "8a5d5072dca8f48460fce2f4131fcc495eec654c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "egulias/email-validator": "^2.0|^3.1",
@@ -3094,15 +2848,9 @@
             "version": "v5.4.47",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/console/v5.4.47/symfony-console-v5.4.47.zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c4ba980ca61a9eb18ee6bcc73f28e475852bb1ed",
                 "reference": "c4ba980ca61a9eb18ee6bcc73f28e475852bb1ed",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3193,15 +2941,9 @@
             "version": "v5.4.45",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/css-selector/v5.4.45/symfony-css-selector-v5.4.45.zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/4f7f3c35fba88146b56d0025d20ace3f3901f097",
                 "reference": "4f7f3c35fba88146b56d0025d20ace3f3901f097",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3259,15 +3001,9 @@
             "version": "v2.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/deprecation-contracts/v2.5.4/symfony-deprecation-contracts-v2.5.4.zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/605389f2a7e5625f273b53960dc46aeaf9c62918",
                 "reference": "605389f2a7e5625f273b53960dc46aeaf9c62918",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
@@ -3326,15 +3062,9 @@
             "version": "v5.4.46",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/error-handler/v5.4.46/symfony-error-handler-v5.4.46.zip",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/d19ede7a2cafb386be9486c580649d0f9e3d0363",
                 "reference": "d19ede7a2cafb386be9486c580649d0f9e3d0363",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3397,15 +3127,9 @@
             "version": "v5.4.45",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/event-dispatcher/v5.4.45/symfony-event-dispatcher-v5.4.45.zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/72982eb416f61003e9bb6e91f8b3213600dcf9e9",
                 "reference": "72982eb416f61003e9bb6e91f8b3213600dcf9e9",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3482,15 +3206,9 @@
             "version": "v2.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/event-dispatcher-contracts/v2.5.4/symfony-event-dispatcher-contracts-v2.5.4.zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/e0fe3d79b516eb75126ac6fa4cbf19b79b08c99f",
                 "reference": "e0fe3d79b516eb75126ac6fa4cbf19b79b08c99f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3561,15 +3279,9 @@
             "version": "v5.4.45",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/finder/v5.4.45/symfony-finder-v5.4.45.zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/63741784cd7b9967975eec610b256eed3ede022b",
                 "reference": "63741784cd7b9967975eec610b256eed3ede022b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3624,15 +3336,9 @@
             "version": "v5.4.50",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/http-foundation/v5.4.50/symfony-http-foundation-v5.4.50.zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1a0706e8b8041046052ea2695eb8aeee04f97609",
                 "reference": "1a0706e8b8041046052ea2695eb8aeee04f97609",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3704,15 +3410,9 @@
             "version": "v5.4.53",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/http-kernel/v5.4.53/symfony-http-kernel-v5.4.53.zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/ff18e126cc514769d03f1b2487567a4b85fc7ca6",
                 "reference": "ff18e126cc514769d03f1b2487567a4b85fc7ca6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3821,15 +3521,9 @@
             "version": "v5.4.52",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/mime/v5.4.52/symfony-mime-v5.4.52.zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/8f89d3a319b92486b0bcc43c0479d19fdb0e2f64",
                 "reference": "8f89d3a319b92486b0bcc43c0479d19fdb0e2f64",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3910,15 +3604,9 @@
             "version": "v1.37.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-ctype/v1.37.0/symfony-polyfill-ctype-v1.37.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2",
                 "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -3993,15 +3681,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-iconv/v1.43.0/symfony-polyfill-iconv-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/254724d95fe01b679cd97d88786e9623ee00bfb7",
                 "reference": "254724d95fe01b679cd97d88786e9623ee00bfb7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4077,15 +3759,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-intl-grapheme/v1.43.0/symfony-polyfill-intl-grapheme-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5cac8f4db97208823aa353f59a01faad2da52c75",
                 "reference": "5cac8f4db97208823aa353f59a01faad2da52c75",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4159,15 +3835,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-intl-idn/v1.43.0/symfony-polyfill-intl-idn-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
                 "reference": "533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
@@ -4246,15 +3916,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-intl-normalizer/v1.43.0/symfony-polyfill-intl-normalizer-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/ebd57ccc7edb93d632e184efbe7693d2517bab3b",
                 "reference": "ebd57ccc7edb93d632e184efbe7693d2517bab3b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4331,15 +3995,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-mbstring/v1.43.0/symfony-polyfill-mbstring-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
                 "reference": "4d5d331bf731e0aedbc6b2f5e61135b7b7996a72",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-iconv": "*",
@@ -4416,15 +4074,9 @@
             "version": "v1.37.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-php73/v1.37.0/symfony-polyfill-php73-v1.37.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/0f68c03565dcaaf25a890667542e8bd75fe7e5bb",
                 "reference": "0f68c03565dcaaf25a890667542e8bd75fe7e5bb",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4496,15 +4148,9 @@
             "version": "v1.43.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-php80/v1.43.0/symfony-polyfill-php80-v1.43.0.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
                 "reference": "9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4580,15 +4226,9 @@
             "version": "v1.38.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/polyfill-php81/v1.38.1/symfony-polyfill-php81-v1.38.1.zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/6bfb9c766cacffbc8e118cb87217d08ed84e5cd7",
                 "reference": "6bfb9c766cacffbc8e118cb87217d08ed84e5cd7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -4660,15 +4300,9 @@
             "version": "v5.4.51",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/process/v5.4.51/symfony-process-v5.4.51.zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/467bfc56f18f5ef6d5ccb09324d7e988c1c0a98f",
                 "reference": "467bfc56f18f5ef6d5ccb09324d7e988c1c0a98f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4726,15 +4360,9 @@
             "version": "v5.4.53",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/routing/v5.4.53/symfony-routing-v5.4.53.zip",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/f4ca0c533854c26e3b27e981da760807f89e1a42",
                 "reference": "f4ca0c533854c26e3b27e981da760807f89e1a42",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4820,15 +4448,9 @@
             "version": "v2.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/service-contracts/v2.5.4/symfony-service-contracts-v2.5.4.zip",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f37b419f7aea2e9abf10abd261832cace12e3300",
                 "reference": "f37b419f7aea2e9abf10abd261832cace12e3300",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4903,15 +4525,9 @@
             "version": "v5.4.47",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/string/v5.4.47/symfony-string-v5.4.47.zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/136ca7d72f72b599f2631aca474a4f8e26719799",
                 "reference": "136ca7d72f72b599f2631aca474a4f8e26719799",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4989,15 +4605,9 @@
             "version": "v5.4.45",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/translation/v5.4.45/symfony-translation-v5.4.45.zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/98f26acc99341ca4bab345fb14d7b1d7cb825bed",
                 "reference": "98f26acc99341ca4bab345fb14d7b1d7cb825bed",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5086,15 +4696,9 @@
             "version": "v2.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/translation-contracts/v2.5.4/symfony-translation-contracts-v2.5.4.zip",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/450d4172653f38818657022252f9d81be89ee9a8",
                 "reference": "450d4172653f38818657022252f9d81be89ee9a8",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5"
@@ -5164,15 +4768,9 @@
             "version": "v5.4.48",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/symfony/var-dumper/v5.4.48/symfony-var-dumper-v5.4.48.zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/42f18f170aa86d612c3559cfb3bd11a375df32c8",
                 "reference": "42f18f170aa86d612c3559cfb3bd11a375df32c8",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5253,15 +4851,9 @@
             "version": "v2.4.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/tijsverkoyen/css-to-inline-styles/v2.4.0/tijsverkoyen-css-to-inline-styles-v2.4.0.zip",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/f0292ccf0ec75843d65027214426b6b163b48b41",
                 "reference": "f0292ccf0ec75843d65027214426b6b163b48b41",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
@@ -5308,15 +4900,9 @@
             "version": "v5.7.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/vlucas/phpdotenv/v5.7.0/vlucas-phpdotenv-v5.7.0.zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/301c07936b16d88628b126b01d082ba153cf4c40",
                 "reference": "301c07936b16d88628b126b01d082ba153cf4c40",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-pcre": "*",
@@ -5392,15 +4978,9 @@
             "version": "1.6.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/voku/portable-ascii/1.6.1/voku-portable-ascii-1.6.1.zip",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/87337c91b9dfacee02452244ee14ab3c43bc485a",
                 "reference": "87337c91b9dfacee02452244ee14ab3c43bc485a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
@@ -5468,15 +5048,9 @@
             "version": "1.5.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/doctrine/instantiator/1.5.0/doctrine-instantiator-1.5.0.zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/0a0fa9780f5d4e507415a065172d26a98d02047b",
                 "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
@@ -5538,15 +5112,9 @@
             "version": "1.10.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/facade/flare-client-php/1.10.0/facade-flare-client-php-1.10.0.zip",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/213fa2c69e120bca4c51ba3e82ed1834ef3f41b8",
                 "reference": "213fa2c69e120bca4c51ba3e82ed1834ef3f41b8",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "facade/ignition-contracts": "~1.0",
@@ -5603,15 +5171,9 @@
             "version": "2.17.7",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/facade/ignition/2.17.7/facade-ignition-2.17.7.zip",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/b4f5955825bb4b74cba0f94001761c46335c33e9",
                 "reference": "b4f5955825bb4b74cba0f94001761c46335c33e9",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -5681,15 +5243,9 @@
             "version": "1.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/facade/ignition-contracts/1.0.2/facade-ignition-contracts-1.0.2.zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
                 "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.3|^8.0"
@@ -5734,15 +5290,9 @@
             "version": "v1.24.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/fakerphp/faker/v1.24.1/fakerphp-faker-v1.24.1.zip",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
@@ -5797,15 +5347,9 @@
             "version": "2.18.6",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/filp/whoops/2.18.6/filp-whoops-2.18.6.zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/7d0a2cde892089bb09372f4366e9b960eb3001a9",
                 "reference": "7d0a2cde892089bb09372f4366e9b960eb3001a9",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0",
@@ -5868,15 +5412,9 @@
             "version": "v3.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/hamcrest/hamcrest-php/v3.0.0/hamcrest-hamcrest-php-v3.0.0.zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b61cd040da1a4925bc90a51c074f5297e7c0fa52",
                 "reference": "b61cd040da1a4925bc90a51c074f5297e7c0fa52",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
@@ -5923,15 +5461,9 @@
             "version": "v1.19.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/laravel/sail/v1.19.0/laravel-sail-v1.19.0.zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/4f230634a3163f3442def6a4e6ffdb02b02e14d6",
                 "reference": "4f230634a3163f3442def6a4e6ffdb02b02e14d6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "illuminate/console": "^8.0|^9.0|^10.0",
@@ -5983,15 +5515,9 @@
             "version": "1.6.15",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/mockery/mockery/1.6.15/mockery-mockery-1.6.15.zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/967a801bd188989a5669bd280f252d51c0fdc9ee",
                 "reference": "967a801bd188989a5669bd280f252d51c0fdc9ee",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0 || ^3.0",
@@ -6065,15 +5591,9 @@
             "version": "1.13.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/myclabs/deep-copy/1.13.4/myclabs-deep-copy-1.13.4.zip",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/07d290f0c47959fd5eed98c95ee5602db07e0b6a",
                 "reference": "07d290f0c47959fd5eed98c95ee5602db07e0b6a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
@@ -6125,15 +5645,9 @@
             "version": "v5.11.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/nunomaduro/collision/v5.11.0/nunomaduro-collision-v5.11.0.zip",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/8b610eef8582ccdc05d8f2ab23305e2d37049461",
                 "reference": "8b610eef8582ccdc05d8f2ab23305e2d37049461",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "facade/ignition-contracts": "^1.0",
@@ -6212,15 +5726,9 @@
             "version": "2.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phar-io/manifest/2.0.4/phar-io-manifest-2.0.4.zip",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/54750ef60c58e43759730615a392c31c80e23176",
                 "reference": "54750ef60c58e43759730615a392c31c80e23176",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
@@ -6279,15 +5787,9 @@
             "version": "3.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phar-io/version/3.2.1/phar-io-version-3.2.1.zip",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
@@ -6330,15 +5832,9 @@
             "version": "9.2.32",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/php-code-coverage/9.2.32/phpunit-php-code-coverage-9.2.32.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/85402a822d1ecf1db1096959413d35e1c37cf1a5",
                 "reference": "85402a822d1ecf1db1096959413d35e1c37cf1a5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
@@ -6408,15 +5904,9 @@
             "version": "3.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/php-file-iterator/3.0.6/phpunit-php-file-iterator-3.0.6.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf",
                 "reference": "cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6468,15 +5958,9 @@
             "version": "3.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/php-invoker/3.1.1/phpunit-php-invoker-3.1.1.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/5a10147d0aaf65b58940a0b72f71c9ac0423cc67",
                 "reference": "5a10147d0aaf65b58940a0b72f71c9ac0423cc67",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6531,15 +6015,9 @@
             "version": "2.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/php-text-template/2.0.4/phpunit-php-text-template-2.0.4.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28",
                 "reference": "5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6590,15 +6068,9 @@
             "version": "5.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/php-timer/5.0.3/phpunit-php-timer-5.0.3.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2",
                 "reference": "5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6649,15 +6121,9 @@
             "version": "9.6.38",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/phpunit/phpunit/9.6.38/phpunit-phpunit-9.6.38.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8b5f757e8e92071bfdbfa93943f94f84c4e31007",
                 "reference": "8b5f757e8e92071bfdbfa93943f94f84c4e31007",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.5.0 || ^2",
@@ -6744,15 +6210,9 @@
             "version": "1.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/cli-parser/1.0.2/sebastian-cli-parser-1.0.2.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/2b56bea83a09de3ac06bb18b92f068e60cc6f50b",
                 "reference": "2b56bea83a09de3ac06bb18b92f068e60cc6f50b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6800,15 +6260,9 @@
             "version": "1.0.8",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/code-unit/1.0.8/sebastian-code-unit-1.0.8.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/1fc9f64c0927627ef78ba436c9b17d967e68e120",
                 "reference": "1fc9f64c0927627ef78ba436c9b17d967e68e120",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6856,15 +6310,9 @@
             "version": "2.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/code-unit-reverse-lookup/2.0.3/sebastian-code-unit-reverse-lookup-2.0.3.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5",
                 "reference": "ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -6911,15 +6359,9 @@
             "version": "4.0.10",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/comparator/4.0.10/sebastian-comparator-4.0.10.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/e4df00b9b3571187db2831ae9aada2c6efbd715d",
                 "reference": "e4df00b9b3571187db2831ae9aada2c6efbd715d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
@@ -6997,15 +6439,9 @@
             "version": "2.0.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/complexity/2.0.3/sebastian-complexity-2.0.3.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/complexity/zipball/25f207c40d62b8b7aa32f5ab026c53561964053a",
                 "reference": "25f207c40d62b8b7aa32f5ab026c53561964053a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4.18 || ^5.0",
@@ -7054,15 +6490,9 @@
             "version": "4.0.6",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/diff/4.0.6/sebastian-diff-4.0.6.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/ba01945089c3a293b01ba9badc29ad55b106b0bc",
                 "reference": "ba01945089c3a293b01ba9badc29ad55b106b0bc",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7120,15 +6550,9 @@
             "version": "5.1.5",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/environment/5.1.5/sebastian-environment-5.1.5.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/830c43a844f1f8d5b7a1f6d6076b784454d8b7ed",
                 "reference": "830c43a844f1f8d5b7a1f6d6076b784454d8b7ed",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7183,15 +6607,9 @@
             "version": "4.0.9",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/exporter/4.0.9/sebastian-exporter-4.0.9.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/4352c1a3df741a7ba9e61af6fed51d1fee41cbf7",
                 "reference": "4352c1a3df741a7ba9e61af6fed51d1fee41cbf7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
@@ -7272,15 +6690,9 @@
             "version": "5.0.8",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/global-state/5.0.8/sebastian-global-state-5.0.8.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/b6781316bdcd28260904e7cc18ec983d0d2ef4f6",
                 "reference": "b6781316bdcd28260904e7cc18ec983d0d2ef4f6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
@@ -7348,15 +6760,9 @@
             "version": "1.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/lines-of-code/1.0.4/sebastian-lines-of-code-1.0.4.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/lines-of-code/zipball/e1e4a170560925c26d424b6a03aed157e7dcc5c5",
                 "reference": "e1e4a170560925c26d424b6a03aed157e7dcc5c5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4.18 || ^5.0",
@@ -7405,15 +6811,9 @@
             "version": "4.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/object-enumerator/4.0.4/sebastian-object-enumerator-4.0.4.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/5c9eeac41b290a3712d88851518825ad78f45c71",
                 "reference": "5c9eeac41b290a3712d88851518825ad78f45c71",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3",
@@ -7462,15 +6862,9 @@
             "version": "2.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/object-reflector/2.0.4/sebastian-object-reflector-2.0.4.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/b4f479ebdbf63ac605d183ece17d8d7fe49c15c7",
                 "reference": "b4f479ebdbf63ac605d183ece17d8d7fe49c15c7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7517,15 +6911,9 @@
             "version": "4.0.7",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/recursion-context/4.0.7/sebastian-recursion-context-4.0.7.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/c85be6922b7fd365942b986b9a50397d65407611",
                 "reference": "c85be6922b7fd365942b986b9a50397d65407611",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7592,15 +6980,9 @@
             "version": "3.0.4",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/resource-operations/3.0.4/sebastian-resource-operations-3.0.4.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/05d5692a7993ecccd56a03e40cd7e5b09b1d404e",
                 "reference": "05d5692a7993ecccd56a03e40cd7e5b09b1d404e",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7646,15 +7028,9 @@
             "version": "3.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/type/3.2.1/sebastian-type-3.2.1.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/75e2c2a32f5e0b3aef905b9ed0b179b953b3d7c7",
                 "reference": "75e2c2a32f5e0b3aef905b9ed0b179b953b3d7c7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7702,15 +7078,9 @@
             "version": "3.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/sebastian/version/3.0.2/sebastian-version-3.0.2.zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/c6c1022351a901512170118436c764e473f6de8c",
                 "reference": "c6c1022351a901512170118436c764e473f6de8c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3"
@@ -7755,15 +7125,9 @@
             "version": "1.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirror.abrha.net/repository/fcomposer/theseer/tokenizer/1.3.1/theseer-tokenizer-1.3.1.zip",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/b7489ce515e168639d17feec34b8847c326b0b3c",
                 "reference": "b7489ce515e168639d17feec34b8847c326b0b3c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirror.abrha.net/repository/composer/mirror/packagist/zipball/%package%/%version%/ref%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "ext-dom": "*",

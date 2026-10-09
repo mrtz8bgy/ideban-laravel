@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\CatalogController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LeadController as AdminLeadController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -19,6 +22,10 @@ Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('servic
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing.index');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [ArticleController::class, 'show'])->name('blog.show');
+Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+Route::get('/videos/{slug}', [VideoController::class, 'show'])->name('videos.show');
 Route::get('/contact', [LeadController::class, 'create'])->name('contact');
 Route::post('/contact', [LeadController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 Route::get('/lang/{locale}', [LocaleController::class, 'update'])->name('locale.update');
@@ -41,4 +48,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
     Route::get('/catalog/{type}/{id}/edit', [CatalogController::class, 'edit'])->middleware('role:admin,content')->name('catalog.edit');
     Route::put('/catalog/{type}/{id}', [CatalogController::class, 'update'])->middleware('role:admin,content')->name('catalog.update');
     Route::delete('/catalog/{type}/{id}', [CatalogController::class, 'destroy'])->middleware('role:admin,content')->name('catalog.destroy');
+
+    Route::middleware('role:admin,content')->group(function () {
+        Route::get('/content/{type}', [ContentController::class, 'index'])->name('content.index');
+        Route::get('/content/{type}/create', [ContentController::class, 'create'])->name('content.create');
+        Route::post('/content/{type}', [ContentController::class, 'store'])->name('content.store');
+        Route::get('/content/{type}/{id}/edit', [ContentController::class, 'edit'])->name('content.edit');
+        Route::put('/content/{type}/{id}', [ContentController::class, 'update'])->name('content.update');
+        Route::delete('/content/{type}/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
+    });
 });
