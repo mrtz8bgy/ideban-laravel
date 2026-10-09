@@ -3,7 +3,7 @@
 @section('admin-content')
 @php($loc = app()->getLocale())
 <div class="admin-heading"><div><span class="eyebrow">{{ tr('درس‌ها', 'Lessons') }}</span><h1>{{ $course->{'title_'.$loc} }}</h1></div><a class="text-link" href="{{ route('admin.courses.index') }}">← {{ tr('بازگشت', 'Back') }}</a></div>
-<p class="notice">{{ tr('ویدیوهای آپلودی روی سرور نگهداری شده و فقط از طریق مسیر محافظت‌شده پخش می‌شوند؛ حداکثر حجم هر ویدیو', 'Uploaded videos are stored privately on the server and streamed only through the protected route. Max size per video') }}: {{ $maxMb }} MB.</p>
+<p class="notice">{{ tr('ویدیوهای آپلودی به‌صورت خصوصی در storage/app/academy/videos ذخیره می‌شوند و فقط از مسیر محافظت‌شده پخش می‌شوند؛ حداکثر حجم قابل‌پذیرش با توجه به محدودیت فعلی PHP', 'Uploaded videos are stored privately in storage/app/academy/videos and streamed only through the protected route. The effective maximum based on current PHP upload limits') }}: {{ $maxMb }} MB.</p>
 
 <div class="table-wrap"><table><thead><tr><th>#</th><th>{{ tr('عنوان', 'Title') }}</th><th>{{ tr('منبع', 'Source') }}</th><th>{{ tr('پیش‌نمایش رایگان', 'Free preview') }}</th><th>{{ tr('منتشر', 'Published') }}</th><th></th></tr></thead><tbody>
 @forelse ($course->lessons as $lesson)
@@ -13,10 +13,8 @@
     <td>{{ $lesson->source === 'upload' ? tr('آپلود', 'Upload') : ($lesson->source === 'external' ? tr('لینک', 'Link') : tr('بدون ویدیو', 'No video')) }}</td>
     <td>{{ $lesson->is_free_preview ? tr('بله', 'Yes') : tr('خیر', 'No') }}</td>
     <td>{{ $lesson->is_published ? tr('بله', 'Yes') : tr('خیر', 'No') }}</td>
-    <td class="table-actions">
-        <details><summary>{{ tr('ویرایش', 'Edit') }}</summary>
-            @include('admin.courses._lesson-form', ['action' => route('admin.courses.lessons.update', [$course, $lesson]), 'method' => 'PUT', 'lesson' => $lesson, 'maxMb' => $maxMb])
-        </details>
+    <td class="table-actions lesson-actions">
+        <a class="button button-small button-outline" href="{{ route('admin.courses.lessons.edit', [$course, $lesson]) }}">{{ tr('ویرایش', 'Edit') }}</a>
         <form method="post" action="{{ route('admin.courses.lessons.destroy', [$course, $lesson]) }}" onsubmit="return confirm('{{ tr('حذف شود؟', 'Delete?') }}')">@csrf @method('DELETE')<button class="link-danger" type="submit">{{ tr('حذف', 'Delete') }}</button></form>
     </td>
 </tr>

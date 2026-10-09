@@ -41,13 +41,18 @@ class AdminCourseTest extends TestCase
         $this->actingAs($this->staff('admin', 'boss'))
             ->post(route('admin.courses.lessons.store', $course), [
                 'title_fa' => 'درس اول', 'title_en' => 'Lesson one', 'sort_order' => 1,
-                'source' => 'upload', 'is_published' => 1,
+                'source' => 'none', 'is_published' => 1,
                 'video' => UploadedFile::fake()->create('lesson.mp4', 1024, 'video/mp4'),
             ])->assertRedirect();
 
         $lesson = Lesson::where('course_id', $course->id)->firstOrFail();
         $this->assertSame('upload', $lesson->source);
         $this->assertStringStartsWith('academy/videos/', $lesson->file_path);
+        $this->assertDatabaseHas('lessons', [
+            'id' => $lesson->id,
+            'source' => 'upload',
+            'file_path' => $lesson->file_path,
+        ]);
         Storage::disk('local')->assertExists($lesson->file_path);
     }
 
@@ -113,6 +118,43 @@ class AdminCourseTest extends TestCase
             ->assertOk()
             ->assertSee('enctype="multipart/form-data"', false)
             ->assertSee('name="cover_file"', false);
+    }
+
+    public function test_lesson_edit_opens_a_dedicated_form_and_saves_changes()
+    {
+        $course = $this->course();
+        $lesson = Lesson::create([
+            'course_id' => $course->id,
+            'title_fa' => 'درس قدیمی',
+            'title_en' => 'Old lesson',
+            'source' => 'none',
+            'is_published' => true,
+        ]);
+        $admin = $this->staff('admin', 'boss');
+
+        $this->actingAs($admin)
+            ->get(route('admin.courses.lessons', $course))
+            ->assertOk()
+            ->assertSee(route('admin.courses.lessons.edit', [$course, $lesson]), false);
+
+        $editResponse = $this->get(route('admin.courses.lessons.edit', [$course, $lesson]));
+        $this->assertSame(200, $editResponse->status(), $editResponse->getContent());
+        $editResponse
+            ->assertSee('name="title_en"', false)
+            ->assertSee('Old lesson')
+            ->assertDontSee('<details>', false);
+
+        $this->put(route('admin.courses.lessons.update', [$course, $lesson]), [
+            'title_fa' => 'درس جدید',
+            'title_en' => 'Updated lesson',
+            'source' => 'none',
+            'is_published' => 1,
+        ])->assertRedirect(route('admin.courses.lessons', $course));
+
+        $this->assertDatabaseHas('lessons', [
+            'id' => $lesson->id,
+            'title_en' => 'Updated lesson',
+        ]);
     }
 
     public function test_discount_code_is_stored_in_uppercase()

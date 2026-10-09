@@ -58,7 +58,7 @@ Bilingual (Persian RTL / English LTR) IT services storefront and lead-management
    php artisan storage:link
    ```
 
-   Catalog, portfolio, article, course, lesson-thumbnail and public-video uploads are stored on Laravel's `public` disk under `storage/app/public/media` and served through `public/storage`. The storage link is required after deployment. Public images are limited to 5 MB; public video uploads accept MP4/WebM up to `PUBLIC_VIDEO_MAX_MB` (default 256 MB). Set PHP's `upload_max_filesize` and `post_max_size` high enough for the selected upload size. Academy lesson videos remain on the private disk and continue to use the protected stream route.
+   Catalog, portfolio, article, course, lesson-thumbnail and public-video uploads are stored on Laravel's `public` disk under `storage/app/public/media` and served through `public/storage`. The storage link is required after deployment. Public images are limited to 5 MB; public video uploads accept MP4/WebM up to `PUBLIC_VIDEO_MAX_MB` (default 256 MB). Academy lesson videos are stored privately at `storage/app/academy/videos`, referenced by `lessons.file_path` and streamed only through the protected lesson route. The academy upload limit is the lowest of `ACADEMY_MAX_VIDEO_MB`, PHP's `upload_max_filesize`, and `post_max_size` (with 8 MB reserved for form/request overhead); the admin form displays this effective limit. Raise PHP's upload/post limits and the application setting together to accept larger files.
 
 ## Default administrator (SQL import)
 
@@ -117,11 +117,11 @@ The feature tests cover the public RTL landing page, lead persistence, suppressi
 - **Support tickets**: customers open tickets, staff reply, change status, priority and assignee. Attachments are stored privately.
 - **Academy (`/academy`)**: course catalogue with category and price filters, course pages, and lesson pages. Free courses are added immediately. Paid courses create an invoice (discount codes supported), and access is granted only after the payment is confirmed.
 - **Protected video**: uploaded lesson videos are stored in private storage (`storage/app/academy/videos`) and streamed only to enrolled users (or to anyone for lessons marked as free preview). Video files are never served from `public/`. YouTube and Vimeo links are embedded through the privacy-enhanced player.
-- **Admin course tools**: create and edit courses, add lessons, upload videos (MP4 or WebM, up to `ACADEMY_MAX_VIDEO_MB`), set free previews, and manage discount codes under **Admin → Courses & video** and **Discount codes**.
+- **Admin course tools**: create and edit courses, add lessons, upload videos (MP4 or WebM, up to the effective limit shown on the lessons page), set free previews, and manage discount codes under **Admin → Courses & video** and **Discount codes**.
 
 ### Upload limits for academy videos
 
-`ACADEMY_MAX_VIDEO_MB` (default 1024) is enforced by Laravel, but PHP must also accept files that large. In `php.ini`, set `upload_max_filesize` and `post_max_size` to at least the same value (for example `1024M` and `1100M`), and raise `max_execution_time` if uploads time out. Web servers have their own limits too (for example `client_max_body_size` in nginx).
+`ACADEMY_MAX_VIDEO_MB` (default 1024) is the application's upper limit; the active upload limit is automatically reduced to match PHP's `upload_max_filesize` and `post_max_size`. The lessons page shows the effective limit. To accept larger files, raise both PHP values and this setting, and raise `max_execution_time` if uploads time out. Web servers have their own limits too (for example `client_max_body_size` in nginx).
 
 ### Sample data
 

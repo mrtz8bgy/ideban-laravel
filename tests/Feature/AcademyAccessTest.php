@@ -111,6 +111,19 @@ class AcademyAccessTest extends TestCase
         $this->get(route('academy.stream', $lesson))->assertOk();
     }
 
+    public function test_uploaded_webm_lesson_stream_uses_webm_content_type()
+    {
+        Storage::fake('local');
+        Storage::disk('local')->put('academy/videos/preview.webm', 'preview');
+
+        $lesson = Lesson::where('is_free_preview', true)->firstOrFail();
+        $lesson->update(['source' => 'upload', 'file_path' => 'academy/videos/preview.webm']);
+
+        $this->get(route('academy.stream', $lesson))
+            ->assertOk()
+            ->assertHeader('Content-Type', 'video/webm');
+    }
+
     public function test_locked_lesson_page_does_not_render_for_guests()
     {
         $course = Course::where('slug', 'sample-linux-server-security')->firstOrFail();

@@ -146,6 +146,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
         Route::delete('/courses/{course}', [AdminCourseController::class, 'destroy'])->name('courses.destroy');
         Route::get('/courses/{course}/lessons', [AdminCourseController::class, 'lessons'])->name('courses.lessons');
         Route::post('/courses/{course}/lessons', [AdminCourseController::class, 'storeLesson'])->name('courses.lessons.store');
+        Route::get('/courses/{course}/lessons/{lesson}/edit', [AdminCourseController::class, 'editLesson'])->name('courses.lessons.edit');
         Route::put('/courses/{course}/lessons/{lesson}', [AdminCourseController::class, 'updateLesson'])->name('courses.lessons.update');
         Route::delete('/courses/{course}/lessons/{lesson}', [AdminCourseController::class, 'destroyLesson'])->name('courses.lessons.destroy');
         Route::get('/discounts', [AdminCourseController::class, 'discounts'])->name('discounts.index');

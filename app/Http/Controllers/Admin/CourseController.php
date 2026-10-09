@@ -73,7 +73,7 @@ class CourseController extends Controller
     {
         return view('admin.courses.lessons', [
             'course' => $course->load('lessons'),
-            'maxMb' => config('academy.max_video_mb'),
+            'maxMb' => $this->effectiveVideoMaxMb(),
         ]);
     }
 
@@ -92,9 +92,20 @@ class CourseController extends Controller
         return redirect()->route('admin.courses.lessons', $course)->with('success', tr('درس ذخیره شد.', 'Lesson saved.'));
     }
 
-    public function updateLesson(Request $request, Course $course, Lesson $lesson)
+    public function editLesson(Course $course, $lesson)
     {
-        abort_unless($lesson->course_id === $course->id, 404);
+        $lesson = $course->lessons()->findOrFail($lesson);
+
+        return view('admin.courses.lesson-edit', [
+            'course' => $course,
+            'lesson' => $lesson,
+            'maxMb' => $this->effectiveVideoMaxMb(),
+        ]);
+    }
+
+    public function updateLesson(Request $request, Course $course, $lesson)
+    {
+        $lesson = $course->lessons()->findOrFail($lesson);
         $data = $this->validatedLesson($request);
         $oldThumbnail = $lesson->thumbnail_path;
         $lesson->fill($data);
@@ -201,7 +212,7 @@ class CourseController extends Controller
 
     private function validatedLesson(Request $request): array
     {
-        $maxKb = (int) config('academy.max_video_mb') * 1024;
+        $maxKb = $this->effectiveVideoMaxMb() * 1024;
         $data = $request->validate([
             'title_fa' => ['required', 'string', 'max:190'],
             'title_en' => ['required', 'string', 'max:190'],
@@ -216,6 +227,9 @@ class CourseController extends Controller
             'remove_thumbnail' => ['nullable', 'boolean'],
         ]);
         unset($data['video'], $data['thumbnail_file'], $data['remove_thumbnail']);
+        if ($request->hasFile('video')) {
+            $data['source'] = 'upload';
+        }
         $data['is_free_preview'] = $request->boolean('is_free_preview');
         $data['is_published'] = $request->boolean('is_published');
         if ($data['source'] === 'external' && empty($data['external_url'])) {
@@ -226,6 +240,34 @@ class CourseController extends Controller
         }
 
         return $data;
+    }
+
+    private function effectiveVideoMaxMb(): int
+    {
+        $maxBytes = max(1, (int) config('academy.max_video_mb')) * 1024 * 1024;
+        $uploadLimit = $this->iniSizeInBytes(ini_get('upload_max_filesize'));
+        $postLimit = $this->iniSizeInBytes(ini_get('post_max_size'));
+
+        if ($uploadLimit > 0) {
+            $maxBytes = min($maxBytes, $uploadLimit);
+        }
+        if ($postLimit > 0) {
+            $maxBytes = min($maxBytes, max(1, $postLimit - 8 * 1024 * 1024));
+        }
+
+        return max(1, (int) floor($maxBytes / (1024 * 1024)));
+    }
+
+    private function iniSizeInBytes($value): int
+    {
+        if (!is_string($value) || !preg_match('/^\s*(\d+(?:\.\d+)?)\s*([KMG]?)B?\s*$/i', $value, $matches)) {
+            return 0;
+        }
+
+        $units = ['' => 1, 'K' => 1024, 'M' => 1048576, 'G' => 1073741824];
+        $unit = strtoupper($matches[2]);
+
+        return (int) ((float) $matches[1] * $units[$unit]);
     }
 
     private function applyVideo(Request $request, Lesson $lesson, array $data): ?string

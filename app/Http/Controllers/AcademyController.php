@@ -47,7 +47,9 @@ class AcademyController extends Controller
     {
         abort_unless($course->is_published, 404);
         if ($this->enrolled($request, $course)) {
-            return redirect()->route('academy.lesson', [$course, $course->lessons->first()?->id ?? 0]);
+            $firstLesson = $course->lessons->first();
+
+            return redirect()->route('academy.lesson', [$course, $firstLesson ? $firstLesson->id : 0]);
         }
 
         if ($course->is_free) {
@@ -97,7 +99,9 @@ class AcademyController extends Controller
         $path = Storage::disk(config('academy.video_disk'))->path($lesson->file_path);
         abort_unless(is_file($path), 404);
 
-        return response()->file($path, ['Content-Type' => 'video/mp4', 'Cache-Control' => 'private, no-store']);
+        $contentType = pathinfo($path, PATHINFO_EXTENSION) === 'webm' ? 'video/webm' : 'video/mp4';
+
+        return response()->file($path, ['Content-Type' => $contentType, 'Cache-Control' => 'private, no-store']);
     }
 
     public function complete(Request $request, Lesson $lesson)
