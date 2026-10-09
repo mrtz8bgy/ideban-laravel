@@ -1,12 +1,16 @@
--- Ideban Almas phase-two schema and seed data for MySQL 5.7+ / MariaDB 10.2+.
--- Generated from the Laravel migrations (2014 .. 2026_10_09_000003) and the
--- IdebanCatalogSeeder + ContentSeeder data. Import ONLY into an EMPTY database:
+-- Ideban Almas: full schema and sample data for MySQL 5.7+ / MariaDB 10.2+.
+-- Generated from the Laravel migrations (2014 .. 2026_10_09_000004) and seeders.
+-- Import ONLY into an EMPTY database:
 --   mysql -u USER -p DATABASE < database/ideban_mysql.sql
 -- The migrations ledger is included, so do NOT run `php artisan migrate` afterwards.
--- No staff accounts are included: create the first administrator with
---   php artisan ideban:make-admin
--- Sample articles are general guidance only; there are no client projects,
--- official tariffs or customer records in this dump.
+--
+-- ADMIN LOGIN (change the password after the first sign-in):
+--   Login page: /admin/login    Username: admin    Password: IdebanAlmas#Gold2026
+--   The password is stored as a bcrypt hash. The email admin@ideban.local also works.
+--
+-- Sample data is clearly labelled: portfolio entries contain "Demo" in client_name and
+-- show a "Sample" badge; the two leads have source "sample". Replace or delete them
+-- in the admin panel before going live. No official tariffs are included.
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,8 +56,8 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `articles` WRITE;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
 INSERT INTO `articles` VALUES
-(1,'website-backup-checklist','چک‌لیست بکاپ‌گیری از وب‌سایت','A practical website backup checklist','بکاپ فقط زمانی ارزش دارد که بتوان آن را بازیابی کرد. این فهرست کوتاه را پیش از هر به‌روزرسانی مرور کنید.','A backup is only useful if you can restore it. Review this short list before every update.','## چرا بکاپ کافی نیست؟\n\nبکاپی که هرگز آزمایش بازیابی نشده، فقط یک فایل است. هدف این است که در بدترین حالت بتوانید سایت را در زمان قابل قبول برگردانید.\n\n## فهرست پیشنهادی\n\n- بکاپ از پایگاه داده و فایل‌های آپلودی به‌صورت جداگانه تهیه شود.\n- نسخه‌ها در مکانی غیر از سرور اصلی نگهداری شوند.\n- حداقل یک بار در ماه بازیابی آزمایشی انجام شود.\n- دسترسی به فایل‌های بکاپ محدود به افراد مجاز باشد.\n\n## نکته امنیتی\n\nفایل `.env` و کلیدهای دسترسی را هرگز داخل بکاپ عمومی یا مخازن کد قرار ندهید.','## Why a backup alone is not enough\n\nA backup that has never been restored is only a file. The goal is to bring the site back within an acceptable time when something goes wrong.\n\n## Suggested checklist\n\n- Back up the database and uploaded files separately.\n- Store copies away from the production server.\n- Run a test restore at least once a month.\n- Limit access to backup files to authorised people.\n\n## Security note\n\nNever place `.env` files or access keys in public backups or code repositories.','امنیت و نگهداری / Security & maintenance','[\"backup\",\"security\"]',NULL,'Ideban Almas',NULL,NULL,NULL,1,'2026-10-02 17:21:57','2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(2,'choosing-a-website-platform','انتخاب بستر مناسب برای وب‌سایت کسب‌وکار','Choosing the right platform for a business website','پیش از انتخاب قالب یا ابزار، نیاز، بودجه، توان نگهداری و مسیر رشد را مشخص کنید.','Before choosing a theme or tool, define your needs, budget, maintenance capacity and growth path.','## سه پرسش کلیدی\n\n۱. سایت باید چه کاری انجام دهد: معرفی، فروش یا پشتیبانی؟\n۲. چه کسی بعداً محتوا و امکانات را به‌روز می‌کند؟\n۳. چه حجمی از داده و ترافیک را پیش‌بینی می‌کنید؟\n\n## مقایسه گزینه‌ها\n\nمعمولاً وب‌سایت معرفی ساده، فروشگاه آنلاین و نرم‌افزار سفارشی نیازهای متفاوتی دارند. انتخاب ابزار باید بر پایه همین نیازها باشد، نه صرفاً محبوبیت آن.','## Three key questions\n\n1. What should the site do: inform, sell or support?\n2. Who will update content and features later?\n3. What volume of data and traffic do you expect?\n\n## Comparing options\n\nA simple brochure site, an online shop and custom software have different requirements. Pick the tool based on those requirements rather than popularity alone.','راهنما / Guides','[\"website\",\"planning\"]',NULL,'Ideban Almas',NULL,NULL,NULL,1,'2026-10-06 17:21:57','2026-10-09 17:21:57','2026-10-09 17:21:57');
+(1,'website-backup-checklist','چک‌لیست بکاپ‌گیری از وب‌سایت','A practical website backup checklist','بکاپ فقط زمانی ارزش دارد که بتوان آن را بازیابی کرد. این فهرست کوتاه را پیش از هر به‌روزرسانی مرور کنید.','A backup is only useful if you can restore it. Review this short list before every update.','## چرا بکاپ کافی نیست؟\n\nبکاپی که هرگز آزمایش بازیابی نشده، فقط یک فایل است. هدف این است که در بدترین حالت بتوانید سایت را در زمان قابل قبول برگردانید.\n\n## فهرست پیشنهادی\n\n- بکاپ از پایگاه داده و فایل‌های آپلودی به‌صورت جداگانه تهیه شود.\n- نسخه‌ها در مکانی غیر از سرور اصلی نگهداری شوند.\n- حداقل یک بار در ماه بازیابی آزمایشی انجام شود.\n- دسترسی به فایل‌های بکاپ محدود به افراد مجاز باشد.\n\n## نکته امنیتی\n\nفایل `.env` و کلیدهای دسترسی را هرگز داخل بکاپ عمومی یا مخازن کد قرار ندهید.','## Why a backup alone is not enough\n\nA backup that has never been restored is only a file. The goal is to bring the site back within an acceptable time when something goes wrong.\n\n## Suggested checklist\n\n- Back up the database and uploaded files separately.\n- Store copies away from the production server.\n- Run a test restore at least once a month.\n- Limit access to backup files to authorised people.\n\n## Security note\n\nNever place `.env` files or access keys in public backups or code repositories.','امنیت و نگهداری / Security & maintenance','[\"backup\",\"security\"]','/images/article-backup.jpg','Ideban Almas',NULL,NULL,NULL,1,'2026-10-02 18:24:49','2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,'choosing-a-website-platform','انتخاب بستر مناسب برای وب‌سایت کسب‌وکار','Choosing the right platform for a business website','پیش از انتخاب قالب یا ابزار، نیاز، بودجه، توان نگهداری و مسیر رشد را مشخص کنید.','Before choosing a theme or tool, define your needs, budget, maintenance capacity and growth path.','## سه پرسش کلیدی\n\n۱. سایت باید چه کاری انجام دهد: معرفی، فروش یا پشتیبانی؟\n۲. چه کسی بعداً محتوا و امکانات را به‌روز می‌کند؟\n۳. چه حجمی از داده و ترافیک را پیش‌بینی می‌کنید؟\n\n## مقایسه گزینه‌ها\n\nمعمولاً وب‌سایت معرفی ساده، فروشگاه آنلاین و نرم‌افزار سفارشی نیازهای متفاوتی دارند. انتخاب ابزار باید بر پایه همین نیازها باشد، نه صرفاً محبوبیت آن.','## Three key questions\n\n1. What should the site do: inform, sell or support?\n2. Who will update content and features later?\n3. What volume of data and traffic do you expect?\n\n## Comparing options\n\nA simple brochure site, an online shop and custom software have different requirements. Pick the tool based on those requirements rather than popularity alone.','راهنما / Guides','[\"website\",\"planning\"]','/images/article-platform.jpg','Ideban Almas',NULL,NULL,NULL,1,'2026-10-06 18:24:49','2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -109,12 +113,15 @@ CREATE TABLE `leads` (
   CONSTRAINT `leads_assigned_to_foreign` FOREIGN KEY (`assigned_to`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `leads_plan_id_foreign` FOREIGN KEY (`plan_id`) REFERENCES `pricing_plans` (`id`) ON DELETE SET NULL,
   CONSTRAINT `leads_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `leads` WRITE;
 /*!40000 ALTER TABLE `leads` DISABLE KEYS */;
+INSERT INTO `leads` VALUES
+(1,'نمونه مشتری ۱ (Demo)','Demo Co.','09120000001',NULL,1,NULL,'sample','داده نمونه برای نمایش پنل فروش.','new',NULL,NULL,NULL,NULL,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,'نمونه مشتری ۲ (Demo)','Demo Retail','09120000002',NULL,1,NULL,'sample','داده نمونه برای نمایش پیگیری.','proposal',NULL,NULL,45000000,NULL,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `leads` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -127,7 +134,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
@@ -140,7 +147,8 @@ INSERT INTO `migrations` VALUES
 (4,'2019_12_14_000001_create_personal_access_tokens_table',1),
 (5,'2026_10_09_000001_add_role_to_users_table',1),
 (6,'2026_10_09_000002_create_business_tables',1),
-(7,'2026_10_09_000003_create_content_tables',1);
+(7,'2026_10_09_000003_create_content_tables',1),
+(8,'2026_10_09_000004_add_username_to_users_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -213,12 +221,16 @@ CREATE TABLE `portfolios` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `portfolios_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `portfolios` WRITE;
 /*!40000 ALTER TABLE `portfolios` DISABLE KEYS */;
+INSERT INTO `portfolios` VALUES
+(1,'sample-online-store','نمونه: فروشگاه آنلاین با پرداخت امن','Sample: online store with secure checkout','Demo (نمونه نمایشی)','فروشگاه قدیمی بدون مدیریت موجودی و با سرعت پایین بارگذاری.','A legacy store with no stock management and slow page loads.','بازطراحی رابط کاربری، ساختار محصول و بهینه‌سازی تصاویر و کش.','Redesigned UI, product structure, image optimisation and caching.','این نتیجه نمایشی است؛ نتایج واقعی را پس از تأیید مشتری وارد کنید.','Illustrative outcome only; add real measured results after client approval.','[\"WordPress\",\"WooCommerce\",\"Redis\"]','/images/portfolio-1.jpg',NULL,'2026-06-01',1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,'sample-docker-deployment','نمونه: استقرار خودکار با Docker و CI/CD','Sample: automated Docker deployment with CI/CD','Demo (نمونه نمایشی)','استقرار دستی و زمان‌بر نسخه‌های جدید نرم‌افزار.','Manual, time-consuming release process.','Docker Compose، پایپ‌لاین CI/CD و مانیتورینگ ساده سرور.','Docker Compose, a CI/CD pipeline and simple server monitoring.','نمونه آموزشی؛ مدت زمان استقرار را پس از اندازه‌گیری واقعی ثبت کنید.','Educational sample; record real deployment times after measuring.','[\"Docker\",\"GitLab CI\",\"Nginx\",\"Linux\"]','/images/portfolio-2.jpg',NULL,'2026-07-15',1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(3,'sample-security-hardening','نمونه: امن‌سازی سرور و بکاپ خودکار','Sample: server hardening and automated backups','Demo (نمونه نمایشی)','دسترسی‌های باز، نبود بکاپ منظم و نبود بازیابی آزموده‌شده.','Open access rules, no regular backups and no tested restore.','سخت‌سازی SSH، فایروال، به‌روزرسانی خودکار و بکاپ روزانه با تست بازیابی.','SSH hardening, firewall rules, automatic updates and daily backups with restore tests.','نمونه نمایشی؛ نتیجه را پس از ممیزی واقعی وارد کنید.','Demo sample; enter real audit results here.','[\"Ubuntu\",\"UFW\",\"Fail2ban\",\"Restic\"]','/images/portfolio-3.jpg',NULL,'2026-08-10',1,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -258,9 +270,9 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `pricing_plans` WRITE;
 /*!40000 ALTER TABLE `pricing_plans` DISABLE KEYS */;
 INSERT INTO `pricing_plans` VALUES
-(1,NULL,'base','پایه','Base','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(2,NULL,'professional','حرفه‌ای','Professional','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,2,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(3,NULL,'enterprise','سازمانی','Enterprise','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,3,'2026-10-09 17:21:57','2026-10-09 17:21:57');
+(1,NULL,'base','پایه','Base','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,NULL,'professional','حرفه‌ای','Professional','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,2,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(3,NULL,'enterprise','سازمانی','Enterprise','محدوده خدمات و هزینه پس از نیازسنجی و تأیید پیش‌فاکتور مشخص می‌شود.','Scope and cost are confirmed after discovery and an approved quotation.','[]','[]',NULL,NULL,NULL,NULL,'quote',NULL,1,1,3,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `pricing_plans` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -288,10 +300,10 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `service_categories` WRITE;
 /*!40000 ALTER TABLE `service_categories` DISABLE KEYS */;
 INSERT INTO `service_categories` VALUES
-(1,'طراحی سایت و نرم‌افزار','Web & software','web-software',NULL,NULL,1,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(2,'DevOps و زیرساخت','DevOps & infrastructure','devops-infrastructure',NULL,NULL,2,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(3,'پشتیبانی IT','IT support','it-support',NULL,NULL,3,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(4,'شبکه و امنیت','Network & security','network-security',NULL,NULL,4,1,'2026-10-09 17:21:57','2026-10-09 17:21:57');
+(1,'طراحی سایت و نرم‌افزار','Web & software','web-software',NULL,NULL,1,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,'DevOps و زیرساخت','DevOps & infrastructure','devops-infrastructure',NULL,NULL,2,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(3,'پشتیبانی IT','IT support','it-support',NULL,NULL,3,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(4,'شبکه و امنیت','Network & security','network-security',NULL,NULL,4,1,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `service_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -367,11 +379,11 @@ SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
 INSERT INTO `services` VALUES
-(1,1,'business-website','طراحی سایت شرکتی','Business website design','طراحی و پیاده‌سازی وب‌سایت متناسب با نیاز و هویت کسب‌وکار.','A business website designed around your goals and brand.','طراحی و پیاده‌سازی وب‌سایت متناسب با نیاز و هویت کسب‌وکار.','A business website designed around your goals and brand.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(2,1,'custom-laravel','توسعه نرم‌افزار اختصاصی Laravel','Custom Laravel development','توسعه سامانه‌ها و ماژول‌های اختصاصی با Laravel.','Custom applications and modules built with Laravel.','توسعه سامانه‌ها و ماژول‌های اختصاصی با Laravel.','Custom applications and modules built with Laravel.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(3,2,'deployment-devops','استقرار و DevOps','Deployment & DevOps','راه‌اندازی سرور، Docker، CI/CD، SSL و پشتیبان‌گیری.','Server setup, Docker, CI/CD, SSL, and backup workflows.','راه‌اندازی سرور، Docker، CI/CD، SSL و پشتیبان‌گیری.','Server setup, Docker, CI/CD, SSL, and backup workflows.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(4,3,'it-help-desk','پشتیبانی IT و Help Desk','IT support & help desk','پشتیبانی دوره‌ای کاربران، سیستم‌ها و زیرساخت فناوری.','Ongoing support for users, systems, and IT infrastructure.','پشتیبانی دوره‌ای کاربران، سیستم‌ها و زیرساخت فناوری.','Ongoing support for users, systems, and IT infrastructure.',NULL,NULL,NULL,NULL,NULL,0,1,'2026-10-09 17:21:57','2026-10-09 17:21:57'),
-(5,4,'network-security','شبکه و امنیت فناوری اطلاعات','IT network & security','ارزیابی و بهبود امنیت سایت، سرور و شبکه سازمان.','Assessment and improvement of website, server, and network security.','ارزیابی و بهبود امنیت سایت، سرور و شبکه سازمان.','Assessment and improvement of website, server, and network security.',NULL,NULL,NULL,NULL,NULL,0,1,'2026-10-09 17:21:57','2026-10-09 17:21:57');
+(1,1,'business-website','طراحی سایت شرکتی','Business website design','طراحی و پیاده‌سازی وب‌سایت متناسب با نیاز و هویت کسب‌وکار.','A business website designed around your goals and brand.','طراحی و پیاده‌سازی وب‌سایت متناسب با نیاز و هویت کسب‌وکار.','A business website designed around your goals and brand.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(2,1,'custom-laravel','توسعه نرم‌افزار اختصاصی Laravel','Custom Laravel development','توسعه سامانه‌ها و ماژول‌های اختصاصی با Laravel.','Custom applications and modules built with Laravel.','توسعه سامانه‌ها و ماژول‌های اختصاصی با Laravel.','Custom applications and modules built with Laravel.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(3,2,'deployment-devops','استقرار و DevOps','Deployment & DevOps','راه‌اندازی سرور، Docker، CI/CD، SSL و پشتیبان‌گیری.','Server setup, Docker, CI/CD, SSL, and backup workflows.','راه‌اندازی سرور، Docker، CI/CD، SSL و پشتیبان‌گیری.','Server setup, Docker, CI/CD, SSL, and backup workflows.',NULL,NULL,NULL,NULL,NULL,1,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(4,3,'it-help-desk','پشتیبانی IT و Help Desk','IT support & help desk','پشتیبانی دوره‌ای کاربران، سیستم‌ها و زیرساخت فناوری.','Ongoing support for users, systems, and IT infrastructure.','پشتیبانی دوره‌ای کاربران، سیستم‌ها و زیرساخت فناوری.','Ongoing support for users, systems, and IT infrastructure.',NULL,NULL,NULL,NULL,NULL,0,1,'2026-10-09 18:24:49','2026-10-09 18:24:49'),
+(5,4,'network-security','شبکه و امنیت فناوری اطلاعات','IT network & security','ارزیابی و بهبود امنیت سایت، سرور و شبکه سازمان.','Assessment and improvement of website, server, and network security.','ارزیابی و بهبود امنیت سایت، سرور و شبکه سازمان.','Assessment and improvement of website, server, and network security.',NULL,NULL,NULL,NULL,NULL,0,1,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -382,6 +394,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `username` varchar(60) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
@@ -390,13 +403,16 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_username_unique` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT, @@AUTOCOMMIT=0;
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES
+(1,'Ideban Admin','admin','admin@ideban.local','2026-10-09 18:24:49','$2y$10$8yKcUWKbu1.pvupyWGMz9OwvT16MgOr6Og/BH.qKyP6dvcf8HKzie','admin',NULL,'2026-10-09 18:24:49','2026-10-09 18:24:49');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;

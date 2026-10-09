@@ -5,18 +5,19 @@
 <section class="hero">
     <div class="container hero-grid">
         <div class="hero-copy">
-            <span class="eyebrow">{{ __('site.company') }}</span>
+            <span class="hero-kicker">{{ __('site.company') }}</span>
             <h1>{{ __('site.hero_title') }}</h1>
             <p>{{ __('site.hero_text') }}</p>
             <div class="button-row">
                 <a class="button" href="{{ route('contact') }}">{{ __('site.request_quote') }} <span aria-hidden="true">↗</span></a>
                 <a class="button button-ghost" href="{{ route('services.index') }}">{{ __('site.view_services') }}</a>
             </div>
+            <div class="social-row" aria-hidden="true"><span>f</span><span>t</span><span>in</span></div>
             <p class="hero-tagline">{{ __('site.tagline') }}</p>
         </div>
         <div class="hero-art" aria-hidden="true">
             <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-            <div class="art-core"><span>IDE</span><b>01</b></div>
+            <div class="art-core"><span>IDEBAN<br>ALMAS</span><b>{{ app()->getLocale() === 'fa' ? 'فناوری کسب‌وکار' : 'BUSINESS TECH' }}</b></div>
             <div class="art-chip chip-one">WEB</div><div class="art-chip chip-two">CLOUD</div><div class="art-chip chip-three">SECURE</div>
         </div>
     </div>
@@ -70,7 +71,7 @@
                 @foreach ($portfolios as $portfolio)
                     <a class="work-card" href="{{ route('portfolio.show', $portfolio->slug) }}">
                         @if ($portfolio->image_url)<img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->{'title_'.app()->getLocale()} }}" loading="lazy">@else<div class="work-placeholder">IDE<span>•</span>WORK</div>@endif
-                        <div><h3>{{ $portfolio->{'title_'.app()->getLocale()} }}</h3><span>{{ __('site.details') }} ↗</span></div>
+                        <div>@if (str_contains((string) $portfolio->client_name, 'Demo'))<span class="sample-tag">{{ app()->getLocale() === 'fa' ? 'نمونه نمایشی' : 'Sample' }}</span>@endif<h3>{{ $portfolio->{'title_'.app()->getLocale()} }}</h3><span>{{ __('site.details') }} ↗</span></div>
                     </a>
                 @endforeach
             </div>

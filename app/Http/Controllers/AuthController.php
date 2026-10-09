@@ -14,13 +14,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
+        $data = $request->validate([
+            'login' => ['required', 'string', 'max:190'],
             'password' => ['required', 'string'],
         ]);
 
+        $field = filter_var($data['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [$field => $data['login'], 'password' => $data['password']];
+
         if (!Auth::attempt($credentials, $request->boolean('remember'))) {
-            return back()->withErrors(['email' => __('auth.failed')])->withInput($request->only('email'));
+            return back()->withErrors(['login' => __('auth.failed')])->withInput($request->only('login'));
         }
 
         $request->session()->regenerate();
@@ -30,7 +33,7 @@ class AuthController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return back()->withErrors(['email' => __('auth.failed')])->withInput($request->only('email'));
+            return back()->withErrors(['login' => __('auth.failed')])->withInput($request->only('login'));
         }
 
         return redirect()->intended(route('admin.dashboard'));

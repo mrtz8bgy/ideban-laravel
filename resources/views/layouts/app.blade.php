@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#070707">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&family=Cinzel:wght@600;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Vazirmatn:wght@400;600;800&display=swap">
     <link rel="stylesheet" href="{{ asset('css/ideban.css') }}">
 </head>
 <body>

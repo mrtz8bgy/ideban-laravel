@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'username_or_email' => 'Username or email',
     'brand' => 'Ideban Almas',
     'company' => 'Ideban Almas Network Processors',
     'founder_name' => 'Morteza Behnami',

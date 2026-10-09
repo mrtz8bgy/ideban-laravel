@@ -8,7 +8,7 @@
             @foreach ($portfolios as $portfolio)
                 <a class="work-card" href="{{ route('portfolio.show', $portfolio->slug) }}">
                     @if ($portfolio->image_url)<img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->{'title_'.app()->getLocale()} }}" loading="lazy">@else<div class="work-placeholder">IDE<span>•</span>WORK</div>@endif
-                    <div><h2>{{ $portfolio->{'title_'.app()->getLocale()} }}</h2><span>{{ __('site.details') }} ↗</span></div>
+                    <div><div>@if (str_contains((string) $portfolio->client_name, 'Demo'))<span class="sample-tag">{{ app()->getLocale() === 'fa' ? 'نمونه نمایشی' : 'Sample' }}</span>@endif<h2>{{ $portfolio->{'title_'.app()->getLocale()} }}</h2></div><span>{{ __('site.details') }} ↗</span></div>
                 </a>
             @endforeach
         </div>

@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(IdebanCatalogSeeder::class);
         $this->call(ContentSeeder::class);
+        $this->call(DemoContentSeeder::class);
+        $this->call(AdminAccountSeeder::class);
     }
 }
