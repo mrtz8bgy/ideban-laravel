@@ -20,6 +20,6 @@
 @endunless
 <h2>{{ tr('پرداخت‌ها', 'Payments') }}</h2>
 <div class="table-wrap"><table><tbody>
-@forelse ($invoice->payments as $p)<tr><td>{{ number_format($p->amount) }}</td><td>{{ $p->method }}</td><td>{{ $p->status }}</td><td>{{ $p->reference_id }}</td><td><a href="{{ route('admin.payments.index', ['status' => $p->status]) }}">{{ tr('مدیریت', 'Manage') }}</a></td></tr>@empty<tr><td>{{ tr('پرداختی ثبت نشده است.', 'No payments.') }}</td></tr>@endforelse
+@forelse ($invoice->payments as $p)<tr><td>{{ number_format($p->amount) }}</td><td>{{ $p->method }}</td><td>{{ $p->status }}</td><td>{{ $p->reference_id }}</td><td class="table-actions"><a href="{{ route('admin.payments.index', ['status' => $p->status]) }}">{{ tr('مدیریت', 'Manage') }}</a></td></tr>@empty<tr><td>{{ tr('پرداختی ثبت نشده است.', 'No payments.') }}</td></tr>@endforelse
 </tbody></table></div>
 @endsection

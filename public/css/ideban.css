@@ -282,14 +282,23 @@ td a { color: var(--gold); }
 .form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 12px; margin-top: 20px; }
 .form-actions .button, .form-actions .button-ghost, .form-actions .button-danger { margin: 0; }
 .form-card .form-actions, .admin-form .form-actions { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
-.table-actions .form-actions { margin: 0; }
+.table-actions .form-actions, .filter-bar .form-actions, .lead-update .form-actions { margin: 0; padding: 0; border: 0; }
 .button-secondary { color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid var(--line); box-shadow: none; }
 .button-secondary:hover { color: var(--gold-light); border-color: var(--line-strong); background: rgba(212,175,97,.08); box-shadow: none; }
 .button-danger { color: #ffb4a8; background: transparent; border: 1px solid rgba(255,120,100,.5); box-shadow: none; }
 .button-danger:hover { background: rgba(255,120,100,.1); box-shadow: none; }
-.table-actions { display: flex; align-items: center; gap: 12px; }
-.table-actions a, .link-danger { color: var(--gold); font-size: 12px; }
-.table-actions form { margin: 0; }
+.table-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 150px; }
+.table-actions > a, .table-actions .link-danger {
+    display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; min-height: 36px;
+    padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 999px;
+    color: var(--gold-light); background: rgba(212,175,97,.05); font-size: 12px; line-height: 1.2;
+    text-decoration: none; white-space: nowrap; transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.table-actions > a:hover { color: #0a0a0a; border-color: transparent; background: var(--gold-gradient); }
+.table-actions .link-danger { border-color: rgba(255,120,100,.42); color: #ffb4a8; background: rgba(255,120,100,.04); }
+.table-actions .link-danger:hover { border-color: rgba(255,120,100,.75); background: rgba(255,120,100,.12); }
+.table-actions form { display: flex; flex: 0 0 auto; align-items: center; margin: 0; }
+.table-actions .button { min-height: 36px; padding: 7px 12px; font-size: 11px; }
 .lesson-actions { min-width: 140px; }
 .lesson-actions .button { min-height: 34px; padding: 5px 12px; font-size: 11px; letter-spacing: .02em; }
 .link-danger { padding: 0; border: 0; background: transparent; color: var(--danger); cursor: pointer; }
@@ -304,6 +313,7 @@ td a { color: var(--gold); }
 .lead-update label { display: flex; flex-direction: column; gap: 5px; }
 .lead-update input, .lead-update select { min-height: 40px; font-size: 12px; }
 .lead-update .note-field { grid-column: span 3; }
+.lead-update .form-actions { align-self: end; }
 .lead-update .button { justify-self: start; }
 .admin-body .table-wrap { background: var(--panel); }
 
@@ -418,5 +428,6 @@ td a { color: var(--gold); }
 /* Filter bars: controls keep their natural width and the button stays on the same row */
 .filter-bar select, .filter-bar input { width: auto; min-width: 220px; }
 .filter-bar .button { flex: 0 0 auto; margin: 0; }
+.filter-bar .form-actions { align-self: end; }
 /* Language switch: Persian label needs a Persian-capable font */
 .locale-link { font-family: Vazirmatn, Tahoma, sans-serif; font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: .08em; }
