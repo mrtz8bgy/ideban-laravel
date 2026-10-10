@@ -112,4 +112,27 @@ class MenuTest extends TestCase
         $this->get('/lang/en');
         $this->get('/')->assertOk()->assertSee('href="http://localhost/services#network"', false);
     }
+
+    public function test_links_and_seo_follow_a_new_domain()
+    {
+        \Illuminate\Support\Facades\URL::forceRootUrl(null);
+        $this->makeTree();
+        $this->get('/lang/en');
+
+        $html = $this->get('http://new-domain.example/')->assertOk()->getContent();
+        $this->assertStringContainsString('href="http://new-domain.example/services#network"', $html);
+        $this->assertStringContainsString('rel="canonical" href="http://new-domain.example"', $html);
+        $this->assertStringNotContainsString('localhost', $html);
+
+        $sitemap = $this->get('http://new-domain.example/sitemap.xml')->assertOk()->getContent();
+        $this->assertStringContainsString('<loc>http://new-domain.example/services</loc>', $sitemap);
+        $this->assertStringNotContainsString('localhost', $sitemap);
+    }
+
+    public function test_no_hard_coded_host_in_public_views()
+    {
+        foreach (['resources/views/layouts/app.blade.php', 'resources/views/partials/menu.blade.php', 'resources/views/partials/slider.blade.php'] as $file) {
+            $this->assertStringNotContainsString('localhost', file_get_contents(base_path($file)), $file);
+        }
+    }
 }
