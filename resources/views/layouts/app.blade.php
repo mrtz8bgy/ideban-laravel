@@ -15,7 +15,7 @@
 <body>
 <header class="site-header">
     <div class="container nav-wrap">
-        <a class="brand" href="{{ route('home') }}"><span class="brand-mark">I</span><span>{{ __('site.brand') }}</span></a>
+        <a class="brand" href="{{ route('home') }}"><img class="brand-logo" src="{{ asset('images/brand/ideban-logo-gold-256.jpg') }}" alt="{{ __('site.brand') }}" width="64" height="64"></a>
         @include('partials.menu')
         <div class="nav-actions">
             <a class="locale-link" href="{{ route('search') }}">{{ tr('جستجو', 'Search') }}</a>
@@ -37,7 +37,7 @@
 </main>
 <footer class="site-footer">
     <div class="container footer-grid">
-        <div><a class="brand brand-light" href="{{ route('home') }}"><span class="brand-mark">I</span><span>{{ __('site.company') }}</span></a><p>{{ __('site.footer_text') }}</p></div>
+        <div><a class="brand brand-light" href="{{ route('home') }}"><img class="brand-logo brand-logo-footer" src="{{ asset('images/brand/ideban-logo-gold-256.jpg') }}" alt="{{ __('site.company') }}" width="64" height="64"></a><p>{{ __('site.footer_text') }}</p></div>
         <div><strong>{{ __('site.services') }}</strong><a href="{{ route('services.index') }}">{{ __('site.all_services') }}</a><a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a><a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a><a href="{{ route('team.index') }}">{{ tr('تیم و رزومه‌ها', 'Team & resumes') }}</a></div>
         <div><strong>{{ __('site.contact') }}</strong><a href="tel:09104927131" dir="ltr">09104927131</a><a href="{{ route('contact') }}">{{ __('site.request_quote') }}</a></div>
     </div>

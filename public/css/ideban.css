@@ -532,3 +532,8 @@ td a { color: var(--gold); }
 .mega-col { min-width: 0; }
 .mega-links a { overflow-wrap: anywhere; }
 @media (min-width: 1601px) { .mega-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } }
+
+/* Gold logo */
+.brand-logo { display: block; width: 64px; height: 64px; object-fit: contain; flex: 0 0 auto; }
+.brand-logo-footer { width: 150px; height: 150px; margin-bottom: 4px; }
+@media (max-width: 760px) { .brand-logo { width: 52px; height: 52px; } }
