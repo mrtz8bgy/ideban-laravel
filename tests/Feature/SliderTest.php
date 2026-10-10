@@ -43,8 +43,17 @@ class SliderTest extends TestCase
         $this->seed(SlideSeeder::class);
         $this->get('/lang/en');
 
-        $this->get('/')->assertOk()->assertSee('Sample');
-        $this->assertSame(3, Slide::where('is_sample', true)->count());
+        // Company slides are real marketing content, not samples.
+        $this->assertSame(3, Slide::where('is_sample', false)->count());
+        $this->assertSame(0, Slide::where('is_sample', true)->count());
+
+        // A slide flagged as sample must still be labelled on the homepage.
+        Slide::create([
+            'title_en' => 'Sample labelled slide', 'title_fa' => 'اسلاید نمونه',
+            'image_path' => 'images/samples/category-cctv-security.jpg',
+            'is_sample' => true, 'is_active' => true, 'sort_order' => 99,
+        ]);
+        $this->get('/')->assertOk()->assertSee('Sample labelled slide')->assertSee('Sample');
     }
 
     public function test_admin_can_create_edit_and_deactivate_slides()
