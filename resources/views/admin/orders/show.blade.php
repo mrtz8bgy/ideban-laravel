@@ -5,6 +5,7 @@
 <div class="form-card">
     <p><strong>{{ tr('مشتری', 'Customer') }}:</strong> {{ optional($order->user)->name }} · <span dir="ltr">{{ optional($order->user)->phone }}</span> · {{ optional($order->user)->company }}</p>
     <p><strong>{{ tr('خدمت', 'Service') }}:</strong> {{ optional($order->service)->{'title_'.app()->getLocale()} }} · <strong>{{ tr('بسته', 'Plan') }}:</strong> {{ optional($order->plan)->{'name_'.app()->getLocale()} ?? '—' }}</p>
+    @if ($order->plan_price_type)<p><strong>{{ tr('قیمت بسته در زمان سفارش', 'Plan price at order time') }}:</strong> {{ $order->plan_price_type === 'company' ? __('site.price_company') : ($order->plan_price_type === 'negotiated' ? __('site.price_negotiated') : __('site.quote_only')) }} @if ($order->plan_setup_fee !== null) — {{ tr('راه‌اندازی', 'Setup') }} {{ number_format($order->plan_setup_fee) }} @if ($order->plan_recurring_fee) · {{ tr('دوره‌ای', 'Recurring') }} {{ number_format($order->plan_recurring_fee) }} @endif {{ tr('تومان', 'Toman') }} @endif</p>@endif
     <p><strong>{{ tr('افزودنی‌ها', 'Add-ons') }}:</strong> {{ $addons->map(fn ($a) => $a->{'name_'.app()->getLocale()})->implode('، ') ?: '—' }}</p>
     <p><strong>{{ tr('یادداشت مشتری', 'Customer note') }}:</strong> {{ $order->customer_note ?: '—' }}</p>
     <p><strong>{{ tr('برآورد سیستم', 'System estimate') }}:</strong> {{ $order->estimate_setup !== null ? number_format($order->estimate_setup).' '.tr('تومان', 'Toman') : tr('استعلام قیمت', 'Price inquiry') }}</p>

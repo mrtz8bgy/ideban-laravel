@@ -147,7 +147,7 @@ class CatalogController extends Controller
                 'description_en' => ['nullable', 'string'],
                 'features_fa' => ['nullable', 'string'],
                 'features_en' => ['nullable', 'string'],
-                'setup_fee' => ['nullable', 'integer', 'min:0'],
+                'setup_fee' => ['nullable', 'integer', 'min:0', 'required_unless:price_type,quote'],
                 'recurring_fee' => ['nullable', 'integer', 'min:0'],
                 'recurrence_fa' => ['nullable', 'string', 'max:80'],
                 'recurrence_en' => ['nullable', 'string', 'max:80'],

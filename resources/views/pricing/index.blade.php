@@ -21,7 +21,7 @@
                 <div class="plan-actions">
                     @auth
                         @if (auth()->user()->isCustomer())
-                            <form method="post" action="{{ route('account.plans.order', $plan) }}">@csrf<button class="button button-full" type="submit">{{ tr('ثبت سفارش این بسته', 'Order this plan') }}</button></form>
+                            <a class="button button-full" href="{{ route('account.plans.checkout', $plan) }}">{{ tr('ثبت سفارش این بسته', 'Order this plan') }}</a>
                         @endif
                     @else
                         <a class="button button-full" href="{{ route('login') }}">{{ tr('ورود برای ثبت سفارش', 'Log in to order') }}</a>

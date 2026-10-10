@@ -83,6 +83,7 @@ Route::prefix('account')->name('account.')->middleware(['auth', 'role:customer']
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
     Route::put('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
     Route::get('/orders', [AccountController::class, 'orders'])->name('orders.index');
+    Route::get('/plans/{plan}/checkout', [\App\Http\Controllers\Account\PlanOrderController::class, 'checkout'])->name('plans.checkout');
     Route::post('/plans/{plan}/order', [\App\Http\Controllers\Account\PlanOrderController::class, 'store'])->middleware('throttle:10,1')->name('plans.order');
     Route::get('/orders/{order}', [AccountController::class, 'showOrder'])->name('orders.show');
     Route::get('/invoices', [AccountController::class, 'invoices'])->name('invoices.index');

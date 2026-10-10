@@ -26,6 +26,12 @@ class PricingPlan extends Model
         return $this->belongsTo(Service::class);
     }
 
+    /** True when no amount can be shown: quote-only plans or plans without a setup fee. */
+    public function isQuoteOnly(): bool
+    {
+        return $this->price_type === 'quote' || $this->setup_fee === null;
+    }
+
     public function getMediaUrlAttribute()
     {
         return PublicMedia::url($this->media_path);

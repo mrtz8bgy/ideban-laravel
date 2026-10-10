@@ -12,6 +12,7 @@ class Order extends Model
     protected $fillable = [
         'reference', 'user_id', 'lead_id', 'service_id', 'plan_id', 'status', 'progress_percent',
         'customer_note', 'staff_note', 'addon_ids', 'estimate_setup', 'estimate_recurring',
+        'plan_price_type', 'plan_setup_fee', 'plan_recurring_fee',
     ];
 
     protected $casts = ['addon_ids' => 'array', 'progress_percent' => 'integer'];

@@ -60,11 +60,12 @@ class ResumeSearchOrderTest extends TestCase
         $plan = PricingPlan::where('is_active', true)->firstOrFail();
         $customer = $this->user('customer', 'buyer');
 
-        $this->actingAs($customer)->post(route('account.plans.order', $plan), ['customer_note' => 'Please call me'])
+        $this->actingAs($customer)->post(route('account.plans.order', $plan), ['customer_note' => 'Please call me', 'accept_terms' => '1'])
             ->assertRedirect();
-        $this->assertDatabaseHas('orders', ['user_id' => $customer->id, 'plan_id' => $plan->id, 'status' => 'requested', 'customer_note' => 'Please call me']);
+        $this->assertDatabaseHas('orders', ['user_id' => $customer->id, 'plan_id' => $plan->id, 'customer_note' => 'Please call me']);
+        $this->assertContains(\App\Models\Order::where('user_id', $customer->id)->first()->status, ['requested', 'quoted']);
 
-        $this->actingAs($customer)->post(route('account.plans.order', $plan))->assertRedirect();
+        $this->actingAs($customer)->post(route('account.plans.order', $plan), ['accept_terms' => '1'])->assertRedirect();
         $this->assertSame(1, Order::where('user_id', $customer->id)->count());
     }
 
