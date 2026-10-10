@@ -10,7 +10,7 @@
                     <h2 class="gold-text">{{ $slide->{'title_'.$loc} }}</h2>
                     @if ($slide->{'subtitle_'.$loc})<p>{{ $slide->{'subtitle_'.$loc} }}</p>@endif
                     @if ($slide->button_url && $slide->{'button_text_'.$loc})
-                        <a class="button button-small" href="{{ $slide->button_url }}">{{ $slide->{'button_text_'.$loc} }}</a>
+                        <a class="button button-small" href="{{ \App\Support\AppLink::resolve($slide->button_url) }}">{{ $slide->{'button_text_'.$loc} }}</a>
                     @endif
                 </div>
             </figure>

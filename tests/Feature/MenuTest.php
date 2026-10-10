@@ -92,4 +92,24 @@ class MenuTest extends TestCase
     {
         $this->get(route('admin.menu.index'))->assertRedirect();
     }
+
+    public function test_menu_links_follow_the_site_folder()
+    {
+        \Illuminate\Support\Facades\URL::forceRootUrl('http://localhost/ideban-laravel/public');
+        $this->assertSame('http://localhost/ideban-laravel/public/services/business-website',
+            \App\Support\AppLink::resolve('/services/business-website'));
+        $this->assertSame('http://localhost/ideban-laravel/public/services#network',
+            \App\Support\AppLink::resolve('/services#network'));
+        $this->assertSame('http://localhost/ideban-laravel/public/pricing?x=1#plans',
+            \App\Support\AppLink::resolve('/pricing?x=1#plans'));
+        $this->assertSame('#top', \App\Support\AppLink::resolve('#top'));
+        $this->assertSame('https://example.com/a', \App\Support\AppLink::resolve('https://example.com/a'));
+
+        \Illuminate\Support\Facades\URL::forceRootUrl(null);
+        $this->assertSame('http://localhost/services/x', \App\Support\AppLink::resolve('/services/x'));
+
+        $this->makeTree();
+        $this->get('/lang/en');
+        $this->get('/')->assertOk()->assertSee('href="http://localhost/services#network"', false);
+    }
 }

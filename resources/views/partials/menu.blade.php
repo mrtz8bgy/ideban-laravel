@@ -11,18 +11,18 @@
     <ul class="menu-root">
         @foreach ($menuTree as $item)
             <li class="menu-item{{ $item->children->isNotEmpty() ? ' has-mega' : '' }}">
-                <a href="{{ $item->url }}"@if ($item->children->isNotEmpty()) aria-haspopup="true" @endif>{{ $item->labelFor($menuLocale) }}</a>
+                <a href="{{ \App\Support\AppLink::resolve($item->url) }}"@if ($item->children->isNotEmpty()) aria-haspopup="true" @endif>{{ $item->labelFor($menuLocale) }}</a>
                 @if ($item->children->isNotEmpty())
                     <div class="mega" role="region" aria-label="{{ $item->labelFor($menuLocale) }}">
                         <div class="container mega-inner">
                             <div class="mega-grid">
                                 @foreach ($item->children as $column)
                                     <div class="mega-col">
-                                        <a class="mega-title" href="{{ $column->url }}">{{ $column->labelFor($menuLocale) }}</a>
+                                        <a class="mega-title" href="{{ \App\Support\AppLink::resolve($column->url) }}">{{ $column->labelFor($menuLocale) }}</a>
                                         @if ($column->children->isNotEmpty())
                                             <ul class="mega-links">
                                                 @foreach ($column->children as $link)
-                                                    <li><a href="{{ $link->url }}">{{ $link->labelFor($menuLocale) }}</a></li>
+                                                    <li><a href="{{ \App\Support\AppLink::resolve($link->url) }}">{{ $link->labelFor($menuLocale) }}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endif
