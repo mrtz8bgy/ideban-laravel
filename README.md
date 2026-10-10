@@ -127,6 +127,6 @@ The feature tests cover the public RTL landing page, lead persistence, suppressi
 
 The seeders add two sample courses, three sample add-ons and the sample discount code `SAMPLE10`. Every item is labelled "نمونه" / "Sample". No video files are attached, and add-ons are quote-only (no amounts). The lessons are placeholders until you upload real videos.
 
-### Still to build
+### Still to build lastupdate
 
 Contracts, user and role management screens, sales reports, company and SEO settings screens. The ZarinPal amount unit (`ZARINPAL_AMOUNT_MULTIPLIER`) must be verified against your merchant account before live payments are enabled.
