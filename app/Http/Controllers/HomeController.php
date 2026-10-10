@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Portfolio;
+use App\Models\Resume;
 use App\Models\PricingPlan;
 use App\Models\Service;
 use App\Models\ServiceCategory;
@@ -22,6 +23,7 @@ class HomeController extends Controller
             'portfolios' => Portfolio::where('is_published', true)->latest('completed_at')->take(3)->get(),
             'videos' => Video::public()->latest('published_at')->take(3)->get(),
             'articles' => Article::public()->latest('published_at')->take(3)->get(),
+            'team' => Resume::published()->latest('updated_at')->take(4)->get(),
         ]);
     }
 }

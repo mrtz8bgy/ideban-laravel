@@ -143,6 +143,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
         Route::resource('/slides', AdminSlideController::class)->except(['show'])->names('slides');
 
         Route::resource('/resumes', \App\Http\Controllers\Admin\ResumeController::class)->except(['show'])->names('resumes');
+        Route::resource('/menu', \App\Http\Controllers\Admin\MenuController::class)->except(['show'])->names('menu');
         Route::post('/resumes/{resume}/items', [\App\Http\Controllers\Admin\ResumeController::class, 'storeItem'])->name('resumes.items.store');
         Route::delete('/resumes/{resume}/items/{item}', [\App\Http\Controllers\Admin\ResumeController::class, 'destroyItem'])->name('resumes.items.destroy');
 

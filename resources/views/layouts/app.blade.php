@@ -16,16 +16,7 @@
 <header class="site-header">
     <div class="container nav-wrap">
         <a class="brand" href="{{ route('home') }}"><span class="brand-mark">I</span><span>{{ __('site.brand') }}</span></a>
-        <nav class="main-nav" aria-label="{{ app()->getLocale() === 'fa' ? 'منوی اصلی' : 'Main navigation' }}">
-            <a href="{{ route('home') }}">{{ __('site.home') }}</a>
-            <a href="{{ route('services.index') }}">{{ __('site.services') }}</a>
-            <a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a>
-            <a href="{{ route('calculator.index') }}">{{ tr('ماشین‌حساب', 'Calculator') }}</a>
-            <a href="{{ route('portfolio.index') }}">{{ __('site.portfolio') }}</a>
-            <a href="{{ route('videos.index') }}">{{ __('content.nav_videos') }}</a>
-            <a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a>
-            <a href="{{ route('academy.index') }}">{{ tr('آکادمی', 'Academy') }}</a>
-        </nav>
+        @include('partials.menu')
         <div class="nav-actions">
             <a class="locale-link" href="{{ route('search') }}">{{ tr('جستجو', 'Search') }}</a>
             <a class="locale-link" href="{{ route('locale.update', app()->getLocale() === 'fa' ? 'en' : 'fa') }}">{{ app()->getLocale() === 'fa' ? 'EN' : 'فا' }}</a>

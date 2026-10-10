@@ -9,7 +9,7 @@
         @foreach (['categories' => __('site.categories'), 'services' => __('site.services'), 'plans' => __('site.plans'), 'addons' => tr('افزودنی‌ها', 'Add-ons'), 'prices' => tr('تعرفه‌ها و منابع', 'Rates and sources'), 'portfolio' => __('site.portfolio')] as $type => $label)<a href="{{ route('admin.catalog.index', $type) }}">{{ $label }}</a>@endforeach
         <a href="{{ route('admin.content.index', 'articles') }}">{{ __('content.admin_articles') }}</a>
         <a href="{{ route('admin.content.index', 'videos') }}">{{ __('content.admin_videos') }}</a>
-        <a href="{{ route('admin.slides.index') }}">{{ tr('اسلایدر صفحه اصلی', 'Homepage slider') }}</a><a href="{{ route('admin.resumes.index') }}">{{ tr('رزومه‌ها', 'Resumes') }}</a>
+        <a href="{{ route('admin.slides.index') }}">{{ tr('اسلایدر صفحه اصلی', 'Homepage slider') }}</a><a href="{{ route('admin.resumes.index') }}">{{ tr('رزومه‌ها', 'Resumes') }}</a><a href="{{ route('admin.menu.index') }}">{{ tr('منوی سایت', 'Site menu') }}</a>
         <a href="{{ route('admin.courses.index') }}">{{ tr('دوره‌ها و ویدیو', 'Courses & video') }}</a>
         <a href="{{ route('admin.discounts.index') }}">{{ tr('کدهای تخفیف', 'Discount codes') }}</a>
     @endif

@@ -98,6 +98,21 @@
     </div>
 </section>
 @endif
+@if ($team->isNotEmpty())
+<section class="section">
+    <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">{{ __('site.company') }}</span><h2>{{ app()->getLocale() === 'fa' ? 'تیم متخصص ما' : 'Meet the team' }}</h2></div><a class="text-link" href="{{ route('team.index') }}">{{ app()->getLocale() === 'fa' ? 'همه رزومه‌ها' : 'All resumes' }} ↗</a></div>
+        <div class="card-grid">
+            @foreach ($team as $person)
+                <a class="content-card" href="{{ route('team.show', $person) }}">
+                    <div class="thumb">@if ($person->photo_url)<img src="{{ $person->photo_url }}" alt="{{ $person->{'name_'.app()->getLocale()} }}" loading="lazy">@else<span>IDE</span>@endif</div>
+                    <div class="body"><h3>{{ $person->{'name_'.app()->getLocale()} }}</h3><p>{{ $person->{'job_title_'.app()->getLocale()} }}@if ($person->is_sample) · <span class="sample-tag">{{ app()->getLocale() === 'fa' ? 'نمونه' : 'Sample' }}</span>@endif</p></div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 <section class="section process-section">
     <div class="container">
         <span class="eyebrow">{{ app()->getLocale() === 'fa' ? 'مسیر همکاری' : 'How we work' }}</span>
