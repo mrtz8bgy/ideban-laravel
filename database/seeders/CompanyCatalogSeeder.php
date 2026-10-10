@@ -89,7 +89,7 @@ class CompanyCatalogSeeder extends Seeder
                 'included_en' => ['Zabbix or Prometheus setup', 'Grafana dashboards with key indicators', 'Alert rules (CPU, bandwidth, availability)', 'Monthly performance report'],
                 'excluded_fa' => ['پشتیبانی ۲۴ ساعته (در قرارداد نگهداری جداگانه ارائه می‌شود)'],
                 'excluded_en' => ['24/7 on-call support (offered under a separate maintenance contract)'],
-                'delivery_days' => 14, 'is_featured' => false, 'media_path' => null,
+                'delivery_days' => 14, 'is_featured' => false, 'media_path' => 'images/samples/service-network-monitoring.jpg',
             ],
             [
                 'category' => 'cctv-security', 'slug' => 'cctv-installation',
@@ -128,7 +128,7 @@ class CompanyCatalogSeeder extends Seeder
                 'included_en' => ['Vulnerability scanning (Nmap, OpenVAS)', 'Review of switch, firewall and server configuration', 'Scoped penetration testing with written authorisation (on request)', 'Prioritised report with remediation steps'],
                 'excluded_fa' => ['اجرای اصلاحات (در صورت درخواست، جداگانه پیشنهاد می‌شود)'],
                 'excluded_en' => ['Implementation of fixes (quoted separately on request)'],
-                'delivery_days' => 14, 'is_featured' => false, 'media_path' => null,
+                'delivery_days' => 14, 'is_featured' => false, 'media_path' => 'images/samples/service-network-security-audit.jpg',
             ],
             [
                 'category' => 'network-security', 'slug' => 'firewall-vpn',
@@ -141,7 +141,7 @@ class CompanyCatalogSeeder extends Seeder
                 'included_en' => ['Firewall and access rule configuration', 'Secure VPN for remote access', 'Security zone separation (DMZ, internal, guest)', 'Secure firmware updates', 'Rule documentation'],
                 'excluded_fa' => ['خرید فایروال یا سرور VPN (بر اساس نیاز پیشنهاد می‌شود)'],
                 'excluded_en' => ['Purchase of firewall or VPN hardware (recommended based on need)'],
-                'delivery_days' => 14, 'is_featured' => false, 'media_path' => null,
+                'delivery_days' => 14, 'is_featured' => false, 'media_path' => 'images/samples/service-firewall-vpn.jpg',
             ],
             [
                 'category' => 'devops-infrastructure', 'slug' => 'devops-pipeline',
