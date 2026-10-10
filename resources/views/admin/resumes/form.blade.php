@@ -72,33 +72,55 @@
         @endforeach
     </div>
 
-    <form class="form-card admin-form" method="post" action="{{ route('admin.resumes.items.store', $resume) }}" style="margin-top:18px">
+    @php($loc = app()->getLocale())
+    <form class="form-card admin-form" method="post" action="{{ route('admin.resumes.items.store', $resume) }}" style="margin-top:18px" id="resume-item-form">
         @csrf
-        <h2 style="font-size:20px;margin-bottom:14px">{{ tr('افزودن مورد', 'Add entry') }}</h2>
+        <h2 style="font-size:20px;margin-bottom:6px">{{ tr('افزودن مورد', 'Add entry') }}</h2>
+        <p class="form-hint">{{ tr('نوع مورد را انتخاب کنید؛ برچسب فیلدها متناسب با آن تغییر می‌کند.', 'Choose the entry type; the field labels update to match.') }}</p>
         <div class="form-row">
             <div class="form-field"><label for="type">{{ tr('نوع', 'Type') }}</label>
                 <select id="type" name="type" required>
-                    @foreach (\App\Models\Resume::ITEM_TYPES as $type => $label)<option value="{{ $type }}">{{ $label[app()->getLocale()] }}</option>@endforeach
+                    @foreach (\App\Models\Resume::ITEM_TYPES as $type => $label)<option value="{{ $type }}" @selected(old('type') === $type)>{{ $label[$loc] }}</option>@endforeach
                 </select></div>
-            <div class="form-field"><label for="period">{{ tr('بازه زمانی (مثلاً ۱۴۰۰ – ۱۴۰۳ یا 2021 – 2024)', 'Period (e.g. 2021 – 2024)') }}</label><input id="period" name="period" dir="ltr"></div>
+            <div class="form-field"><label for="period"><span data-f="period">{{ \App\Models\Resume::ITEM_FIELDS['experience']['period'][$loc] }}</span></label><input id="period" name="period" dir="ltr" value="{{ old('period') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-field"><label for="title_fa">{{ tr('عنوان (فارسی)', 'Title (Persian)') }}</label><input id="title_fa" name="title_fa" required></div>
-            <div class="form-field"><label for="title_en">{{ tr('عنوان (انگلیسی)', 'Title (English)') }}</label><input id="title_en" name="title_en" required dir="ltr"></div>
+            <div class="form-field"><label for="title_fa"><span data-f="title">{{ \App\Models\Resume::ITEM_FIELDS['experience']['title']['fa'] }}</span> ({{ tr('فارسی', 'Persian') }})</label><input id="title_fa" name="title_fa" required value="{{ old('title_fa') }}"></div>
+            <div class="form-field"><label for="title_en"><span data-f="title">{{ \App\Models\Resume::ITEM_FIELDS['experience']['title']['en'] }}</span> ({{ tr('انگلیسی', 'English') }})</label><input id="title_en" name="title_en" required dir="ltr" value="{{ old('title_en') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-field"><label for="organization_fa">{{ tr('سازمان / مدرسه (فارسی)', 'Organization (Persian)') }}</label><input id="organization_fa" name="organization_fa"></div>
-            <div class="form-field"><label for="organization_en">{{ tr('سازمان / مدرسه (انگلیسی)', 'Organization (English)') }}</label><input id="organization_en" name="organization_en" dir="ltr"></div>
+            <div class="form-field"><label for="organization_fa"><span data-f="org">{{ \App\Models\Resume::ITEM_FIELDS['experience']['org']['fa'] }}</span> ({{ tr('فارسی', 'Persian') }})</label><input id="organization_fa" name="organization_fa" value="{{ old('organization_fa') }}"></div>
+            <div class="form-field"><label for="organization_en"><span data-f="org">{{ \App\Models\Resume::ITEM_FIELDS['experience']['org']['en'] }}</span> ({{ tr('انگلیسی', 'English') }})</label><input id="organization_en" name="organization_en" dir="ltr" value="{{ old('organization_en') }}"></div>
         </div>
         <div class="form-row">
-            <div class="form-field"><label for="description_fa">{{ tr('توضیح (فارسی)', 'Description (Persian)') }}</label><textarea id="description_fa" name="description_fa" rows="3"></textarea></div>
-            <div class="form-field"><label for="description_en">{{ tr('توضیح (انگلیسی)', 'Description (English)') }}</label><textarea id="description_en" name="description_en" rows="3" dir="ltr"></textarea></div>
+            <div class="form-field"><label for="description_fa"><span data-f="desc">{{ \App\Models\Resume::ITEM_FIELDS['experience']['desc']['fa'] }}</span> ({{ tr('فارسی', 'Persian') }})</label><textarea id="description_fa" name="description_fa" rows="3">{{ old('description_fa') }}</textarea></div>
+            <div class="form-field"><label for="description_en"><span data-f="desc">{{ \App\Models\Resume::ITEM_FIELDS['experience']['desc']['en'] }}</span> ({{ tr('انگلیسی', 'English') }})</label><textarea id="description_en" name="description_en" rows="3" dir="ltr">{{ old('description_en') }}</textarea></div>
         </div>
         <div class="form-row">
-            <div class="form-field"><label for="level">{{ tr('میزان تسلط ۰ تا ۱۰۰ (فقط برای مهارت)', 'Proficiency 0–100 (skills only)') }}</label><input id="level" type="number" min="0" max="100" name="level"></div>
-            <div class="form-field"><label for="url">{{ tr('لینک گواهینامه (اختیاری، با https://)', 'Certificate link (optional, https://)') }}</label><input id="url" name="url" dir="ltr" placeholder="https://"></div>
+            <div class="form-field" data-only="skill"><label for="level"><span>{{ tr('میزان تسلط ۰ تا ۱۰۰ (فقط برای مهارت)', 'Proficiency 0–100 (skills only)') }}</span></label><input id="level" type="number" min="0" max="100" name="level" value="{{ old('level') }}"></div>
+            <div class="form-field" data-only="certificate"><label for="url"><span>{{ tr('لینک تأیید گواهینامه (اختیاری، با https://)', 'Verification link (optional, https://)') }}</span></label><input id="url" name="url" dir="ltr" placeholder="https://" value="{{ old('url') }}"></div>
         </div>
         <div class="form-actions"><button class="button button-small" type="submit">{{ tr('افزودن', 'Add') }}</button></div>
     </form>
+    <script>
+    (function () {
+        var fields = @json(\App\Models\Resume::ITEM_FIELDS);
+        var loc = @json($loc);
+        var sel = document.getElementById('type');
+        function apply() {
+            var f = fields[sel.value];
+            document.querySelectorAll('[data-f]').forEach(function (el) {
+                var key = el.getAttribute('data-f');
+                var label = key === 'title' || key === 'org' || key === 'desc' || key === 'period' ? f[key] : null;
+                if (label) el.textContent = label[loc] || label.fa;
+            });
+            document.querySelectorAll('[data-only]').forEach(function (el) {
+                el.style.display = el.getAttribute('data-only') === sel.value ? '' : 'none';
+            });
+        }
+        sel.addEventListener('change', apply);
+        apply();
+    })();
+    </script>
 @endif
 @endsection

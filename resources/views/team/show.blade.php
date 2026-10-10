@@ -20,7 +20,7 @@
     <div class="resume-grid" style="margin-top:22px">
         @foreach (['experience', 'education', 'skill', 'certificate'] as $type)
             @if ($resume->itemsOf($type)->isNotEmpty())
-                <div class="resume-block">
+                <div class="resume-block" id="{{ $type }}">
                     <h2>{{ \App\Models\Resume::ITEM_TYPES[$type][$loc] }}</h2>
                     @foreach ($resume->itemsOf($type) as $item)
                         <div class="resume-item">

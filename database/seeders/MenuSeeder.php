@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\MenuItem;
+use App\Models\Resume;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Database\Seeder;
@@ -58,7 +59,29 @@ class MenuSeeder extends Seeder
         $make(['label_fa' => 'ویدیوها', 'label_en' => 'Videos', 'url' => '/videos'], $journal, 20);
 
         $make(['label_fa' => 'آکادمی', 'label_en' => 'Academy', 'url' => '/academy'], null, 60);
-        $make(['label_fa' => 'تیم و رزومه‌ها', 'label_en' => 'Team & resumes', 'url' => '/team'], null, 70);
+        $team = $make(['label_fa' => 'تیم و رزومه‌ها', 'label_en' => 'Team & resumes', 'url' => '/team'], null, 70);
+        $make(['label_fa' => 'همه رزومه‌ها', 'label_en' => 'All resumes', 'url' => '/team'], $team, 5);
+        $resumeOrder = 10;
+        foreach (Resume::published()->orderBy('sort_order')->orderBy('id')->get() as $resume) {
+            $column = $make([
+                'label_fa' => $resume->name_fa.($resume->is_sample ? ' (نمونه)' : ''),
+                'label_en' => $resume->name_en.($resume->is_sample ? ' (Sample)' : ''),
+                'url' => '/team/'.$resume->slug,
+            ], $team, $resumeOrder);
+            $resumeOrder += 10;
+            $sections = [
+                ['experience', 'سوابق کاری', 'Work experience'],
+                ['education', 'تحصیلات', 'Education'],
+                ['skill', 'مهارت‌ها', 'Skills'],
+                ['certificate', 'گواهینامه‌ها', 'Certificates'],
+            ];
+            foreach ($sections as $k => [$type, $fa, $en]) {
+                if ($resume->itemsOf($type)->isEmpty()) {
+                    continue;
+                }
+                $make(['label_fa' => $fa, 'label_en' => $en, 'url' => '/team/'.$resume->slug.'#'.$type], $column, ($k + 1) * 10);
+            }
+        }
         $make(['label_fa' => 'تماس', 'label_en' => 'Contact', 'url' => '/contact'], null, 80);
     }
 }
