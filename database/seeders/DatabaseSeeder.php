@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommerceSeeder::class);
         $this->call(SlideSeeder::class);
         $this->call(MediaSampleSeeder::class);
+        $this->call(ResumeSampleSeeder::class);
         $this->call(AdminAccountSeeder::class);
     }
 }

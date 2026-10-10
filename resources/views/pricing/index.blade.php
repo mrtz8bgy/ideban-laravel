@@ -18,7 +18,16 @@
                 @if (is_array($plan->{'features_'.app()->getLocale()}))
                     <ul class="feature-list">@foreach ($plan->{'features_'.app()->getLocale()} as $feature)<li>{{ $feature }}</li>@endforeach</ul>
                 @endif
-                <a class="button button-outline button-full" href="{{ route('contact', ['plan' => $plan->slug]) }}">{{ __('site.request') }}</a>
+                <div class="plan-actions">
+                    @auth
+                        @if (auth()->user()->isCustomer())
+                            <form method="post" action="{{ route('account.plans.order', $plan) }}">@csrf<button class="button button-full" type="submit">{{ tr('ثبت سفارش این بسته', 'Order this plan') }}</button></form>
+                        @endif
+                    @else
+                        <a class="button button-full" href="{{ route('login') }}">{{ tr('ورود برای ثبت سفارش', 'Log in to order') }}</a>
+                    @endauth
+                    <a class="button button-outline button-full" href="{{ route('contact', ['plan' => $plan->slug]) }}">{{ __('site.request') }}</a>
+                </div>
             </article>
         @empty
             <div class="empty-state">{{ __('site.no_items') }}</div>

@@ -20,7 +20,7 @@ class SlideSeeder extends Seeder
                 'subtitle_fa' => 'از طراحی و توسعه تا استقرار، امنیت و پشتیبانی',
                 'subtitle_en' => 'From design and development to deployment, security and support',
                 'button_text_fa' => 'مشاهده خدمات', 'button_text_en' => 'View services',
-                'button_url' => '/services', 'image_path' => 'images/hero-gold.jpg',
+                'button_url' => '/services', 'image_path' => 'images/hero22-gold.jpg',
             ],
             [
                 'title_fa' => 'نمونه: برآورد هزینه در چند دقیقه',

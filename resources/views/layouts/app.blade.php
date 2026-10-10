@@ -27,6 +27,7 @@
             <a href="{{ route('academy.index') }}">{{ tr('آکادمی', 'Academy') }}</a>
         </nav>
         <div class="nav-actions">
+            <a class="locale-link" href="{{ route('search') }}">{{ tr('جستجو', 'Search') }}</a>
             <a class="locale-link" href="{{ route('locale.update', app()->getLocale() === 'fa' ? 'en' : 'fa') }}">{{ app()->getLocale() === 'fa' ? 'EN' : 'فا' }}</a>
             @auth
                 <a class="locale-link" href="{{ auth()->user()->isCustomer() ? route('account.dashboard') : route('admin.dashboard') }}">{{ tr('حساب من', 'My account') }}</a>
@@ -46,7 +47,7 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         <div><a class="brand brand-light" href="{{ route('home') }}"><span class="brand-mark">I</span><span>{{ __('site.company') }}</span></a><p>{{ __('site.footer_text') }}</p></div>
-        <div><strong>{{ __('site.services') }}</strong><a href="{{ route('services.index') }}">{{ __('site.all_services') }}</a><a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a><a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a></div>
+        <div><strong>{{ __('site.services') }}</strong><a href="{{ route('services.index') }}">{{ __('site.all_services') }}</a><a href="{{ route('pricing.index') }}">{{ __('site.pricing') }}</a><a href="{{ route('blog.index') }}">{{ __('content.nav_blog') }}</a><a href="{{ route('team.index') }}">{{ tr('تیم و رزومه‌ها', 'Team & resumes') }}</a></div>
         <div><strong>{{ __('site.contact') }}</strong><a href="tel:09104927131" dir="ltr">09104927131</a><a href="{{ route('contact') }}">{{ __('site.request_quote') }}</a></div>
     </div>
     <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('register') }}">{{ tr('ثبت‌نام مشتری', 'Customer sign-up') }}</a></div>
