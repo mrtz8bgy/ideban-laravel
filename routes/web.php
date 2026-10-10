@@ -48,6 +48,9 @@ Route::get('/academy/{course}', [AcademyController::class, 'show'])->name('acade
 Route::get('/academy/{course}/lessons/{lesson}', [AcademyController::class, 'lesson'])->name('academy.lesson');
 Route::get('/academy/lessons/{lesson}/stream', [AcademyController::class, 'stream'])->name('academy.stream');
 Route::get('/contact', [LeadController::class, 'create'])->name('contact');
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
+Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
+Route::get('/team/{resume}', [\App\Http\Controllers\TeamController::class, 'show'])->name('team.show');
 Route::post('/contact', [LeadController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 Route::get('/lang/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 Route::get('/sitemap.xml', [SitemapController::class, 'sitemap'])->name('sitemap');
@@ -80,6 +83,7 @@ Route::prefix('account')->name('account.')->middleware(['auth', 'role:customer']
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
     Route::put('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
     Route::get('/orders', [AccountController::class, 'orders'])->name('orders.index');
+    Route::post('/plans/{plan}/order', [\App\Http\Controllers\Account\PlanOrderController::class, 'store'])->middleware('throttle:10,1')->name('plans.order');
     Route::get('/orders/{order}', [AccountController::class, 'showOrder'])->name('orders.show');
     Route::get('/invoices', [AccountController::class, 'invoices'])->name('invoices.index');
     Route::get('/invoices/{invoice}', [AccountController::class, 'showInvoice'])->name('invoices.show');
@@ -137,6 +141,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin,content,
         Route::delete('/content/{type}/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
 
         Route::resource('/slides', AdminSlideController::class)->except(['show'])->names('slides');
+
+        Route::resource('/resumes', \App\Http\Controllers\Admin\ResumeController::class)->except(['show'])->names('resumes');
+        Route::post('/resumes/{resume}/items', [\App\Http\Controllers\Admin\ResumeController::class, 'storeItem'])->name('resumes.items.store');
+        Route::delete('/resumes/{resume}/items/{item}', [\App\Http\Controllers\Admin\ResumeController::class, 'destroyItem'])->name('resumes.items.destroy');
 
         Route::get('/courses', [AdminCourseController::class, 'index'])->name('courses.index');
         Route::get('/courses/create', [AdminCourseController::class, 'create'])->name('courses.create');
