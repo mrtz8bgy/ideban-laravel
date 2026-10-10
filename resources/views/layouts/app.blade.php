@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Vazirmatn:wght@400;600;800&display=swap">
-    <link rel="stylesheet" href="{{ asset('css/ideban.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ideban.css') }}?v={{ @filemtime(public_path('css/ideban.css')) }}">
 </head>
 <body>
 <header class="site-header">
@@ -43,6 +43,6 @@
     </div>
     <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('register') }}">{{ tr('ثبت‌نام مشتری', 'Customer sign-up') }}</a></div>
 </footer>
-<script src="{{ asset('js/gold-frames.js') }}" defer></script>
+<script src="{{ asset('js/gold-frames.js') }}?v={{ @filemtime(public_path('js/gold-frames.js')) }}" defer></script>
 </body>
 </html>
