@@ -57,6 +57,19 @@ class CalculatorPricingTest extends TestCase
             ->assertViewHas('result', fn ($r) => $r['lines'][0]['quote'] === true && $r['lines'][0]['amount'] === null);
     }
 
+    public function test_calculator_lists_addons_only_for_services_that_have_active_addons()
+    {
+        $emptyService = Service::where('slug', 'deployment-devops')->firstOrFail();
+        $addon = ServiceAddon::where('service_id', $this->service->id)->firstOrFail();
+
+        $response = $this->get(route('calculator.index'))->assertOk()
+            ->assertSee($addon->name_fa)
+            ->assertSee('data-no-addons', false)
+            ->assertSee('برای این خدمت افزودنی فعالی ثبت نشده است.');
+
+        $this->assertStringNotContainsString('data-service="'.$emptyService->id.'"', $response->getContent());
+    }
+
     public function test_plan_from_another_service_is_ignored()
     {
         // A plan tied to another service must not be priced for this service.

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('title', tr('ماشین‌حساب برآورد', 'Estimate calculator'))
 @section('content')
-@php($loc = app()->getLocale())
+@php
+    $loc = app()->getLocale();
+    $selectedServiceId = (string) old('service_id', $service->id ?? optional($services->first())->id);
+    $selectedService = $services->firstWhere('id', (int) $selectedServiceId);
+@endphp
 <section class="page-hero"><div class="container"><span class="eyebrow">{{ tr('برآورد هزینه', 'Cost estimate') }}</span><h1 class="gold-text">{{ tr('ماشین‌حساب برآورد', 'Estimate calculator') }}</h1>
 <p>{{ tr('خدمت، بسته و افزودنی‌های موردنیاز را انتخاب کنید. مبالغ فقط برای تعرفه‌های منتشرشده (شرکتی یا توافقی) محاسبه می‌شود؛ بقیه موارد به‌صورت «استعلام قیمت» ثبت می‌شوند.', 'Pick a service, plan and add-ons. Only company-published or negotiated amounts are calculated; everything else is listed as a price inquiry.') }}</p></div></section>
 <section class="section"><div class="container calculator-layout">
@@ -9,33 +13,57 @@
         @csrf
         <div class="form-field"><label for="service_id">{{ tr('خدمت', 'Service') }}</label>
             <select id="service_id" name="service_id" required>
-                @foreach ($services as $s)<option value="{{ $s->id }}" {{ (string) old('service_id', $service->id ?? '') === (string) $s->id ? 'selected' : '' }}>{{ $s->{'title_'.$loc} }}</option>@endforeach
+                @foreach ($services as $s)<option value="{{ $s->id }}" {{ $selectedServiceId === (string) $s->id ? 'selected' : '' }}>{{ $s->{'title_'.$loc} }}</option>@endforeach
             </select></div>
         <div class="form-field"><label for="plan_id">{{ tr('بسته', 'Plan') }}</label>
             <select id="plan_id" name="plan_id">
                 <option value="">{{ tr('بدون بسته', 'No plan') }}</option>
                 @foreach ($plans as $p)<option value="{{ $p->id }}" {{ (string) ($plan->id ?? '') === (string) $p->id ? 'selected' : '' }}>{{ $p->{'name_'.$loc} }}</option>@endforeach
             </select></div>
-        @foreach ($services as $s)
-            <fieldset class="calc-group" data-service="{{ $s->id }}">
-                <legend>{{ tr('افزودنی‌ها', 'Add-ons') }}</legend>
-                @foreach ($s->addons as $a)
-                    <label class="check-field"><input type="checkbox" name="addon_ids[]" value="{{ $a->id }}" {{ collect($addons ?? [])->contains('id', $a->id) ? 'checked' : '' }}> {{ $a->{'name_'.$loc} }}</label>
-                @endforeach
-            </fieldset>
-        @endforeach
+        <div class="form-field calculator-addons">
+            <span class="form-field-label">{{ tr('افزودنی‌ها', 'Add-ons') }}</span>
+            @foreach ($services as $s)
+                @if ($s->addons->isNotEmpty())
+                    @php($activeService = $selectedServiceId === (string) $s->id)
+                    <fieldset class="calc-group" data-service="{{ $s->id }}" @if (!$activeService) hidden @endif>
+                        <legend>{{ $s->{'title_'.$loc} }}</legend>
+                        @foreach ($s->addons as $a)
+                            <label class="addon-option">
+                                <input type="checkbox" name="addon_ids[]" value="{{ $a->id }}" {{ collect($addons ?? [])->contains('id', $a->id) ? 'checked' : '' }} @if (!$activeService) disabled @endif>
+                                <span class="addon-copy">
+                                    <strong>{{ $a->{'name_'.$loc} }}</strong>
+                                    @if ($a->{'description_'.$loc})<small>{{ $a->{'description_'.$loc} }}</small>@endif
+                                    @if ($a->hasPublicAmount())
+                                        <small class="addon-price">{{ number_format($a->amount) }} {{ tr('تومان', 'Toman') }}</small>
+                                    @else
+                                        <small class="addon-price">{{ tr('نیازمند استعلام قیمت', 'Price on request') }}</small>
+                                    @endif
+                                </span>
+                            </label>
+                        @endforeach
+                    </fieldset>
+                @endif
+            @endforeach
+            <p class="form-hint addon-empty" data-no-addons role="status" @if ($selectedService && $selectedService->addons->isNotEmpty()) hidden @endif>
+                {{ tr('برای این خدمت افزودنی فعالی ثبت نشده است.', 'No active add-ons are available for this service.') }}
+            </p>
+        </div>
         <button class="button" type="submit">{{ tr('محاسبه', 'Calculate') }}</button>
     </form>
     <script>
         (function () {
             var select = document.getElementById('service_id');
             var groups = document.querySelectorAll('.calc-group');
+            var empty = document.querySelector('[data-no-addons]');
             function sync() {
+                var hasAddons = false;
                 groups.forEach(function (g) {
                     var active = g.getAttribute('data-service') === select.value;
                     g.hidden = !active;
                     g.querySelectorAll('input').forEach(function (el) { el.disabled = !active; });
+                    if (active) hasAddons = true;
                 });
+                if (empty) empty.hidden = hasAddons;
             }
             select.addEventListener('change', sync);
             sync();
