@@ -30,6 +30,9 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 // Public site
+Route::get('/storage/{path}', [\App\Http\Controllers\PublicMediaController::class, 'show'])
+    ->where('path', '.*')
+    ->name('public-media.fallback');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');

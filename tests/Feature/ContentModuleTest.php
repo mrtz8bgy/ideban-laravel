@@ -66,6 +66,26 @@ class ContentModuleTest extends TestCase
         }
     }
 
+    public function test_public_media_is_served_when_storage_symlink_is_unavailable()
+    {
+        Storage::fake('public');
+        Storage::disk('public')->put('media/resumes/profile.jpg', 'resume-image-content');
+
+        $response = $this->get('/storage/media/resumes/profile.jpg');
+        $response
+            ->assertOk()
+            ->assertHeader('cache-control', 'max-age=604800, public')
+            ->assertHeader('x-content-type-options', 'nosniff');
+        $this->assertSame('resume-image-content', file_get_contents($response->baseResponse->getFile()->getPathname()));
+    }
+
+    public function test_public_media_fallback_rejects_paths_outside_uploaded_media()
+    {
+        $this->get('/storage/.env')->assertNotFound();
+        $this->get('/storage/storage/app/.env')->assertNotFound();
+        $this->get('/storage/media/resumes/missing.jpg')->assertNotFound();
+    }
+
     public function test_homepage_article_cover_image_uses_the_application_path()
     {
         $this->get('/lang/en');
