@@ -7,9 +7,7 @@
     <meta name="description" content="@yield('meta_description', __('site.tagline'))">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="theme-color" content="#070707">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Vazirmatn:wght@400;600;800&display=swap">
+    <link rel="preload" href="{{ asset('fonts/vazirmatn-arabic.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ asset('css/ideban.css') }}?v={{ @filemtime(public_path('css/ideban.css')) }}">
 </head>
 <body>

@@ -137,4 +137,13 @@ class MenuTest extends TestCase
             $this->assertStringNotContainsString('localhost', file_get_contents(base_path($file)), $file);
         }
     }
+
+    public function test_public_layout_loads_local_fonts_and_stylesheet()
+    {
+        $this->get('/')->assertOk()
+            ->assertSee('fonts/vazirmatn-arabic.woff2', false)
+            ->assertSee('css/ideban.css', false)
+            ->assertDontSee('fonts.googleapis.com', false)
+            ->assertDontSee('fonts.gstatic.com', false);
+    }
 }

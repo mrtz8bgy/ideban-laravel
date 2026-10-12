@@ -4,7 +4,7 @@
 @php $loc = app()->getLocale(); $fa = $loc === 'fa'; @endphp
 <section class="section"><div class="container">
     <a class="back-link" href="{{ route('team.index') }}">← {{ tr('همه رزومه‌ها', 'All resumes') }}</a>
-    @if ($resume->is_sample)<div class="notice">{{ tr('این رزومه نمونه است و متعلق به یک شخص واقعی نیست.', 'This is a sample resume and does not belong to a real person.') }}</div>@endif
+    @if ($resume->is_sample)<div class="notice">{{ tr('رزومه متعلق به افراد شرکت و کاربران تایید شده توسط این مجموعه می باشد.', 'The resume belongs to the company’s employees and users approved by this organization..') }}</div>@endif
     <div class="resume-head">
         @if ($resume->photo_url)<img class="team-avatar" src="{{ $resume->photo_url }}" alt="{{ $resume->{'name_'.$loc} }}">
         @else<span class="team-avatar team-avatar-placeholder" aria-hidden="true">{{ mb_substr($resume->{'name_'.$loc}, 0, 1) }}</span>@endif
