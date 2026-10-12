@@ -54,6 +54,21 @@ class PlanStoreTest extends TestCase
             ->assertForbidden();
     }
 
+    public function test_homepage_featured_plan_offers_order_and_request_actions()
+    {
+        $plan = $this->plan(['is_featured' => true]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('href="'.route('login').'"', false)
+            ->assertSee('href="'.route('contact', ['plan' => $plan->slug]).'"', false);
+
+        $this->actingAs($this->user('customer', 'homepage-buyer'))
+            ->get('/')
+            ->assertOk()
+            ->assertSee('href="'.route('account.plans.checkout', $plan).'"', false);
+    }
+
     public function test_fixed_company_price_creates_order_snapshot_and_invoice()
     {
         $plan = $this->plan();

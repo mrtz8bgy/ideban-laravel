@@ -57,7 +57,16 @@
                         <h3>{{ $plan->{'name_'.app()->getLocale()} }}</h3>
                         <p>{{ $plan->{'description_'.app()->getLocale()} }}</p>
                         <strong class="price">{{ $plan->price_type !== 'quote' && $plan->setup_fee !== null ? number_format($plan->setup_fee).' '.__('site.currency') : __('site.quote_only') }}</strong>
-                        <a class="button button-outline" href="{{ route('contact', ['plan' => $plan->slug]) }}">{{ __('site.request') }}</a>
+                        <div class="plan-actions">
+                            @auth
+                                @if (auth()->user()->isCustomer())
+                                    <a class="button button-full" href="{{ route('account.plans.checkout', $plan) }}">{{ tr('ثبت سفارش این بسته', 'Order this plan') }}</a>
+                                @endif
+                            @else
+                                <a class="button button-full" href="{{ route('login') }}">{{ tr('ورود برای ثبت سفارش', 'Log in to order') }}</a>
+                            @endauth
+                            <a class="button button-outline button-full" href="{{ route('contact', ['plan' => $plan->slug]) }}">{{ __('site.request') }}</a>
+                        </div>
                     </article>
                 @endforeach
             </div>
