@@ -44,5 +44,6 @@
     <div class="container footer-bottom"><span>© {{ date('Y') }} {{ __('site.company') }} — {{ __('site.rights') }}</span><a href="{{ route('register') }}">{{ tr('ثبت‌نام مشتری', 'Customer sign-up') }}</a></div>
 </footer>
 <script src="{{ asset('js/gold-frames.js') }}?v={{ @filemtime(public_path('js/gold-frames.js')) }}" defer></script>
+<script src="{{ asset('js/site-menu.js') }}?v={{ @filemtime(public_path('js/site-menu.js')) }}" defer></script>
 </body>
 </html>

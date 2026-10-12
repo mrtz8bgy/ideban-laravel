@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\Order;
+use App\Models\Article;
+use App\Models\MenuItem;
 use App\Models\PricingPlan;
 use App\Models\Resume;
 use App\Models\ResumeItem;
 use App\Models\User;
+use App\Models\Video;
 use Database\Seeders\IdebanCatalogSeeder;
 use Database\Seeders\ResumeSampleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -46,6 +49,37 @@ class ResumeSearchOrderTest extends TestCase
         $this->get('/search?q=Laravel')->assertOk()->assertSee('Custom Laravel development');
         $this->get('/search?q=Niloufar')->assertOk()->assertSee('Sample: Niloufar Kaviani');
         $this->get('/search?q=%25%25')->assertOk();
+    }
+
+    public function test_ajax_search_includes_menu_articles_and_videos_but_hides_unpublished_content(): void
+    {
+        $this->english();
+        MenuItem::create([
+            'location' => 'header', 'label_fa' => 'راهنمای Laravel', 'label_en' => 'Laravel guide link',
+            'url' => '/blog', 'is_active' => true,
+        ]);
+        Article::create([
+            'slug' => 'laravel-search-guide', 'title_fa' => 'راهنمای Laravel', 'title_en' => 'Laravel search guide',
+            'body_en' => 'Laravel internals', 'is_published' => true, 'published_at' => now()->subDay(),
+        ]);
+        Article::create([
+            'slug' => 'hidden-laravel-guide', 'title_fa' => 'Laravel پنهان', 'title_en' => 'Hidden Laravel guide',
+            'is_published' => false,
+        ]);
+        Video::create([
+            'slug' => 'laravel-video', 'title_fa' => 'Laravel ویدئو', 'title_en' => 'Laravel video',
+            'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            'is_published' => true, 'published_at' => now()->subDay(),
+        ]);
+
+        $response = $this->getJson('/search/results?q=Laravel')->assertOk();
+        $html = $response->json('html');
+
+        $this->assertStringContainsString('Laravel guide link', $html);
+        $this->assertStringContainsString('Laravel search guide', $html);
+        $this->assertStringContainsString('Laravel video', $html);
+        $this->assertStringNotContainsString('Hidden Laravel guide', $html);
+        $this->assertGreaterThanOrEqual(3, $response->json('total'));
     }
 
     public function test_guest_sees_login_prompt_and_cannot_order_a_plan(): void

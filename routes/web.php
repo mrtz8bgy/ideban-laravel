@@ -48,6 +48,7 @@ Route::get('/academy/{course}', [AcademyController::class, 'show'])->name('acade
 Route::get('/academy/{course}/lessons/{lesson}', [AcademyController::class, 'lesson'])->name('academy.lesson');
 Route::get('/academy/lessons/{lesson}/stream', [AcademyController::class, 'stream'])->name('academy.stream');
 Route::get('/contact', [LeadController::class, 'create'])->name('contact');
+Route::get('/search/results', [\App\Http\Controllers\SearchController::class, 'results'])->name('search.results');
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
 Route::get('/team/{resume}', [\App\Http\Controllers\TeamController::class, 'show'])->name('team.show');

@@ -37,6 +37,8 @@ class MenuTest extends TestCase
 
         $this->get('/')->assertOk()
             ->assertSee('class="mega"', false)
+            ->assertSee('class="mega-toggle"', false)
+            ->assertSee('aria-expanded="false"', false)
             ->assertSee('Network Column')
             ->assertSee('Fiber Link Item')
             ->assertDontSee('Hidden Menu Item');
