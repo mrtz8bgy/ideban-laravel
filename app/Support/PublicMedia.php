@@ -28,11 +28,12 @@ class PublicMedia
         }
 
         // Bundled sample images and direct uploads live under public/ and need no storage symlink.
-        if (strpos($path, 'images/') === 0 || strpos($path, 'uploads/') === 0) {
-            return asset($path);
+        $publicPath = ltrim($path, '/');
+        if (strpos($publicPath, 'images/') === 0 || strpos($publicPath, 'uploads/') === 0) {
+            return asset($publicPath);
         }
 
-        return asset('storage/'.$path);
+        return asset('storage/'.$publicPath);
     }
 
     public static function delete(?string $path): void

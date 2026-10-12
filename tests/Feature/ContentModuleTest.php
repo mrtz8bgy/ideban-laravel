@@ -66,6 +66,39 @@ class ContentModuleTest extends TestCase
         }
     }
 
+    public function test_homepage_article_cover_image_uses_the_application_path()
+    {
+        $this->get('/lang/en');
+
+        Article::create([
+            'slug' => 'platform-guide',
+            'title_fa' => 'انتخاب بستر مناسب',
+            'title_en' => 'Choosing a platform',
+            'cover_url' => '/images/article-platform.jpg',
+            'is_published' => true,
+            'published_at' => now()->subDay(),
+        ]);
+
+        $article = Article::where('slug', 'platform-guide')->firstOrFail();
+
+        URL::forceRootUrl('https://site.example/ideban-laravel/public');
+        URL::forceScheme('https');
+
+        try {
+            $this->assertSame(
+                'https://site.example/ideban-laravel/public/images/article-platform.jpg',
+                $article->cover_image_url
+            );
+        } finally {
+            URL::forceRootUrl(null);
+            URL::forceScheme(null);
+        }
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee($article->cover_image_url, false);
+    }
+
     public function test_content_manager_can_publish_a_video_and_it_appears_on_the_public_site()
     {
         $editor = $this->staff('content');

@@ -28,7 +28,15 @@ class Article extends Model
 
     public function getCoverImageUrlAttribute()
     {
-        return PublicMedia::url($this->cover_path) ?: $this->cover_url;
+        if ($this->cover_path) {
+            return PublicMedia::url($this->cover_path);
+        }
+
+        if (strpos((string) $this->cover_url, '/images/') === 0) {
+            return PublicMedia::url($this->cover_url);
+        }
+
+        return $this->cover_url;
     }
 
     public function scopePublic(Builder $query)

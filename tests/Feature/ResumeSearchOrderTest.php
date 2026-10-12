@@ -10,6 +10,7 @@ use App\Models\User;
 use Database\Seeders\IdebanCatalogSeeder;
 use Database\Seeders\ResumeSampleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class ResumeSearchOrderTest extends TestCase
@@ -85,6 +86,30 @@ class ResumeSearchOrderTest extends TestCase
         $resume->update(['is_published' => false]);
         $this->get('/team/sample-laravel-developer')->assertNotFound();
         $this->get('/team')->assertDontSee('Sample: Arash Mousavi');
+    }
+
+    public function test_resume_photo_url_uses_the_current_domain_and_application_path(): void
+    {
+        $resume = Resume::create([
+            'slug' => 'photo-url-test',
+            'name_fa' => 'آزمایش',
+            'name_en' => 'Photo URL test',
+            'photo_path' => '/media/resumes/profile.jpg',
+            'is_published' => true,
+        ]);
+
+        URL::forceRootUrl('https://new-domain.example/renamed-folder/public');
+        URL::forceScheme('https');
+
+        try {
+            $this->assertSame(
+                'https://new-domain.example/renamed-folder/public/storage/media/resumes/profile.jpg',
+                $resume->photo_url
+            );
+        } finally {
+            URL::forceRootUrl(null);
+            URL::forceScheme(null);
+        }
     }
 
     public function test_resume_page_shows_sections_and_sample_notice(): void
