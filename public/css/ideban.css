@@ -630,3 +630,65 @@ td a { color: var(--gold); }
     .home-slider .slider-prev { inset-inline-start: 14px; inset-inline-end: auto; }
     .home-slider .slider-next { inset-inline-end: 14px; inset-inline-start: auto; }
 }
+
+/* Interactive depth and cursor lighting for the homepage slider */
+.home-slider {
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    position: relative;
+    isolation: isolate;
+    perspective: 1400px;
+}
+.home-slider::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(520px circle at var(--pointer-x) var(--pointer-y), rgba(245, 215, 122, .15), transparent 70%);
+    transition: opacity .35s ease;
+}
+.home-slider.is-pointer-active::before { opacity: 1; }
+.home-slider .slider-track {
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
+    transform-origin: center;
+    transition: transform .22s cubic-bezier(.2, .7, .2, 1);
+    will-change: transform;
+}
+.home-slider .slide img {
+    transform: scale(1.035);
+    transition: transform 1.2s cubic-bezier(.2, .7, .2, 1), filter .6s ease;
+}
+.home-slider .slide.is-current img { transform: scale(1.085); }
+.home-slider.is-pointer-active .slide.is-current img {
+    transform: translate3d(calc(var(--pointer-shift-x, 0) * -12px), calc(var(--pointer-shift-y, 0) * -9px), 0) scale(1.12);
+    filter: brightness(.52) saturate(1.12);
+}
+.home-slider.is-pointer-active .slide.is-current .slide-caption {
+    transform: translate3d(calc(var(--pointer-shift-x, 0) * -5px), calc(var(--pointer-shift-y, 0) * -4px), 0);
+    transition: transform .3s ease-out;
+}
+.slider-nav {
+    box-shadow: 0 0 0 0 rgba(245, 215, 122, 0);
+    transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.slider-nav:hover {
+    background: linear-gradient(135deg, #f5d77a, #b8860b);
+    color: #080808;
+    box-shadow: 0 0 24px rgba(245, 215, 122, .35);
+}
+.slider-dots button { transition: width .25s ease, border-radius .25s ease, box-shadow .25s ease; }
+.slider-dots button.is-active {
+    width: 28px;
+    border-radius: 999px;
+    box-shadow: 0 0 14px rgba(245, 215, 122, .45);
+}
+@media (prefers-reduced-motion: reduce) {
+    .home-slider .slider-track,
+    .home-slider .slide img,
+    .home-slider .slide-caption,
+    .slider-nav,
+    .slider-dots button { transition: none; }
+}

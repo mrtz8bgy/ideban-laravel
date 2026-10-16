@@ -33,6 +33,9 @@ class Scroll3dTest extends TestCase
         $response->assertSee('--n: 6', false);
         $response->assertSee('scroll3d-sticky', false);
         $response->assertSee('initScroll3d', false);
+        $response->assertSee('initPointerEffects', false);
+        $response->assertSee('pointermove', false);
+        $response->assertSee('is-pointer-active', false);
         $response->assertSee('prefers-reduced-motion', false);
     }
 

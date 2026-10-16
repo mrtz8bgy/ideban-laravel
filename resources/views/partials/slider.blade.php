@@ -33,6 +33,42 @@
     var dots = root.querySelectorAll('[data-dot]');
     var prevBtn = root.querySelector('[data-prev]'), nextBtn = root.querySelector('[data-next]');
 
+    function initPointerEffects() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+        var frame = null;
+        root.addEventListener('pointermove', function (event) {
+            if (event.pointerType !== 'mouse') return;
+            var rect = root.getBoundingClientRect();
+            var x = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width) * 2 - 1));
+            var y = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height) * 2 - 1));
+
+            if (frame) cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(function () {
+                root.classList.add('is-pointer-active');
+                root.style.setProperty('--pointer-x', ((x + 1) * 50).toFixed(2) + '%');
+                root.style.setProperty('--pointer-y', ((y + 1) * 50).toFixed(2) + '%');
+                root.style.setProperty('--pointer-shift-x', x.toFixed(3));
+                root.style.setProperty('--pointer-shift-y', y.toFixed(3));
+                root.style.setProperty('--tilt-x', (x * 4).toFixed(2) + 'deg');
+                root.style.setProperty('--tilt-y', (y * -4).toFixed(2) + 'deg');
+                frame = null;
+            });
+        });
+        root.addEventListener('pointerleave', function () {
+            if (frame) cancelAnimationFrame(frame);
+            frame = null;
+            root.classList.remove('is-pointer-active');
+            root.style.removeProperty('--pointer-x');
+            root.style.removeProperty('--pointer-y');
+            root.style.removeProperty('--pointer-shift-x');
+            root.style.removeProperty('--pointer-shift-y');
+            root.style.removeProperty('--tilt-x');
+            root.style.removeProperty('--tilt-y');
+        });
+    }
+
     // Scroll mode: the slider stays pinned while the page scrolls, and each slide turns in 3D.
     function initScroll3d(wrap) {
         var n = slides.length;
@@ -76,6 +112,7 @@
         update();
     }
 
+    initPointerEffects();
     var wrap = root.closest('[data-scroll3d]');
     if (wrap && slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         initScroll3d(wrap);
