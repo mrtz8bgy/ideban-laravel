@@ -588,3 +588,45 @@ td a { color: var(--gold); }
 .brand-logo { display: block; width: 64px; height: 64px; object-fit: contain; flex: 0 0 auto; }
 .brand-logo-footer { width: 150px; height: 150px; margin-bottom: 4px; }
 @media (max-width: 760px) { .brand-logo { width: 52px; height: 52px; } }
+
+/* ===== 3D scroll slider ===== */
+.scroll3d { position: relative; height: calc(var(--n, 3) * 85vh); }
+.scroll3d-sticky { position: sticky; top: 0; height: 100vh; min-height: 460px; overflow: hidden; }
+.scroll3d.is-3d .home-slider { height: 100%; border-bottom: 0; }
+.scroll3d.is-3d .slider-track { height: 100%; min-height: 0; perspective: 1400px; perspective-origin: 50% 45%; transform-style: preserve-3d; }
+.scroll3d.is-3d .slide {
+    position: absolute; inset: 0; min-height: 0; margin: 0;
+    opacity: calc(1 - var(--ad, 1) * .92);
+    transform: translate3d(calc(var(--d, 0) * 10%), 0, calc(var(--ad, 1) * -520px)) rotateY(calc(var(--d, 0) * -34deg));
+    transform-origin: 50% 50%; transition: none; backface-visibility: hidden; will-change: transform, opacity;
+}
+.scroll3d.is-3d .slide.is-current { position: absolute; min-height: 0; }
+.scroll3d.is-3d .slide img { width: 100%; height: 100%; min-height: 0; max-height: none; }
+.scroll3d.is-3d .slide:not(.is-current) { pointer-events: none; }
+.scroll3d.is-3d .slide-caption { position: absolute; inset: 0; padding-top: 0; }
+@media (max-width: 640px) {
+    .scroll3d { height: calc(var(--n, 3) * 75vh); }
+    .scroll3d.is-3d .slide { transform: translate3d(calc(var(--d, 0) * 6%), 0, calc(var(--ad, 1) * -260px)) rotateY(calc(var(--d, 0) * -16deg)); }
+}
+
+/* ===== Showcase video with 3D tilt ===== */
+.showcase-3d { overflow: hidden; }
+.showcase-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
+.showcase-stage { perspective: 1200px; }
+.showcase-card {
+    position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(212, 175, 55, .4);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .75), 0 0 46px rgba(212, 175, 55, .18); background: #000;
+    transform-style: preserve-3d;
+    transform: rotateX(calc(var(--rx, 0deg) + var(--py, 0deg))) rotateY(calc(var(--ry, 0deg) + var(--px, 0deg)));
+    transition: transform .25s ease-out;
+}
+.showcase-video { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+.showcase-tag { position: absolute; top: 12px; inset-inline-start: 12px; }
+@media (max-width: 900px) { .showcase-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Mobile: slider arrows move to the bottom corners so they never cover the caption. */
+@media (max-width: 640px) {
+    .home-slider .slider-nav { top: auto; bottom: 14px; transform: none; width: 42px; height: 42px; }
+    .home-slider .slider-prev { inset-inline-start: 14px; inset-inline-end: auto; }
+    .home-slider .slider-next { inset-inline-end: 14px; inset-inline-start: auto; }
+}

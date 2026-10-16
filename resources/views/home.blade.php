@@ -24,6 +24,7 @@
     </div>
 </section>
 <section class="intro-band"><div class="container intro-band-inner"><div><span class="eyebrow">{{ __('site.company') }}</span><h2>{{ __('site.founder_name') }}</h2><span class="founder-title">{{ __('site.founder_title') }}</span></div><p>{{ __('site.about_intro') }}</p></div></section>
+@include('partials.showcase-video')
 <section class="section">
     <div class="container">
         <div class="section-heading"><div><span class="eyebrow">{{ __('site.company') }}</span><h2>{{ __('site.featured_services') }}</h2></div><a class="text-link" href="{{ route('services.index') }}">{{ __('site.all_services') }} ←</a></div>
